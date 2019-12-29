@@ -1,0 +1,161 @@
+:root{
+    --highlight_0:#3f94d1;
+    --highlight_1:#de9143;
+    --highlight_2:#40d68b;
+    --highlight_3:#d64092;
+}
+
+.load_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.prompt_background{
+  background-color: gray;
+  margin-left:0px;
+  margin-top: 2px;
+  margin-bottom: 2px ;
+  margin-right:0px;
+  padding: 0px;
+  display: inline-block;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 30px;
+    background-color: #f0f0f0;
+  }
+  
+  .container, .backdrop, textarea {
+    width: 800px;
+    height: 200px;
+  }
+  
+  .highlights, textarea, .flags {
+    padding: 10px;
+    font: 20px/28px 'Open Sans', sans-serif;
+    letter-spacing: 1px;
+  }
+  
+  .container {
+    display: block;
+    margin: 0 auto;
+    transform: translateZ(0);
+    -webkit-text-size-adjust: none;
+  }
+  
+  .backdrop {
+    position: absolute;
+    z-index: 1;
+    border: 2px solid #685972;
+    border-radius: 4px;
+    background-color: #fff;
+    overflow: auto;
+    pointer-events: none;
+    transition: transform 1s;
+  }
+  
+  .highlights {
+      position: absolute;
+      top: 0;
+      opacity: 40%;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      color: transparent;
+  }
+  .flags{
+    position: absolute;
+    top: -8px;
+    opacity: 40%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: transparent;
+  }
+  
+  textarea {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    margin: 0;
+    border: 2px solid #74637f;
+    border-radius: 4px;
+    color: #444;
+    background-color: transparent;
+    overflow: auto;
+    resize: none;
+    transition: transform 1s;
+  }
+  
+  mark {
+    border-radius: 3px;
+    color: transparent;
+    background-color: var(--highlight_0);
+  }
+
+  .mark0{
+      background-color: var(--highlight_0);
+  }
+  .mark1{
+    background-color: var(--highlight_1);
+}
+.mark2{
+    background-color: var(--highlight_2);
+}
+.mark3{
+    background-color: var(--highlight_3);
+}
+  
+  button {
+    display: block;
+    width: 300px;
+    margin: 30px auto 0;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    background-color: #74637f;
+    font: 18px 'Opens Sans', sans-serif;
+    letter-spacing: 1px;
+    appearance: none;
+    cursor: pointer;
+  }
+  
+  .perspective .backdrop {
+    transform:
+      perspective(1500px)
+      translateX(-125px)
+      rotateY(45deg)
+      scale(.9);
+  }
+  
+  .perspective textarea {
+    transform:
+      perspective(1500px)
+      translateX(155px)
+      rotateY(45deg)
+      scale(1.1);
+  }
+  
+  textarea:focus, button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #c6aada;
+  }
