@@ -15,8 +15,14 @@ WHERE id_dataset = :id ORDER BY querry_total DESC LIMIT :cnt OFFSET :str');
 //Check if the user is authorized
 //Unsafe :)
 $stm->execute(array('id' => $id_dataset, 'cnt' => $count, 'str' => $start));
-$datasets = $stm->fetchAll(PDO::FETCH_ASSOC);
-$json = json_encode($datasets);
+$entries = $stm->fetchAll(PDO::FETCH_ASSOC);
+$jentries = json_encode($entries);
 
-retData($json);
+$stm = $pdo->prepare('SELECT a.innertext, index_start, index_end, id_entry FROM text_index_annotations 
+INNER JOIN (SELECT id, innertext FROM text_index_entries ORDER BY querry_total DESC LIMIT :cnt OFFSET :str) AS a ON id_entry = id');
+$stm->execute(array('cnt' => $count, 'str' => $start));
+$annotations = $stm->fetchAll(PDO::FETCH_ASSOC);
+$jannotations = json_encode($annotations);
+
+retData('{"entries":' . $jentries . ', "annotations":' . $jannotations .'}');
 ?>

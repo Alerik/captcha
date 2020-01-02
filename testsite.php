@@ -15,18 +15,10 @@
             <div class="backdrop">
             <div class="load_container">
                     <div class="loader"></div>
-                </div>
-                <div id="highlight0" class="highlights"></div>
-                <div id="flag0" class="flags"></div>
-                <div id="highlight1" class="highlights"></div>
-                <div id="flag1" class="flags"></div>
-                <div id="highlight2" class="highlights"></div>
-                <div id="flag2" class="flags"></div>
-                <div id="highlight3" class="highlights"></div>
-                <div id="flag3" class="flags"></div>
             </div>
-            <textarea spellcheck="false" 
-            id="txt_area"></textarea>
+                <div id="highlight" class="highlights"></div>
+            </div>
+            <p class="textarea" id="txt_area"></p>
         </div>
         <button id="submit_annotation" onClick="sendAnnotations()">Submit</button>
     </body>
