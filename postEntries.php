@@ -23,7 +23,7 @@ $pdo->beginTransaction(); // also helps speed up your inserts.
 $insert_values = array();
 foreach($lines as $d){
     $question_marks[] = '('  . placeholders('?', 2) . ')';
-    $insert_values = array_merge($insert_values, array($id_dataset, $d));
+    $insert_values = array_merge($insert_values, array($id_dataset, trim($d)));
 }
 
 $sql = "INSERT INTO text_index_entries (" . implode(",", $datafields ) . ") VALUES " .

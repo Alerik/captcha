@@ -6,9 +6,13 @@ var clip_words = true;
 
 var id_entry, id_user;
 var innertext = '';
+var isOver = false;
 
 window.onload = function () {
     this.init();
+    jQuery.expr[":"].hovering = function(elem){
+        return $(elem).data('hovering') ? true : false;
+    };
 }
 function init() {
     highlight = $('#highlight');
@@ -62,14 +66,18 @@ function bindEvents() {
         'scroll': handleScroll,
         'keydown': handleKeyDown
     });
+    $textarea.hover(function(){console.log('entering');isOver = true;}, function(){isOver = false;})
     document.onselectionchange = () =>{
         handleSelect();
     };
 }
 
-
 //Todo: add word clipping
 function handleSelect(){
+    if(!isOver){
+        console.log('not inside, exiting');
+        return;
+    }
     let selection = document.getSelection();
 
     let start = selection.anchorOffset;
