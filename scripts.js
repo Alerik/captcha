@@ -92,7 +92,7 @@ function handleSelect(){
 }
 
 function applyIndicies(text) {
-    var count = 0;
+    let count = 0;
     for (i = 0; i < indicies.length; i++) {
         index = indicies[i];
         text = text.substring(0, index[0] + count)

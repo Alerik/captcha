@@ -82,7 +82,7 @@
       position: absolute;
       top: 0;
       opacity: 40%;
-      white-space: pre-wrap;
+      /* white-space: pre-wrap; */
       word-wrap: break-word;
       color: transparent;
   }
