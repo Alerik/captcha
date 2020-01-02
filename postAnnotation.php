@@ -16,6 +16,8 @@ if(!empty($_POST)){
         $end = $_POST[$END];
         $category = isset($_POST[$CATEGORY]) ? $_POST[$CATEGORY] : 0;
         
+        //We should probably add something here to recognize consensus and stuff
+
         $insert = $pdo->prepare('INSERT INTO text_index_annotations
          (id_entry, id_user, index_start, index_end, category) 
          VALUES (:id_entry, :id_user, :index_start, :index_end, :category)');
