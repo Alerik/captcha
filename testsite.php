@@ -9,7 +9,7 @@
     </head>
     <body>
         <!--<div class="prompt_background">-->
-            <h2 id="prompt">Please do the folloiwng</h2>
+        <h2 id="prompt" class="prompt">Please do the folloiwng</h2>
         <!--</div>-->
         <div class="container">
             <div class="backdrop">

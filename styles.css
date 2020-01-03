@@ -1,8 +1,7 @@
 :root{
-    --highlight_0:#00a855;
-    --highlight_1:#de9143;
-    --highlight_2:#40d68b;
-    --highlight_3:#d64092;
+  --highlight:#48a999;
+  --primary:#388e3c;
+  --secondary:#00796b;
 }
 
 .load_container{
@@ -28,7 +27,7 @@
 
 .loader {
   border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #00a855; /* Blue */
+  border-top: 16px solid var(--primary); /* Blue */
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -56,7 +55,7 @@
   
   .highlights, .textarea, .flags {
     padding: 10px;
-    font: 20px/28px 'Open Sans', sans-serif;
+    font: 20px/28px Roboto, "Helvetica Neue", sans-serif;
     letter-spacing: 1px;
   }
   
@@ -70,7 +69,7 @@
   .backdrop {
     position: absolute;
     z-index: 1;
-    border: 2px solid #685972;
+    border: 2px solid var(--primary);
     border-radius: 4px;
     background-color: #fff;
     overflow: auto;
@@ -78,6 +77,10 @@
     transition: transform 1s;
   }
   
+.prompt{
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
   .highlights {
       position: absolute;
       top: 0;
@@ -100,9 +103,9 @@
     position: absolute;
     z-index: 2;
     margin: 0;
-    border: 2px solid #74637f;
+    border: 2px solid var(--primary);
     border-radius: 4px;
-    color: #444;
+    color: #000;
     background-color: transparent;
     overflow: auto;
     resize: none;
@@ -112,7 +115,7 @@
   mark {
     border-radius: 3px;
     color: transparent;
-    background-color: var(--highlight_0);
+    background-color: var(--highlight);
   }
   
   button {
@@ -123,7 +126,7 @@
     border: none;
     border-radius: 6px;
     color: #fff;
-    background-color: #74637f;
+    background-color: var(--primary);
     font: 18px 'Opens Sans', sans-serif;
     letter-spacing: 1px;
     appearance: none;
