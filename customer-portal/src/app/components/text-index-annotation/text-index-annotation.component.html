@@ -1,0 +1,6 @@
+<div class="container" matTooltip="{{this.tooltip_message}}">
+    <div>
+        <div id="highlight" class="highlights" [innerHTML]="markup"></div>
+    </div>
+    <span [ngClass]="{'underline': !this.highlightable()}" *ngIf="annotation">{{annotation.innertext}}</span>
+</div>

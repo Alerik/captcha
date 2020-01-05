@@ -1,0 +1,16 @@
+.container{
+    display: grid; 
+    width: 100%;
+    width: 700px;
+    padding:10px;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 40px;
+}
+
+.right{
+    grid-column: 2;
+}
+.left{
+    grid-column: 1;
+    max-width: 300px;
+}

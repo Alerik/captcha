@@ -1,0 +1,160 @@
+<div class="body">
+    <!-- <form #createDatasetForm = "ngForm" class="dataset-form" (ngSubmit)="onSubmit(createDatasetForm)" >
+      <h1>Create Dataset</h1>
+      <mat-form-field>
+        <input matInput placeholder="Title" name="title" ngModel/>
+      </mat-form-field>
+      <mat-form-field required>
+        <input matInput placeholder="Prompt" name="prompt" ngModel/>
+        <mat-hint>What users are asked</mat-hint>
+      </mat-form-field>
+      <label>Select Annotation Type</label>
+      <mat-radio-group>
+        <mat-radio-button value="text_index" (change)="updateRadio($event)">Text Index</mat-radio-button>
+        <mat-radio-button value="text_multi" (change)="updateRadio($event)">Text Multi</mat-radio-button>
+        <mat-radio-button value="image_multi" (change)="updateRadio($event)">Image Multi</mat-radio-button>
+      </mat-radio-group>
+      <div *ngIf="radioChecked && isTextIndex()">
+        <label>Upload data entries from file</label>
+        <input type="file" accept=".txt, .csv " multiple/>  
+      </div>
+      <div *ngIf="radioChecked && !isTextIndex()">
+        <h3>Type currently not supported</h3>
+      </div>
+      <div class="button-holder">
+        <mat-progress-spinner *ngIf="submitting" color="primary" mode="indeterminate" [diameter]="30">
+        </mat-progress-spinner>
+        <button mat-raised-button type="submit" color="primary">Create</button>
+        <button mat-button (click)="this.createDataset=false;">Cancel</button>
+        
+      </div>
+    </form> -->
+    <mat-horizontal-stepper>
+      <mat-step [stepControl]="infoGroup">
+        <form name="infoForm" [formGroup]="infoGroup">
+          <ng-template matStepLabel>Enter Dataset Info</ng-template>
+          <mat-list role="list">
+            <mat-list-item role=listitem>
+              <mat-form-field class="title-field">
+                <input matInput placeholder="Dataset name (80 characters max)" formControlName="title" required>
+              </mat-form-field>  
+            </mat-list-item>
+            <mat-list-item role="listitem">
+              <mat-form-field>
+                <input matInput placeholder="Dataset prompt (100 characters max)" formControlName="prompt" required>
+              </mat-form-field>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+              <mat-form-field>
+                <textarea matInput placeholder="Describe this dataset" formControlName="description" required></textarea>
+              </mat-form-field>
+            </mat-list-item>
+          </mat-list>
+        </form>
+        <div>
+          <button mat-button matStepperNext (click)="infoGroup.valid && infoClick()">Next</button>
+        </div>
+      </mat-step>
+      
+      <mat-step [stepControl]="dataGroup">
+        <form [formGroup]="dataGroup">
+          <ng-template matStepLabel>Enter Data Entries</ng-template>
+          <mat-list role="list">
+            <mat-list-item role="listitem">
+              <label>Please upload your data here</label>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+              <input type="file" formControlName="data" (change)="fileChange($event.target.files)" required>
+              <button mat-button type="button" (click)="dataClick()">Load</button>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+              <mat-progress-bar mode="indeterminate" *ngIf="fileSent && !fileRecieved"></mat-progress-bar>
+              <label *ngIf="fileRecieved">Received {{lineCount}} entries!</label>
+            </mat-list-item>
+          </mat-list>
+           </form>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext [disabled]="!fileRecieved">Next</button>
+        </div>
+      </mat-step>
+      
+      <mat-step>
+        <ng-template matStepLabel>Seed your data</ng-template>
+        <mat-list role="list">
+          <mat-list-item role="listitem">
+            <label>Please give us some examples of what you're looking for by seeding your data. Please properly annotate 10 entries.</label>
+          </mat-list-item>
+        </mat-list>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Choose Pricing</ng-template>
+        <mat-list role="list">
+          <h2>Choose your privacy option</h2>
+          <mat-grid-list cols="3" rowHeight="1:1" gutterSize="10px">
+            <mat-grid-tile>
+              <mat-card>
+                <mat-card-header>
+                  <mat-card-title>Public <mark>Free!</mark></mat-card-title>
+                  <mat-card-subtitle>Recommended for Universities</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                  <p>
+                    Your dataset will be publicly available several months after being annotated for anyone to use.
+                    (put photo of people or something here)
+                  </p>
+                </mat-card-content>
+              </mat-card>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <mat-card>
+                <mat-card-header>
+                  <mat-card-title>Reserved <mark>$100</mark></mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <p>
+                    Your dataset will be avaialable for GreenPine's personal use.
+                    (put photo of person and lock here)
+                  </p>
+                </mat-card-content>
+              </mat-card>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <mat-card>
+                <mat-card-header>
+                  <mat-card-title>Private <mark>$200</mark></mat-card-title>
+                  <mat-card-subtitle>Recomended for businesses</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                  <p>
+                    Your dataset and annotations are only for you.
+                    (put photo of lock here)
+                  </p>
+                </mat-card-content>
+              </mat-card>
+            </mat-grid-tile>
+          </mat-grid-list>
+          <h2>Cost per Entry</h2>
+          <p>Each entry costs <mark>$0.40</mark> to annotate. {{lineCount}} x $0.40 = ${{(lineCount * 0.4) | number:'1.2'}}</p>
+        </mat-list>
+        
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Review and Finish</ng-template>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Finish</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+</div>

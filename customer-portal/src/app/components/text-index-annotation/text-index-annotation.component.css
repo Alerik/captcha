@@ -1,0 +1,49 @@
+
+.container {
+    display: block;
+    margin: 0 auto;
+    transform: translateZ(0);
+    -webkit-text-size-adjust: none;
+    margin-bottom: 10px;
+  }
+  
+  .backdrop {
+    position: absolute;
+    z-index: 1;
+    border-radius: 4px;
+    background-color: transparent;
+    overflow: auto;
+    pointer-events: none;
+    transition: transform 1s;
+    height: 100%;
+    width:100%;
+  }
+
+  .backdrop-underline {
+    position: absolute;
+    z-index: 1;
+    background-color: transparent;
+    overflow: auto;
+    pointer-events: none;
+    transition: transform 1s;
+    width:100%;
+    height: 100%;
+  }
+  
+  .highlights {
+      position: absolute;
+      top: 0;
+      opacity: 40%;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      color: transparent;
+  }
+  mark {
+    border-radius: 3px;
+    color: transparent;
+    background-color: #3f94d1;
+  }
+  .underline{
+    border-radius: 2px;
+    border-bottom: 2px solid red;
+  }

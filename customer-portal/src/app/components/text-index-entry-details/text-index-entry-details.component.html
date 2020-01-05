@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="left">
+        <p>A graph or some sort of visualization will go here. And it'll look cool
+        </p>
+    </div>
+    <div class="right">
+        <span *ngIf="entry.annotations.length == 0">No annotations yet</span>
+        <app-text-index-annotation 
+        *ngFor="let annot of entry.annotations" 
+        [annotation]="annot"></app-text-index-annotation>
+    </div>
+</div>
