@@ -1,9 +1,9 @@
 import {DataSource, CollectionViewer} from "@angular/cdk/collections";
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
-import { Text_Index_Entry } from '../datatypes/entries/TextIndexEntry';
-import { DatasetEntriesService } from '../services/datasetentries.service';
-import { CompoundIndexEntry } from "../datatypes/entries/CompoundTextIndexEntry";
+import { Text_Index_Entry } from '../../datatypes/entries/TextIndexEntry';
+import { DatasetEntriesService } from '../../services/datasetentries.service';
+import { CompoundIndexEntry } from "../../datatypes/entries/CompoundTextIndexEntry";
 
 export class TextIndexEntriesDataSource implements DataSource<CompoundIndexEntry>{
     private entriesSubject = new BehaviorSubject<CompoundIndexEntry[]>([]);

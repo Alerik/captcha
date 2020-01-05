@@ -10,7 +10,7 @@ import { MatRadioChange } from '@angular/material/radio';
   styleUrls: ['./datasets.component.css']
 })
 export class DatasetsComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'type', 'accuracy', 'entry_count', 'query_total', 'completion'];
+  displayedColumns: string[] = ['name', 'type', 'accuracy', 'annotations_total','entry_count','completion'];
   dataSource: DatasetsDataSource;
   settype : DatasetTypes;
   //const

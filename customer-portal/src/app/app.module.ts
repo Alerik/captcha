@@ -31,6 +31,10 @@ import { TextIndexEntryDetailsComponent } from './components/text-index-entry-de
 import {MatCheckboxModule} from '@angular/material/checkbox'; 
 import {MatStepperModule} from '@angular/material/stepper'; 
 import {MatProgressBarModule} from '@angular/material/progress-bar'; 
+import {MatBadgeModule} from '@angular/material/badge'; 
+import {MatIconModule} from '@angular/material/icon';
+import {MatIconRegistry} from '@angular/material/icon';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -67,9 +71,16 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatCheckboxModule,
     MatStepperModule,
     ReactiveFormsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatBadgeModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private iconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer){
+    //iconRegistry.addSvgIcon('warning', '/assets/warning-24px.svg');
+    //iconRegistry.addSvgIcon('warning', '/assets/pageview-24px.svg');
+  }
+ }
