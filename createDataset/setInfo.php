@@ -20,5 +20,4 @@ $stm->execute(
         'prompt' => $prompt,
         'id_dataset' => $id_creation,
         'description' => $description));
-print_r($pdo->errorInfo());
 ?>

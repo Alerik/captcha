@@ -1,5 +1,6 @@
 <?php
 include 'database.php';
+include 'json.php';
 $id_customer = $_POST['id_customer'];
 $id_dataset = $_POST['id_dataset'];
 $path = $_FILES['entry_file']['tmp_name'];
@@ -36,5 +37,5 @@ try {
     echo $e->getMessage();
 }
 $pdo->commit();
-
+retData(json_encode(array('entry_count' => count($lines))));
 ?>
