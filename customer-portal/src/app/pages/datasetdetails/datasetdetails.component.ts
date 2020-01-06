@@ -29,10 +29,12 @@ export class DatasetdetailsComponent implements OnInit {
   id_dataset: string;
   name: string;
   private sub: any;
+  selectedIndex:number;
   dataset: Dataset;
   dataSource: TextIndexEntriesDataSource;
   fileList : FileList;
   expandedElement : CompoundIndexEntry | null;
+  notifications: Notification[];
   
   @ViewChild(MatPaginator, {static: true}) paginator:MatPaginator;
   constructor(private route: ActivatedRoute, private infoService: DatasetinfoService,
@@ -46,7 +48,11 @@ export class DatasetdetailsComponent implements OnInit {
     });
     this.dataSource = new TextIndexEntriesDataSource(this.id_dataset,this.entryService);
     this.dataSource.loadDatasets(0, 20);
-    this.infoService.getInfo(this.id_dataset).subscribe(dataset => {this.dataset = dataset;});
+    this.infoService.getInfo(this.id_dataset).subscribe(
+      dataset => 
+      {
+        this.dataset = dataset; 
+        this.notifications = this.infoService.notifications;});
   }
 
   pageEvent(event?: PageEvent){

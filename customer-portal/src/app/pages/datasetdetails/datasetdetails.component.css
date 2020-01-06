@@ -6,6 +6,16 @@
     position: relative;
 }
 
+.header-holder{
+  display: inline-flex;
+}
+.icon-holder{
+  float: left;
+  align-self: center;
+  padding: 8px;
+  transform: scale(1.5);
+}
+
 .loading-shade{
     position: absolute;
     /* top:300px; */
@@ -64,4 +74,27 @@ tr.example-detail-row {
   
   .example-element-description-attribution {
     opacity: 0.5;
+  }
+
+  .overview-table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top:16px;
+  }
+
+  .overview-table td{
+    border-width: 1px 0;
+    border-style: solid;
+    border-color:#e0e0e0;
+    padding:8px;
+    line-height: 16px;
+  }
+
+  th{
+    display: table-cell;
+    text-align: right;
+    border-width: 1px 0;
+    border-style: solid;
+    border-color:#e0e0e0;
+    padding:8px;
   }

@@ -35,6 +35,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatIconModule} from '@angular/material/icon';
 import {MatIconRegistry} from '@angular/material/icon';
 import {DomSanitizer} from '@angular/platform-browser';
+import {MatTabsModule} from '@angular/material/tabs'; 
 
 @NgModule({
   declarations: [
@@ -73,14 +74,15 @@ import {DomSanitizer} from '@angular/platform-browser';
     ReactiveFormsModule,
     MatProgressBarModule,
     MatBadgeModule,
-    MatIconModule
+    MatIconModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(private iconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer){
-    //iconRegistry.addSvgIcon('warning', '/assets/warning-24px.svg');
-    //iconRegistry.addSvgIcon('warning', '/assets/pageview-24px.svg');
+    iconRegistry.addSvgIcon('warning', '/assets/warning-24px.svg');
+    iconRegistry.addSvgIcon('review', '/assets/pageview-24px.svg');
   }
  }

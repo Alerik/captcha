@@ -13,6 +13,7 @@ export class DatasetinfoService {
   constructor(private http: HttpClient) { }
   baseUrl = 'http://localhost/captcha/getDatasetInfo.php';
   dataset:Dataset;
+  notifications: Notification[];
 
   getInfo(id_dataset:string):Observable<Dataset>{
     const data = {
@@ -29,7 +30,9 @@ export class DatasetinfoService {
         console.error("Error occured: ", res['error']);
         return;
       }
-      this.dataset = res['data'];
+      this.dataset = res['data']['info'];
+      this.notifications = res['data']['events'];
+      console.log(this.notifications);
       return this.dataset;
     }),
     catchError(this.handleError));

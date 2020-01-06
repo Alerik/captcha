@@ -12,5 +12,13 @@ completion, reviewed, approved, created, description FROM datasets
 WHERE id_owner = :id AND id = :dataset');
 $row = $stm->execute(array('id' => $id_customer, 'dataset' => $id_dataset));
 $row = $stm->fetch();
-retData(json_encode($row));
+
+$info = json_encode($row);
+
+$stm = $pdo->prepare("SELECT message,
+ CONCAT(to_char(recordtime, 'MM/DD/YYYY HH24:MI'), ' UTC') as recordtime from dataset_events WHERE id_dataset = :dataset ORDER BY recordtime");
+$stm->execute(array('dataset' => $id_dataset));
+$rows = $stm->fetchall();
+
+retData('{"info":' . $info . ', "events": ' . json_encode($rows) . '}');
 ?>

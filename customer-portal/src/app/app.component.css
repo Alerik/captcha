@@ -21,7 +21,8 @@
 }
 
 mat-sidenav-content{
-    background-color: #fbfcfb;
+    /* background-color: #fbfcfb; */
+    background-color: #ffffff;
 }
 
 a{
