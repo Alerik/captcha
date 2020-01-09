@@ -1,7 +1,7 @@
-import {Dataset} from '../dataset';
+import {Dataset} from '../../datatypes/dataset';
 import {DataSource, CollectionViewer} from "@angular/cdk/collections";
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { DatasetsService } from '../services/datasets.service';
+import { DatasetsService } from '../../services/datasets.service';
 import { catchError, finalize } from 'rxjs/operators';
 
 export class DatasetsDataSource implements DataSource<Dataset>{

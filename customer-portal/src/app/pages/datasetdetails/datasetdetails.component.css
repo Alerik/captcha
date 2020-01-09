@@ -4,6 +4,7 @@
 
 .table-container{
     position: relative;
+    margin-top:8px;
 }
 
 .header-holder{
@@ -16,6 +17,30 @@
   transform: scale(1.5);
 }
 
+.loader{
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  min-height: 300px;
+}
+
+.card-holder{
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  min-height: 300px;
+}
+
+.info-card{
+  padding: 8px;
+  margin:16px;
+}
+
+.notification-list{
+  min-width: 400px;
+  max-width: 900px;
+}
+
 .loading-shade{
     position: absolute;
     /* top:300px; */
@@ -23,7 +48,7 @@
     background: rgba(0,0,0,0.15);
     z-index: 100;
     width:800px; 
-    height: 500px;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -79,7 +104,8 @@ tr.example-detail-row {
   .overview-table{
     border-collapse: collapse;
     border-spacing: 0;
-    margin-top:16px;
+    margin-left:8px;
+    margin-right:8px;
   }
 
   .overview-table td{
