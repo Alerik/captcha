@@ -7,6 +7,8 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { globals } from '../../globals';
 import { CreatedatasetService } from '../../services/createdataset.service';
+import { Text_Index_Entry } from '../../datatypes/entries/TextIndexEntry';
+import { RandomentriesService } from '../../services/randomentries.service';
 
 @Component({
   selector: 'app-createdataset',
@@ -21,6 +23,11 @@ export class CreatedatasetComponent implements OnInit {
   fileRecieved : boolean = false;
   fileSent : boolean = false;
   lineCount : number = -1;
+
+  seedEntries:Text_Index_Entry[];
+  seedCount = 10;
+  seedLoaded = false;
+  seedLoading = false;
   
   infoGroup = new FormGroup({
     title: new FormControl(),
@@ -32,7 +39,8 @@ export class CreatedatasetComponent implements OnInit {
     data: new FormControl()
   });
 
-  constructor(private router: Router, private service : CreatedatasetService) { }
+  constructor(private router: Router, private service : CreatedatasetService,
+    private rndService : RandomentriesService) { }
 
   fileChange(files: FileList){
     this.dataFile = files.item(0);
@@ -55,7 +63,30 @@ export class CreatedatasetComponent implements OnInit {
 
   dataClick(){
     this.fileSent = true;
+    let inst = this;
+    this.seedLoaded = false;
+    this.seedLoading = true;
     this.service.sendDataFile(this.dataFile)
-    .subscribe((ret) => {this.fileRecieved  = true; this.fileSent = false; this.lineCount = ret;});
+    .subscribe((ret) => 
+    {this.fileRecieved  = true; 
+      this.fileSent = false; 
+      this.lineCount = ret['lines'];
+      this.seedEntries = ret['entries'];
+      console.log(this.seedEntries);
+      this.seedLoading = false;
+      this.seedLoaded = true;
+    });
   }
+
+  getSeedEntries() {
+    this.seedLoaded = false;
+    this.seedLoading = true;
+    this.rndService.get(globals['creation_id'], 10)
+    .subscribe((ret) => 
+    {
+      this.seedEntries = ret;
+      
+    });
+  }
+
 }

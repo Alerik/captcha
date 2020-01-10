@@ -124,6 +124,11 @@
                 <label>Please give us some examples of what you're looking for by seeding your data. Please properly annotate 10 entries.</label>
               </mat-list-item>
             </mat-list>
+            <mat-list role="list" *ngIf="seedLoaded">
+              <mat-list-item *ngFor="let entry of seedEntries">
+                <app-text-index-annotator [text]="entry.innertext"></app-text-index-annotator>
+              </mat-list-item>
+            </mat-list>
             <div class="button-holder">
               <button mat-button matStepperPrevious>Back</button>
               <button mat-button matStepperNext>Next</button>

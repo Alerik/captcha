@@ -38,6 +38,7 @@ get(id_dataset:string, start:number, count:number):Observable<CompoundIndexEntry
         console.error("Error occured: ", res['error']);
         return;
       }
+      console.log("Type IS! " + typeof res['data']['entries']);
       this.entries = res['data']['entries'];
       this.annotations = res['data']['annotations'];
       return this.getCompounds(this.entries, this.annotations);

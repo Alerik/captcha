@@ -20,7 +20,12 @@ export class TextIndexAnnotatorComponent implements OnInit {
 
   ngOnInit() {
     //There is some scoping issue preventing 'this from being used in the callback
-    document.onselectionchange = () => this.onSelectionChange(this);
+    //This does not let multiple things select at a time which is a problem :/
+    //This only lets the most recent selection item work
+    //document.onselectionchange += () => this.onSelectionChange(this);
+
+    //So we need to add a handler instead of setting it
+    document.addEventListener('selectionchange', () => this.onSelectionChange(this));
     this.initWords();
   }
 
@@ -47,12 +52,15 @@ export class TextIndexAnnotatorComponent implements OnInit {
 
   onMouseEnter(): void {
     this.mouseInside = true;
+    console.log('entienrg');
   }
   onMouseLeave(): void {
     this.mouseInside = false;
+    console.log('leaving');
   }
 
   onSelectionChange(t: TextIndexAnnotatorComponent): void {
+    console.log('selecting');
     if (t.mouseInside) {
       let selection = window.getSelection();
       let start = selection.anchorOffset;

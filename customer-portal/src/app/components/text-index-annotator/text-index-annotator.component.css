@@ -2,6 +2,11 @@
     background-color: transparent;
   }
 
+
+  .big-container{
+    min-height: 20px;
+    min-width: 300px;
+  }
   mark {
     border-radius: 3px;
     color: transparent;

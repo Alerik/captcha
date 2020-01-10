@@ -3,7 +3,7 @@ export class Text_Index_Entry{
     consensus_start:number;
     consensus_end:number;
     certified:boolean;
-    annotations_total:number;
+    querry_total:number;
     accuracy:number;
     innertext:string;
     id:string;

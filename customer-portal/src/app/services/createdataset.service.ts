@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { globals } from '../globals';
 import { catchError, map } from 'rxjs/operators';
+import { Text_Index_Entry } from '../datatypes/entries/TextIndexEntry';
+import { plainToClass } from "class-transformer";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,9 @@ export class CreatedatasetService {
   startCreateUri : string = 'http://127.0.0.1/captcha/createDataset/startCreate.php';
   setInfoUri : string = 'http://127.0.0.1/captcha/createDataset/setInfo.php';
   sendDataFileUri : string = 'http://127.0.1/captcha/postEntries.php'
+
+  seedEntries : Text_Index_Entry[];
+  lines : number;
 
   creation_id:string;
 
@@ -53,12 +58,24 @@ export class CreatedatasetService {
       }));
   }
 
-  sendDataFile(dataFile : File) : Observable<number>{
+  sendDataFile(dataFile : File) : Observable<any>{
       const formData : FormData = new FormData();
       formData.append('entry_file', dataFile, dataFile.name);
       formData.append('id_customer', globals['user_id']);
       formData.append('id_dataset', this.creation_id);
       return this.http.post(this.sendDataFileUri, formData).pipe(
-      map((res) => {return res['data']['entry_count'];}));
+      map((res) => 
+      {
+        //I think we need to make this an object because we can't have a JSON header sent
+        //So we need to parse to object so it can be turned into the correct datatype
+        this.lines = JSON.parse(res['data']['entry_count']);
+        this.seedEntries = JSON.parse(res['data']['entries']);
+
+        const ret = {
+          lines : this.lines,
+          entries : this.seedEntries
+        }
+        return ret;
+      }));
   }
 }
