@@ -9,7 +9,12 @@
       <mat-icon class="alert" *ngIf="dataset.created && dataset.reviewed && !dataset.approved"
         matTooltip="Your dataset was not approved">warning</mat-icon>
     </div>
-  </div>
+    <div class="icon-holder settings-button">
+      <button mat-icon-button color="primary" routerLink="./edit">
+        <mat-icon>edit</mat-icon>
+      </button>  
+    </div>
+   </div>
 
   <div>
     <mat-tab-group [selectedIndex]="selectedIndex">

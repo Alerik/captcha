@@ -23,6 +23,7 @@ label{
 mat-form-field{
     min-width: 200px;
     max-width: 600px;
+    max-height: 200px;
     width: 100%;
 }
 mat-list-item{
@@ -36,6 +37,29 @@ button{
 .button-holder{
     flex-direction: row;
     display: inline-flex;
+    float: right;
+}
+
+.mat-horizontal-content-container{
+    display: grid;
+    align-content: center;
+}
+
+.cholder{
+    display: grid;
+    align-content: center;
+}
+
+.content{
+    max-width: 900px;
+    min-width: 300px; 
+    width:100%;
+    align-self: center;
+    justify-self: center;
+    border: 1px solid #e8eaed;
+    padding: 16px;
+    border-radius:8px;
+    margin-top: 16px;
 }
 
 mat-progress-spinner{

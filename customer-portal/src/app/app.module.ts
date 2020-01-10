@@ -13,7 +13,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DatasetsComponent } from './pages/datasets/datasets.component';
-import { AccountComponent } from './account/account.component'; 
+import { AccountComponent } from './pages/account/account.component'; 
 import {MatCardModule} from '@angular/material/card'; 
 import { HttpClientModule } from '@angular/common/http';
 import { DatasetdetailsComponent } from './pages/datasetdetails/datasetdetails.component';
@@ -35,7 +35,11 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatIconModule} from '@angular/material/icon';
 import {MatIconRegistry} from '@angular/material/icon';
 import {DomSanitizer} from '@angular/platform-browser';
-import {MatTabsModule} from '@angular/material/tabs'; 
+import {MatTabsModule} from '@angular/material/tabs';
+import { BillingComponent } from './pages/billing/billing.component';
+import { DatasetEditComponent } from './pages/dataset-edit/dataset-edit.component';
+import { TextIndexAnnotatorComponent} from './components/text-index-annotator/text-index-annotator.component';
+import { KeepHtmlPipe } from './keep-html.pipe'; 
 
 @NgModule({
   declarations: [
@@ -47,7 +51,11 @@ import {MatTabsModule} from '@angular/material/tabs';
     CreatedatasetComponent,
     TextEntryRowComponent,
     TextIndexAnnotationComponent,
-    TextIndexEntryDetailsComponent
+    TextIndexEntryDetailsComponent,
+    BillingComponent,
+    DatasetEditComponent,
+    TextIndexAnnotatorComponent,
+    KeepHtmlPipe
   ],
   imports: [
     BrowserModule,
@@ -84,5 +92,7 @@ export class AppModule {
   constructor(private iconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer){
     iconRegistry.addSvgIcon('warning', '/assets/warning-24px.svg');
     iconRegistry.addSvgIcon('review', '/assets/pageview-24px.svg');
+    iconRegistry.addSvgIcon('settings', '/assets/settings_applications-24px.svg');
+    iconRegistry.addSvgIcon('edit', '/assets/edit-24px.svg');
   }
  }

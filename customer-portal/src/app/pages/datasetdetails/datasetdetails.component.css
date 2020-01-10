@@ -7,14 +7,18 @@
     margin-top:8px;
 }
 
+.settings-button{
+  margin-left:65%;
+}
+
 .header-holder{
   display: inline-flex;
+  width: 100%;
 }
 .icon-holder{
   float: left;
   align-self: center;
   padding: 8px;
-  transform: scale(1.5);
 }
 
 .loader{
@@ -34,6 +38,7 @@
 .info-card{
   padding: 8px;
   margin:16px;
+  min-width: 300px;
 }
 
 .notification-list{

@@ -89,14 +89,6 @@
       word-wrap: break-word;
       color: transparent;
   }
-  .flags{
-    position: absolute;
-    top: -8px;
-    opacity: 40%;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    color: transparent;
-  }
   
   .textarea {
     display: block;

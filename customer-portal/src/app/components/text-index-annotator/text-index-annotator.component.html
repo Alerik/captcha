@@ -1,0 +1,10 @@
+<div>
+    <div class="container disabledrag" ondragstart="return false" draggable="false">
+        <div class="backdrop">
+            <div id="highlight" class="highlights disabledrag" [innerHtml]="highlightText | keepHtml">
+
+            </div>
+            <p (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" class="textarea disabledrag">{{text}}</p>
+        </div>
+    </div>
+</div>

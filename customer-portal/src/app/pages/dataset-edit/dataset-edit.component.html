@@ -1,0 +1,27 @@
+<div class="main">
+    <div class="header-holder">
+        <h1>Editing ...</h1>
+    </div>
+    <div class="holder">
+        <!--We might want to edit the title, description, prompt, add/remove entries, accuracy-->
+        <form name="infoForm" [formGroup]="infoGroup" class="dataset-form">
+            <mat-list role="list">
+              <mat-list-item role=listitem>
+                <mat-form-field class="title-field">
+                  <input matInput placeholder="Dataset name (80 characters max)" formControlName="title" required>
+                </mat-form-field>  
+              </mat-list-item>
+              <mat-list-item role="listitem">
+                <mat-form-field>
+                  <input matInput placeholder="Dataset prompt (100 characters max)" formControlName="prompt" required>
+                </mat-form-field>
+              </mat-list-item>
+              <mat-list-item role="listitem">
+                <mat-form-field>
+                  <textarea matInput placeholder="Describe this dataset" formControlName="description" required></textarea>
+                </mat-form-field>
+              </mat-list-item>
+            </mat-list>
+          </form>
+    </div>
+</div>

@@ -22,7 +22,7 @@ function init() {
     words = [];
     this.$textarea.html('');
     $(".loader").show();
-    $.get("retreive.php", {}, function (data) {
+    $.get("/captcha/retreive.php", {}, function (data) {
         let jsdata = $.parseJSON(data);
         id_entry = jsdata['id_entry'];
         //var id_dataset = jsdata['id_dataset'];

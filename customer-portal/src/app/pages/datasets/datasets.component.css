@@ -1,0 +1,12 @@
+.holder{
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+.main{
+    padding: 20px;;
+}
+
+.header-holder{
+    display: inline-flex;
+  }
