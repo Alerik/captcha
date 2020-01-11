@@ -34,6 +34,69 @@ button{
     flex-direction: row;
 }
 
+.seed-holder{
+    margin:16px;
+}
+.seed-holder mat-list-item{
+    margin-bottom:4px;
+    border-bottom: 1px solid aliceblue;
+    max-width: 600px;
+}
+.seed-holder app-text-index-annotator{
+    max-width: 600px;
+    width: 100%;
+}
+
+h4{
+    margin:4px;
+}
+
+.chip-mature{
+    background-color: #ffa31a;
+    color:#292929;
+}
+.chip-scientific{
+    background-color: green;
+    color:#fff;
+}
+.chip-technical{
+    background-color: indigo;
+    color:#fff;
+}
+.chip-lexical{
+    background-color: #3f51b5;
+    color:#fff;
+}
+
+mat-card{
+    margin-top:4px;
+    margin-bottom: 4px;
+}
+
+  .overview-table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-left:8px;
+    margin-right:8px;
+  }
+
+  .overview-table td{
+    border-width: 1px 0;
+    border-style: solid;
+    border-color:#e0e0e0;
+    padding:8px;
+    line-height: 16px;
+  }
+
+  .overview-table th{
+    display: table-cell;
+    text-align: right;
+    border-width: 1px 0;
+    border-style: solid;
+    border-color:#e0e0e0;
+    padding:8px;
+  }
+
 .button-holder{
     flex-direction: row;
     display: inline-flex;

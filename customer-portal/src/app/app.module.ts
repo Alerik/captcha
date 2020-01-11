@@ -39,7 +39,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { BillingComponent } from './pages/billing/billing.component';
 import { DatasetEditComponent } from './pages/dataset-edit/dataset-edit.component';
 import { TextIndexAnnotatorComponent} from './components/text-index-annotator/text-index-annotator.component';
-import { KeepHtmlPipe } from './keep-html.pipe'; 
+import { KeepHtmlPipe } from './keep-html.pipe';
+import { FullTextIndexAnnotatorComponent } from './components/full-text-index-annotator/full-text-index-annotator.component'; 
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { KeepHtmlPipe } from './keep-html.pipe';
     BillingComponent,
     DatasetEditComponent,
     TextIndexAnnotatorComponent,
-    KeepHtmlPipe
+    KeepHtmlPipe,
+    FullTextIndexAnnotatorComponent
   ],
   imports: [
     BrowserModule,

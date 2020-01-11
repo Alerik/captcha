@@ -1,0 +1,9 @@
+<div class="holder">
+    <div *ngIf="prompt && text">
+        <h4>{{prompt}}</h4>
+        <app-text-index-annotator [text]="text"></app-text-index-annotator>
+    </div>
+    <div *ngIf="!(prompt && text)">
+        <h4 color="warn">No entry available</h4>
+    </div>
+</div>

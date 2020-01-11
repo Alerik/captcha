@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { globals } from '../globals';
 import { catchError, map } from 'rxjs/operators';
 import { Text_Index_Entry } from '../datatypes/entries/TextIndexEntry';
-import { plainToClass } from "class-transformer";
 
 @Injectable({
   providedIn: 'root'

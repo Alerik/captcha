@@ -1,49 +1,13 @@
 <div class="body">
-    <!-- <form #createDatasetForm = "ngForm" class="dataset-form" (ngSubmit)="onSubmit(createDatasetForm)" >
-      <h1>Create Dataset</h1>
-      <mat-form-field>
-        <input matInput placeholder="Title" name="title" ngModel/>
-      </mat-form-field>
-      <mat-form-field required>
-        <input matInput placeholder="Prompt" name="prompt" ngModel/>
-        <mat-hint>What users are asked</mat-hint>
-      </mat-form-field>
-      <label>Select Annotation Type</label>
-      <mat-radio-group>
-        <mat-radio-button value="text_index" (change)="updateRadio($event)">Text Index</mat-radio-button>
-        <mat-radio-button value="text_multi" (change)="updateRadio($event)">Text Multi</mat-radio-button>
-        <mat-radio-button value="image_multi" (change)="updateRadio($event)">Image Multi</mat-radio-button>
-      </mat-radio-group>
-      <div *ngIf="radioChecked && isTextIndex()">
-        <label>Upload data entries from file</label>
-        <input type="file" accept=".txt, .csv " multiple/>  
-      </div>
-      <div *ngIf="radioChecked && !isTextIndex()">
-        <h3>Type currently not supported</h3>
-      </div>
-      <div class="button-holder">
-        <mat-progress-spinner *ngIf="submitting" color="primary" mode="indeterminate" [diameter]="30">
-        </mat-progress-spinner>
-        <button mat-raised-button type="submit" color="primary">Create</button>
-        <button mat-button (click)="this.createDataset=false;">Cancel</button>
-        
-      </div>
-    </form> -->
     <mat-horizontal-stepper>
       <mat-step>
         <ng-template matStepLabel>Start Creation</ng-template>
         <div class="cholder">
           <div class="content">
             <h3>Start creating a dataset</h3>
-            <p>This wizard will walk you through the creation of your dataset. For your dataset to be eligible, it must meet the following requirements.</p>
-            <mat-list role="list">
-              <mat-list-item role="list-item">
-                Contain at least 20 items
-              </mat-list-item>
-              <mat-list-item role="list-item">
-                Contain no profanity  
-              </mat-list-item>
-            </mat-list>
+            <p>This will walk you through the creation of your dataset. After you complete this, your dataset will go through a review process to
+              ensure that our annotists will be able to properly understand what it is you'd like.
+              For your dataset to be eligible, it must contain a minimum of 20 entries</p>
             <div class="button-holder">
               <button mat-button routerLink="/datasets">Cancel</button>
               <button mat-button matStepperNext>Next</button>
@@ -73,8 +37,19 @@
                 </mat-list-item>
                 <mat-list-item role="listitem">
                   <mat-form-field>
-                    <textarea matInput placeholder="Describe this dataset" formControlName="description" required></textarea>
+                    <textarea #dataset_description matInput placeholder="Describe this dataset" formControlName="description" required></textarea>
                   </mat-form-field>
+                </mat-list-item>
+                <mat-list-item role="listitem" style="margin:0px;">
+                  <label matTooltip="Help us understand the content of your dataset">Tags</label>
+                </mat-list-item>
+                <mat-list-item role="listitem">
+                  <mat-chip-list>
+                    <mat-chip [selectable]="selectable" class="chip-mature">Mature</mat-chip>
+                    <mat-chip [selectable]="selectable" class="chip-scientific">Scientific</mat-chip>
+                    <mat-chip [selectable]="selectable" class="chip-technical">Technical</mat-chip>
+                    <mat-chip [selectable]="selectable" class="chip-lexical">Lexical</mat-chip>
+                  </mat-chip-list>
                 </mat-list-item>
               </mat-list>
             </form>
@@ -94,7 +69,7 @@
               <ng-template matStepLabel>Enter Data Entries</ng-template>
               <mat-list role="list">
                 <mat-list-item role="listitem">
-                  <label>Please upload your data here</label>
+                  <label>Upload your data here. Currently, we accept .txt files where entries are delimited by lines.</label>
                 </mat-list-item>
                 <mat-list-item role="listitem">
                   <input type="file" formControlName="data" (change)="fileChange($event.target.files)" required>
@@ -124,11 +99,17 @@
                 <label>Please give us some examples of what you're looking for by seeding your data. Please properly annotate 10 entries.</label>
               </mat-list-item>
             </mat-list>
-            <mat-list role="list" *ngIf="seedLoaded">
-              <mat-list-item *ngFor="let entry of seedEntries">
-                <app-text-index-annotator [text]="entry.innertext"></app-text-index-annotator>
-              </mat-list-item>
-            </mat-list>
+            <div class="seed-holder" *ngIf="seedEntries">
+              <h4>{{dataset_prompt.value}}</h4>
+              <mat-list role="list" *ngIf="true">
+                <mat-list-item *ngFor="let entry of seedEntries">
+                  <app-text-index-annotator [text]="entry.innertext"></app-text-index-annotator>
+                </mat-list-item>
+              </mat-list>  
+            </div>
+            <div *ngIf="!seedEntries">
+              <h4>No data entries yet. Please go back and add some</h4>
+            </div>
             <div class="button-holder">
               <button mat-button matStepperPrevious>Back</button>
               <button mat-button matStepperNext>Next</button>
@@ -196,7 +177,58 @@
 
       <mat-step>
         <ng-template matStepLabel>Review and Finish</ng-template>
-        <div>
+      
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>{{dataset_name.value}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <mat-list role="list">
+                <table class="overview-table">
+                  <tbody>
+                    <tr>
+                      <th mat-subheader>Description</th>
+                      <td>{{dataset_description.value}}</td>
+                    </tr>
+                    <tr>
+                      <th mat-subheader>Prompt</th>
+                      <td>{{dataset_prompt.value}}</td>
+                    </tr>
+                    <tr>
+                      <th mat-subheader>Entries</th>
+                      <td>{{lineCount}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </mat-list>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Pricing</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+
+            </mat-card-content>
+          </mat-card>
+  
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Preview</mat-card-title>
+                <mat-card-subtitle>This is what our annotists will see</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content *ngIf="seedEntries">
+                <app-full-text-index-annotator [prompt]="dataset_prompt.value" [text]="seedEntries[0].innertext">
+
+                </app-full-text-index-annotator>
+              </mat-card-content>
+              <mat-card-content *ngIf="!seedEntries">
+                <p>No entries available</p>
+              </mat-card-content>
+            </mat-card>
+        
+        <div class="button-holder">
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Finish</button>
         </div>
