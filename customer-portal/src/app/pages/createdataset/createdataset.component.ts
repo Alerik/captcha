@@ -33,7 +33,7 @@ export class CreatedatasetComponent implements OnInit {
     title: new FormControl(),
     prompt: new FormControl(),
     description: new FormControl()
-  });;
+  });
 
   dataGroup = new FormGroup({
     data: new FormControl()
@@ -47,7 +47,6 @@ export class CreatedatasetComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(globals['creation_id']);
     if(!globals['creation_id']){
       this.service.getProgressID().subscribe((id) => console.log(id));
     }

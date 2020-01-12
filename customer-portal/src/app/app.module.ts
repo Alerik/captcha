@@ -40,7 +40,8 @@ import { BillingComponent } from './pages/billing/billing.component';
 import { DatasetEditComponent } from './pages/dataset-edit/dataset-edit.component';
 import { TextIndexAnnotatorComponent} from './components/text-index-annotator/text-index-annotator.component';
 import { KeepHtmlPipe } from './keep-html.pipe';
-import { FullTextIndexAnnotatorComponent } from './components/full-text-index-annotator/full-text-index-annotator.component'; 
+import { FullTextIndexAnnotatorComponent } from './components/full-text-index-annotator/full-text-index-annotator.component';
+import { TextIndexDetailTableComponent } from './components/text-index-detail-table/text-index-detail-table.component'; 
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { FullTextIndexAnnotatorComponent } from './components/full-text-index-an
     DatasetEditComponent,
     TextIndexAnnotatorComponent,
     KeepHtmlPipe,
-    FullTextIndexAnnotatorComponent
+    FullTextIndexAnnotatorComponent,
+    TextIndexDetailTableComponent
   ],
   imports: [
     BrowserModule,

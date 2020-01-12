@@ -31,14 +31,12 @@ export class DatasetdetailsComponent implements OnInit {
   private sub: any;
   selectedIndex:number;
   dataset: Dataset;
-  dataSource: TextIndexEntriesDataSource;
   fileList : FileList;
   expandedElement : CompoundIndexEntry | null;
   notifications: Notification[];
   
-  @ViewChild(MatPaginator, {static: true}) paginator:MatPaginator;
   constructor(private route: ActivatedRoute, private infoService: DatasetinfoService,
-    private entryService: DatasetEntriesService, private http:HttpClient) { }
+    private http:HttpClient) { }
 
 
   ngOnInit() {
@@ -46,18 +44,11 @@ export class DatasetdetailsComponent implements OnInit {
       this.id_dataset = params['id'];
       this.name = params['name'];
     });
-    this.dataSource = new TextIndexEntriesDataSource(this.id_dataset,this.entryService);
-    this.dataSource.loadDatasets(0, 20);
     this.infoService.getInfo(this.id_dataset).subscribe(
       dataset => 
       {
         this.dataset = dataset; 
         this.notifications = this.infoService.notifications;});
-  }
-
-  pageEvent(event?: PageEvent){
-    let start = event.pageIndex * event.pageSize;
-    this.dataSource.loadDatasets(start, event.pageSize);
   }
 
   ngOnDestroy(){

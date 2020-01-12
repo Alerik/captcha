@@ -68,11 +68,6 @@ h4{
     color:#fff;
 }
 
-mat-card{
-    margin-top:4px;
-    margin-bottom: 4px;
-}
-
   .overview-table{
     border-collapse: collapse;
     border-spacing: 0;
@@ -132,10 +127,8 @@ mat-progress-spinner{
 
 mat-card{
     height: 180px;
-}
-
-mat-card:hover{
-    background-color: #fbfcfb;
+    margin-top:4px;
+    margin-bottom: 8px;
 }
 
 mark{

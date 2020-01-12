@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { globals } from '../globals';
 import { catchError, map } from 'rxjs/operators';
 import { Text_Index_Entry } from '../datatypes/entries/TextIndexEntry';
+import { Text_Index_Annotation } from '../datatypes/annotations/TextIndexAnnotation';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +49,7 @@ export class CreatedatasetService {
       'title' : title,
       'prompt' : prompt,
       'description' : description
-    };
+    }; 
 
     return this.http.post(this.setInfoUri, JSON.stringify(data),
     {headers: globals['json_header']}).pipe(
@@ -76,5 +77,9 @@ export class CreatedatasetService {
         }
         return ret;
       }));
+  }
+
+  sendSeedAnnotations(annotations: Text_Index_Annotation[]) : Observable<bool>{
+    return false;
   }
 }
