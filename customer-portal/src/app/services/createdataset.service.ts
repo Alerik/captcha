@@ -79,7 +79,7 @@ export class CreatedatasetService {
       }));
   }
 
-  sendSeedAnnotations(annotations: Text_Index_Annotation[]) : Observable<bool>{
-    return false;
-  }
+  // sendSeedAnnotations(annotations: Text_Index_Annotation[]) : Observable<bool>{
+  //   return false;
+  // }
 }

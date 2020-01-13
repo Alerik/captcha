@@ -65,7 +65,7 @@
          </mat-progress-spinner> 
         </div>
         <div class="card-holder" *ngIf="dataset">
-          <app-text-index-detail-table [id]="id_dataset"></app-text-index-detail-table>
+          <app-text-index-detail-table [id]="id_dataset" [entry_count]="dataset.entry_count"></app-text-index-detail-table>
           <p>Upload more entries. </p><input type="file" (change)="fileChange($event)" placeholder="Upload entries"
           accept=".txt" />
         <button mat-raised-button color="primary" (click)="uploadClick($event)">Upload</button>

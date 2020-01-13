@@ -3,11 +3,12 @@
       <mat-step>
         <ng-template matStepLabel>Start Creation</ng-template>
         <div class="cholder">
-          <div class="content">
+          <div class="content mat-elevation-z8">
             <h3>Start creating a dataset</h3>
-            <p>This will walk you through the creation of your dataset. After you complete this, your dataset will go through a review process to
-              ensure that our annotists will be able to properly understand what it is you'd like.
-              For your dataset to be eligible, it must contain a minimum of 20 entries</p>
+            <p>This will guide you through the creation of your dataset. After completing this, 
+              your dataset will be reviewed to
+              ensure our annotists will understand what you're looking for.
+              For your dataset to be eligible, it must contain a minimum of 20 entries.</p>
             <div class="button-holder">
               <button mat-button routerLink="/datasets">Cancel</button>
               <button mat-button matStepperNext>Next</button>
@@ -18,7 +19,7 @@
       </mat-step>
       <mat-step [stepControl]="infoGroup">
         <div class="cholder">
-          <div class="content">
+          <div class="content mat-elevation-z8">
             <h3>Tell us a bit about your dataset</h3>
             <form name="infoForm" [formGroup]="infoGroup">
               <ng-template matStepLabel>Enter Dataset Info</ng-template>
@@ -63,7 +64,7 @@
       
       <mat-step [stepControl]="dataGroup">
         <div class="cholder">
-          <div class="content">
+          <div class="content mat-elevation-z8">
             <h3>Upload your dataset</h3>
             <form [formGroup]="dataGroup">
               <ng-template matStepLabel>Enter Data Entries</ng-template>
@@ -92,7 +93,7 @@
       <mat-step>
         <ng-template matStepLabel>Seed your data</ng-template>
         <div class="cholder">
-          <div class="content">
+          <div class="content mat-elevation-z8">
             <h3>Seed your data</h3>
             <mat-list role="list">
               <mat-list-item role="listitem">

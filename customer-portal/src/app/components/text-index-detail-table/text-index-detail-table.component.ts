@@ -19,6 +19,9 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 export class TextIndexDetailTableComponent implements OnInit {
   @Input()
   id:string;
+
+  @Input()
+  entry_count:number;
   
   @ViewChild(MatPaginator, {static: true})
   paginator:MatPaginator;

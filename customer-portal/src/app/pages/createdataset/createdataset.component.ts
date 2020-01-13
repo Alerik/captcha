@@ -50,47 +50,47 @@ export class CreatedatasetComponent implements OnInit {
     if(!globals['creation_id']){
       this.service.getProgressID().subscribe((id) => console.log(id));
     }
-    this.seedEntries = [
-      {
-        id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
-        querry_total:0, accuracy:0, id:'', complete:false, innertext:'This is line # one'
-      },
-      {
-        id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
-        querry_total:0, accuracy:0, id:'', complete:false, innertext:'5 pounds green beans'
-      },
-      {
-        id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
-        querry_total:0, accuracy:0, id:'', complete:false, innertext:'One fast laptop'
-      },
-      {
-        id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
-        querry_total:0, accuracy:0, id:'', complete:false, innertext:'Black sphynx, guards thee'
-      },
-      {
-        id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
-        querry_total:0, accuracy:0, id:'', complete:false, innertext:'This is not a line of code'
-      },
-      {
-        id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
-        querry_total:0, accuracy:0, id:'', complete:false, innertext:'I am about to eat a pizza'
-      },
-      {
-        id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
-        querry_total:0, accuracy:0, id:'', complete:false, innertext:'Sadness every doth draws near thou'
-      },
-      {
-        id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
-        querry_total:0, accuracy:0, id:'', complete:false, innertext:'This is line # eight'
-      },
-      {
-        id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
-        querry_total:0, accuracy:0, id:'', complete:false, innertext:'Notebook, fridge, counter, glasses, and journal'
-      },
-      {
-        id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
-        querry_total:0, accuracy:0, id:'', complete:false, innertext:'My glass is empty'
-      }]
+    // this.seedEntries = [
+    //   {
+    //     id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
+    //     querry_total:0, accuracy:0, id:'', complete:false, innertext:'This is line # one'
+    //   },
+    //   {
+    //     id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
+    //     querry_total:0, accuracy:0, id:'', complete:false, innertext:'5 pounds green beans'
+    //   },
+    //   {
+    //     id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
+    //     querry_total:0, accuracy:0, id:'', complete:false, innertext:'One fast laptop'
+    //   },
+    //   {
+    //     id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
+    //     querry_total:0, accuracy:0, id:'', complete:false, innertext:'Black sphynx, guards thee'
+    //   },
+    //   {
+    //     id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
+    //     querry_total:0, accuracy:0, id:'', complete:false, innertext:'This is not a line of code'
+    //   },
+    //   {
+    //     id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
+    //     querry_total:0, accuracy:0, id:'', complete:false, innertext:'I am about to eat a pizza'
+    //   },
+    //   {
+    //     id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
+    //     querry_total:0, accuracy:0, id:'', complete:false, innertext:'Sadness every doth draws near thou'
+    //   },
+    //   {
+    //     id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
+    //     querry_total:0, accuracy:0, id:'', complete:false, innertext:'This is line # eight'
+    //   },
+    //   {
+    //     id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
+    //     querry_total:0, accuracy:0, id:'', complete:false, innertext:'Notebook, fridge, counter, glasses, and journal'
+    //   },
+    //   {
+    //     id_dataset:'', consensus_start:-1, consensus_end:-1, certified:false,
+    //     querry_total:0, accuracy:0, id:'', complete:false, innertext:'My glass is empty'
+    //   }]
   }
 
   //Check if we need to resubmit and if the data has changed

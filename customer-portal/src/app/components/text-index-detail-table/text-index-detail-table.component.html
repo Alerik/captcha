@@ -45,7 +45,7 @@
               (click)="expandedElement = expandedElement === element ? null : element"></tr>
             <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
           </table>
-          <mat-paginator *ngIf="this.dataset" [pageSizeOptions]="[10, 20, 50]" [pageSize]="20"
-            [length]="this.dataset.entry_count" (page)="pageEvent($event)" showFirstLastButtons></mat-paginator>
+          <mat-paginator class="mat-elevation-z8" [pageSizeOptions]="[10, 20, 50]" [pageSize]="20"
+            [length]="entry_count" (page)="pageEvent($event)" showFirstLastButtons></mat-paginator>
        
 </div>
