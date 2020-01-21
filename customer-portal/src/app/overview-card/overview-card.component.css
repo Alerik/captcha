@@ -1,0 +1,29 @@
+.info-card{
+    padding: 8px;
+    margin:16px;
+    min-width: 300px;
+  }
+
+  th{
+    color: rgba(0, 0, 0, 0.54);
+  }
+
+  table{
+      border-collapse: collapse;
+  }
+  tr,td{
+      padding: 0px;
+  }
+  .edit{
+      display: none;
+  }
+  tr:hover + .edit{
+    display: inline-block;
+  }
+  tr:hover{
+    background-color:#f4f4f4;
+
+  }
+  mat-icon{
+      margin-bottom: 8px;
+  }

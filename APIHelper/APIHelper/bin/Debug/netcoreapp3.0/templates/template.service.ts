@@ -5,24 +5,22 @@ import { HttpClient, HttpErrorResponse, HttpParams, HttpHeaders } from '@angular
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-import { datasets } from '../datatypes/datasets';
+import { --DATATYPE-- } from '../datatypes/--DATATYPE--';
 
 @Injectable({
   providedIn: 'root'
 })
-export class datasetsService {
+export class --SERVICE_NAME--Service {
 
   constructor(private http: HttpClient) {  
   }
 
-  url = 'http://127.0.0.1/captcha';
-  entries: datasets[];
+  url = --URL--;
+  entries: --DATATYPE--[];
 
-get(name : string, entry_count : number, completed : boolean):Observable<datasets[]>{
+get(--ARG_IDENTIFIERS--):Observable<--DATATYPE--[]>{
   const data = {
-    "name" : name,
-"entry_count" : entry_count,
-"completed" : completed
+    --ARG_DEFINITIONS--
   };
 
   return this.http.post(this.url, JSON.stringify(data),

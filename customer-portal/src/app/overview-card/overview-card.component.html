@@ -1,0 +1,48 @@
+<mat-card class="info-card">
+    <mat-card-header>
+      <mat-card-title>Overview</mat-card-title>
+      <mat-card-subtitle>{{dataset.completion * 100 }}% complete</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+            <table class="overview-table" *ngIf="dataset">
+                <tbody>
+                  <tr>
+                    <th class="mat-subheader">Description</th>
+                    <td>{{this.dataset.description}}</td>
+                    <td>
+                        <button class="edit" mat-icon-button color="primary">
+                            <mat-icon>edit</mat-icon>
+                        </button>  
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="mat-subheader">Prompt</th>
+                    <td>{{this.dataset.prompt}}</td>
+                    <td>
+                        <button class="edit" mat-icon-button color="primary">
+                            <mat-icon>edit</mat-icon>
+                        </button>  
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="mat-subheader">Entries</th>
+                    <td>{{this.dataset.entry_count}}</td>
+                    <td>
+                        <button class="edit" mat-icon-button color="primary">
+                            <mat-icon>edit</mat-icon>
+                        </button>  
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="mat-subheader">Annotations</th>
+                    <td>{{this.dataset.annotations_total}}</td>
+                    <td>
+                        <button class="edit" mat-icon-button color="primary">
+                            <mat-icon>edit</mat-icon>
+                        </button>  
+                    </td>
+                  </tr>
+                </tbody>
+              </table>        
+    </mat-card-content>   
+  </mat-card>

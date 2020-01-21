@@ -1,0 +1,20 @@
+#API
+http://127.0.0.1/captcha C:\xampp\htdocs\captcha\customer-portal\src\app C:\xampp\htdocs\captcha;
+
+#FUNCTION
+create/createdataset 
+{
+    name TEXT (The name of the dataset), 
+    entry_count INTEGER, completed* BOOLEAN
+}
+ uses datasets as DatasetN, customers as Customer, users;
+ delete/deletedataset
+ {
+     name TEXT,
+     id_dataset UUID,
+     authorized BOOLEAN
+ }
+ uses datasets as DatasetN;
+
+#TABLE
+datasets {completion boolean, created boolean, reviewed boolean, query_count integer};

@@ -25,36 +25,7 @@
          </mat-progress-spinner> 
         </div>
         <div class="card-holder" *ngIf="dataset">
-          <mat-card class="info-card">
-            <mat-card-header>
-              <mat-card-title>Overview</mat-card-title>
-              <mat-card-subtitle>{{dataset.completion * 100 }}% complete</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <mat-list role="list">
-                <table class="overview-table" *ngIf="dataset">
-                  <tbody>
-                    <tr>
-                      <th mat-subheader>Description</th>
-                      <td>{{this.dataset.description}}</td>
-                    </tr>
-                    <tr>
-                      <th mat-subheader>Prompt</th>
-                      <td>{{this.dataset.prompt}}</td>
-                    </tr>
-                    <tr>
-                      <th mat-subheader>Entries</th>
-                      <td>{{this.dataset.entry_count}}</td>
-                    </tr>
-                    <tr>
-                      <th mat-subheader>Annotations</th>
-                      <td>{{this.dataset.annotations_total}}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </mat-list>
-            </mat-card-content>   
-          </mat-card>
+          <app-overview-card [dataset]="dataset"></app-overview-card>
         </div>
       </mat-tab>
 
@@ -66,9 +37,6 @@
         </div>
         <div class="card-holder" *ngIf="dataset">
           <app-text-index-detail-table [id]="id_dataset" [entry_count]="dataset.entry_count"></app-text-index-detail-table>
-          <p>Upload more entries. </p><input type="file" (change)="fileChange($event)" placeholder="Upload entries"
-          accept=".txt" />
-        <button mat-raised-button color="primary" (click)="uploadClick($event)">Upload</button>
         </div>
       </mat-tab>
 

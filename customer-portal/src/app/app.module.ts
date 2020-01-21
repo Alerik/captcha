@@ -41,7 +41,8 @@ import { DatasetEditComponent } from './pages/dataset-edit/dataset-edit.componen
 import { TextIndexAnnotatorComponent} from './components/text-index-annotator/text-index-annotator.component';
 import { KeepHtmlPipe } from './keep-html.pipe';
 import { FullTextIndexAnnotatorComponent } from './components/full-text-index-annotator/full-text-index-annotator.component';
-import { TextIndexDetailTableComponent } from './components/text-index-detail-table/text-index-detail-table.component'; 
+import { TextIndexDetailTableComponent } from './components/text-index-detail-table/text-index-detail-table.component';
+import { OverviewCardComponent } from './overview-card/overview-card.component'; 
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { TextIndexDetailTableComponent } from './components/text-index-detail-ta
     TextIndexAnnotatorComponent,
     KeepHtmlPipe,
     FullTextIndexAnnotatorComponent,
-    TextIndexDetailTableComponent
+    TextIndexDetailTableComponent,
+    OverviewCardComponent
   ],
   imports: [
     BrowserModule,
