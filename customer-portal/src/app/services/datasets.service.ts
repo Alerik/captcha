@@ -5,37 +5,34 @@ import { HttpClient, HttpErrorResponse, HttpParams, HttpHeaders } from '@angular
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-import { datasets } from '../datatypes/datasets';
+import {Dataset, DatasetTypes} from '../datatypes/dataset';
+import { globals } from '../globals';
 
 @Injectable({
   providedIn: 'root'
 })
-export class datasetsService {
+export class DatasetsService {
 
   constructor(private http: HttpClient) {  
   }
 
-  url = 'http://127.0.0.1/captcha';
-  entries: datasets[];
+  baseUrl = 'http://localhost/captcha/getDatasets.php';
+  datasets: Dataset[];
 
-get(name : string, entry_count : number, completed : boolean):Observable<datasets[]>{
-  const data = {
-    "name" : name,
-"entry_count" : entry_count,
-"completed" : completed
-  };
-
-  return this.http.post(this.url, JSON.stringify(data),
-  {headers: new HttpHeaders({
+getAll():Observable<Dataset[]>{
+  const data = {"id_customer" : globals['user_id']};
+  const header = new HttpHeaders({
     'Content-Type': 'application/json'
-  })}).pipe(
+  });
+  return this.http.post(this.baseUrl, JSON.stringify(data),
+  {headers: header}).pipe(
     map((res) => {
       if('error' in res){
         console.error("Error occured: ", res['error']);
         return;
       }
-      this.entries = res['data']['entries'];
-      return this.entries;
+      this.datasets = res['data'];
+      return this.datasets;
     }),
     catchError(this.handleError));
 }
@@ -43,4 +40,5 @@ private handleError(error: HttpErrorResponse){
   console.log(error);
   return throwError('Error! something went wrong.');
 }
+
 }

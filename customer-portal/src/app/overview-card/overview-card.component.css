@@ -13,6 +13,7 @@
   }
   tr,td{
       padding: 0px;
+      min-width: 40px;
   }
   .edit{
       display: none;
@@ -22,7 +23,11 @@
   }
   tr:hover{
     background-color:#f4f4f4;
+    
+  }
 
+  tr:hover button{
+    display: inline;
   }
   mat-icon{
       margin-bottom: 8px;
