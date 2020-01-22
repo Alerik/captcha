@@ -5,7 +5,7 @@ using System.IO;
 using Console = APIHelper.ConsoleHelper;
 
 
-namespace APIHelper
+namespace APIHelper.CodeGeneration
 {
 	public class ServerCodeFile
 	{

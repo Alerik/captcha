@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using System.Linq;
 using Console = APIHelper.ConsoleHelper;
 
-namespace APIHelper
+namespace APIHelper.Parsing
 {
 	public class FileParser
 	{
@@ -56,9 +56,19 @@ namespace APIHelper
 			Console.Head("Parsing functions");
 			if (commands.ContainsKey(DIRECTIVE_FUNCTION))
 			{
+				string parentPath = "";
 				foreach(string line in commands[DIRECTIVE_FUNCTION])
 				{
-					Parser.ParseFunction(line);
+					if (line.Contains(':'))
+					{
+						string[] split = line.Split(':');
+						parentPath = split[0];
+						Parser.ParseFunction(parentPath, split[1]);
+					}
+					else
+					{
+						Parser.ParseFunction(parentPath, line);
+					}
 				}
 			}
 			else

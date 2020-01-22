@@ -1,20 +1,34 @@
 #API
-http://127.0.0.1/captcha C:\xampp\htdocs\captcha\customer-portal\src\app C:\xampp\htdocs\captcha;
+http://127.0.0.1/captcha C:\xampp\htdocs\captcha\APIHelper\APIHelper\bin\Debug\netcoreapp3.0\API\Client C:\xampp\htdocs\captcha\APIHelper\APIHelper\bin\Debug\netcoreapp3.0\API\Server;
 
 #FUNCTION
-create/createdataset 
-{
-    name TEXT (The name of the dataset), 
-    entry_count INTEGER, completed* BOOLEAN
-}
- uses datasets as DatasetN, customers as Customer, users;
- delete/deletedataset
- {
-     name TEXT,
-     id_dataset UUID,
-     authorized BOOLEAN
- }
- uses datasets as DatasetN;
+
+datasets:
+    create
+    {
+        name TEXT (The name of the dataset), 
+        prompt TEXT (The prompt for dataset),
+        description TEXT (Dataset's description),
+        id UUID
+    }
+    uses datasets as DatasetN;
+    
+    delete
+    {
+        id UUID
+    }
+    uses datasets as DatasetN;
+
+    edit
+    {
+        name* TEXT,
+        prompt* TEXT,
+        description* TEXT,
+        id UUID
+    }
+    uses datasets as DatasetN;
+
+
 
 #TABLE
 datasets {completion boolean, created boolean, reviewed boolean, query_count integer};

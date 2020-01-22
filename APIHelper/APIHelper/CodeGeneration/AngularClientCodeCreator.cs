@@ -4,7 +4,7 @@ using System.Text;
 using System.Linq;
 using System.IO;
 
-namespace APIHelper
+namespace APIHelper.CodeGeneration
 {
 	public class AngularClientCodeCreator : ClientCodeCreator
 	{
@@ -24,13 +24,13 @@ namespace APIHelper
 		private const string MEMBER_DEFINITIONS = "MEMBER_DEFINITIONS";
 		private const string URL = "URL";
 
-		public override void GenerateCode(Table dependency, string functionName, string path, List<Column> args, List<Column> exposed)
+		public override void GenerateCode(Table dependency, string functionName, string parentPath, string path, List<Column> args, List<Column> exposed)
 		{
 			string name = path.Split('/').Last().Split('.').First();
-			ClientCodeFile serviceFile = new ClientCodeFile($"services/{name}.service.ts", GenerateCall(dependency.RowName, path, args, exposed));
-			ClientCodeFile dataTypeFile = new ClientCodeFile($"datatypes/{dependency.RowName}.ts", GenerateDataType(dependency.RowName, exposed));
-			serviceFile.Close();
-			dataTypeFile.Close();
+			ClientCodeFile serviceFile = ClientCodeFile.CreateFile($"services/{parentPath}.service.ts");
+			serviceFile.Write(GenerateCall(dependency.RowName, path, args, exposed));
+			ClientCodeFile dataTypeFile = ClientCodeFile.CreateFile($"datatypes/{dependency.RowName}.ts");
+			dataTypeFile.Write(GenerateDataType(dependency.RowName, exposed));
 		}
 
 		public override string GenerateCall(string typeName, string path, List<Column> args, List<Column> exposedColumns)

@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Console = APIHelper.ConsoleHelper;
 
-namespace APIHelper
+namespace APIHelper.Parsing
 {
 	public static class Parser
 	{
@@ -76,7 +76,7 @@ namespace APIHelper
 		}
 
 		//	create/datasets { first_name TEXT, last_name TEXT, id* INTEGER } uses users;
-		public static APIFunction ParseFunction(string func)
+		public static APIFunction ParseFunction(string parentPath, string func)
 		{
 			string pattern = @"(?<path>(?:\w+\.?\/?)+)\s*\{(?<args>[^\}\{]+)\}\s*(?:uses(?<uses>[^']+))";
 			Match match = Regex.Match(func, pattern);
@@ -87,7 +87,7 @@ namespace APIHelper
 			List<APIArgument> args = ParseArguments(args_group.Value);
 			List<Table> dependenceies = uses == null ? new List<Table>() : ParseDependencies(uses.Value);
 			Console.Write("Parsed function {0}", path.Value);
-			return new APIFunction(null, path.Value, args, dependenceies);
+			return new APIFunction(null, parentPath, path.Value, args, dependenceies);
 		}
 	}
 }

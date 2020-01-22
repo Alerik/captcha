@@ -112,7 +112,7 @@ export class CreatedatasetComponent implements OnInit {
       this.fileSent = false; 
       this.lineCount = ret['lines'];
       this.seedEntries = ret['entries'];
-      console.log(this.seedEntries);
+      console.log(this.lineCount);
       this.seedLoading = false;
       this.seedLoaded = true;
     });

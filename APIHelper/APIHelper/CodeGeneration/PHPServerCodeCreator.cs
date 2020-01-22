@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace APIHelper
+namespace APIHelper.CodeGeneration
 {
 	public class PHPServerCodeCreator : ServerCodeCreator
 	{
@@ -12,7 +12,7 @@ namespace APIHelper
 		private const string QUERY_COLUMNS = "QUERY_COLUMNS";
 		private const string TABLE_NAME = "TABLE_NAME";
 
-		public override void CreateCode(Table dependency, string functionName, List<Column> args, List<Column> internalColumns, List<Column> exposedColumns)
+		public override void CreateCode(Table dependency, string parentPath, string functionName, List<Column> args, List<Column> internalColumns, List<Column> exposedColumns)
 		{
 			ServerCodeFile file = new ServerCodeFile($"{functionName}.php", CreateCode(dependency.Name, args, internalColumns, exposedColumns));
 			file.Close();

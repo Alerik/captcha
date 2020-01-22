@@ -53,12 +53,15 @@ export class CreatedatasetService {
       }));
   }
 
-  sendDataFile(dataFile : File) : Observable<number>{
+  sendDataFile(dataFile : File) : Observable<any>{
       const formData : FormData = new FormData();
       formData.append('entry_file', dataFile, dataFile.name);
       formData.append('id_customer', globals['user_id']);
       formData.append('id_dataset', this.creation_id);
       return this.http.post(this.sendDataFileUri, formData).pipe(
-      map((res) => {return res['data']['entry_count'];}));
+      map((json) => {
+        let res = JSON.parse(json.toString());
+        return {'lines': res['data']['entry_count'], 'entries': res['data']['entries']}
+      })); 
   }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using APIHelper.CodeGeneration;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -42,6 +43,7 @@ namespace APIHelper
 				function.GenerateCode();
 			}
 			Console.End();
+			ClientCodeFile.CloseAll();
 		}
 
 		public void SaveIndex()

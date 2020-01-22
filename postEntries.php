@@ -32,12 +32,12 @@ $sql = "INSERT INTO text_index_entries (" . implode(",", $datafields ) . ") VALU
 
 $stmt = $pdo->prepare ($sql);
 try {
-    $stmt->execute($insert_values);
+    if(!$stmt->execute($insert_values))
+        echo($pdo->errorInfo());
 } catch (PDOException $e){
-    echo $e->getMessage();
+    echo($e->getMessage());
 }
 $pdo->commit();
-
 $stm = $pdo->prepare('SELECT id_dataset, consensus_start, consensus_end, certified, 
 querry_total, accuracy, innertext, id, complete FROM text_index_entries 
 WHERE id_dataset = :id ORDER BY RANDOM() LIMIT :cnt');
@@ -49,5 +49,6 @@ $stm->execute(array('id' => $id_dataset, 'cnt' => $count));
 $entries = $stm->fetchAll(PDO::FETCH_ASSOC);
 $jentries = json_encode($entries);
 
+header('Content-Type: application/json');
 retData(json_encode(array('entry_count' => count($lines), 'entries' => $jentries)));
 ?>
