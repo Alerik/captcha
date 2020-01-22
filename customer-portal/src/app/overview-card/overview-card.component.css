@@ -1,8 +1,40 @@
 .info-card{
     padding: 8px;
     margin:16px;
-    min-width: 300px;
+    min-width:520px;
+    max-width: 550px;
   }
+
+  .overview-table{
+    width:100%;
+  }
+
+  .header-field{
+    font-weight: 500;
+    min-width: 320px;
+  }
+::ng-deep .header-field .mat-form-field-subscript-wrapper{
+  margin-top: 0px;
+  position: initial;
+  font-size: 12px;
+  font-weight: normal;
+}
+  ::ng-deep .header-field .mat-form-field-infix{
+    border-top: none;
+    padding: 0px;
+}
+
+::ng-deep .header-field .mat-form-field-wrapper{
+  padding: 0px;
+}
+::ng-deep .header-field .mat-form-field-underline{
+  position: initial;
+}
+::ng-deep .mat-card-actions{
+  padding: 8px;
+  display: flex;
+  flex-direction: row-reverse;
+}
 
   th{
     color: rgba(0, 0, 0, 0.54);
@@ -18,6 +50,11 @@
   .edit{
       display: none;
   }
+
+  .row{
+    min-width: 380px;
+  }
+
   tr:hover + .edit{
     display: inline-block;
   }
@@ -26,7 +63,30 @@
     
   }
 
+  .hidden{
+    display: none;
+  }
+  .shown{
+    display: inline;
+  }
+
+  input{
+    width:100%;
+  }
+  .full-width{
+    width: 100%;
+  }
+
   tr:hover button{
+    display: inline;
+  }
+
+  .header-edit{
+    margin-left:-16px;
+    margin-top:-6px;
+  }
+
+  mat-card-header:hover button{
     display: inline;
   }
   mat-icon{
