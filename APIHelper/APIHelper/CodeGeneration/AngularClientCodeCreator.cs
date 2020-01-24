@@ -23,21 +23,23 @@ namespace APIHelper.CodeGeneration
 		private const string ARG_DEFINITIONS = "ARG_DEFINITIONS";
 		private const string MEMBER_DEFINITIONS = "MEMBER_DEFINITIONS";
 		private const string URL = "URL";
+		private const string FUNCTION_NAME = "FUNCTION_NAME";
 
 		public override void GenerateCode(Table dependency, string functionName, string parentPath, string path, List<Column> args, List<Column> exposed)
 		{
 			string name = path.Split('/').Last().Split('.').First();
 			ClientCodeFile serviceFile = ClientCodeFile.CreateFile($"services/{parentPath}.service.ts");
-			serviceFile.Write(GenerateCall(dependency.RowName, path, args, exposed));
+			serviceFile.AddFunction(GenerateCall(dependency.RowName, functionName, path, args, exposed));
 			ClientCodeFile dataTypeFile = ClientCodeFile.CreateFile($"datatypes/{dependency.RowName}.ts");
 			dataTypeFile.Write(GenerateDataType(dependency.RowName, exposed));
 		}
 
-		public override string GenerateCall(string typeName, string path, List<Column> args, List<Column> exposedColumns)
+		public override string GenerateCall(string typeName, string functionName, string path, List<Column> args, List<Column> exposedColumns)
 		{
-			Template template = new Template(Template.ANGULAR);
+			Template template = new Template(Template.ANGULAR_FUNCTION);
 			template.Replace(DATATYPE, typeName);
-			template.Replace(SERVICE_NAME, typeName);
+			//template.Replace(SERVICE_NAME, typeName);
+			template.Replace(FUNCTION_NAME, functionName);
 			template.Replace(ARG_IDENTIFIERS, GenerateArgIdentifiers(args));
 			template.Replace(ARG_DEFINITIONS, GenerateArgDefinitions(args));
 			template.Replace(URL, $"'{API.Instance.BaseUrl.Trim('/') + "/" + path.Trim('/')}'");

@@ -8,7 +8,8 @@ namespace APIHelper.CodeGeneration
 	public class Template
 	{
 		public const string PHP = "templates/template.php";
-		public const string ANGULAR = "templates/template.service.ts";
+		public const string ANGULAR_SERVICE = "templates/template.service.ts";
+		public const string ANGULAR_FUNCTION = "templates/template_function.service.ts";
 		public const string ANGULAR_DT = "templates/template.ts";
 
 		private string path;

@@ -1,0 +1,6 @@
+obj\Debug\netcoreapp3.1\descriptionParser.cs
+obj\Debug\netcoreapp3.1\descriptionLexer.cs
+obj\Debug\netcoreapp3.1\descriptionListener.cs
+obj\Debug\netcoreapp3.1\descriptionBaseListener.cs
+obj\Debug\netcoreapp3.1\descriptionVisitor.cs
+obj\Debug\netcoreapp3.1\descriptionBaseVisitor.cs

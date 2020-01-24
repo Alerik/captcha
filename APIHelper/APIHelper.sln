@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIHelper", "APIHelper\APIHelper.csproj", "{009AD3B7-7AE5-43E7-BE7B-924823BAC014}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIHelper", "APIHelper\APIHelper.csproj", "{009AD3B7-7AE5-43E7-BE7B-924823BAC014}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DescriptionParser", "DescriptionParser\DescriptionParser.csproj", "{40BE4F6B-638F-4568-ACD3-20F8E8FAFC80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{009AD3B7-7AE5-43E7-BE7B-924823BAC014}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{009AD3B7-7AE5-43E7-BE7B-924823BAC014}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{009AD3B7-7AE5-43E7-BE7B-924823BAC014}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40BE4F6B-638F-4568-ACD3-20F8E8FAFC80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40BE4F6B-638F-4568-ACD3-20F8E8FAFC80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40BE4F6B-638F-4568-ACD3-20F8E8FAFC80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40BE4F6B-638F-4568-ACD3-20F8E8FAFC80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
