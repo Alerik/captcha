@@ -22,3 +22,13 @@ C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\desc
 C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\descriptionBaseListener.cs
 C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\descriptionVisitor.cs
 C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\descriptionBaseVisitor.cs
+C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptionParserListener.cs
+C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptionParserBaseListener.cs
+C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptionParserVisitor.cs
+C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptionParserBaseVisitor.cs
+C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptLexer.cs
+C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptParser.cs
+C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptParserListener.cs
+C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptParserBaseListener.cs
+C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptParserVisitor.cs
+C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptParserBaseVisitor.cs

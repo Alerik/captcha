@@ -1,0 +1,12 @@
+Identifier=1
+Star=2
+Function=3
+Lparam=4
+Comma=5
+Rparam=6
+Semicolon=7
+Langle=8
+Literal=9
+Rangle=10
+Hash=11
+Colin=12

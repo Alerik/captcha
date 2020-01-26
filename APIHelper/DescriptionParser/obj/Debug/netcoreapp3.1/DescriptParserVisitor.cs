@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\description.g4 by ANTLR 4.8
+// Generated from C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\DescriptParser.g4 by ANTLR 4.8
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -25,82 +25,76 @@ using IToken = Antlr4.Runtime.IToken;
 
 /// <summary>
 /// This interface defines a complete generic visitor for a parse tree produced
-/// by <see cref="descriptionParser"/>.
+/// by <see cref="DescriptParser"/>.
 /// </summary>
 /// <typeparam name="Result">The return type of the visit operation.</typeparam>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.8")]
 [System.CLSCompliant(false)]
-public interface IdescriptionVisitor<Result> : IParseTreeVisitor<Result> {
+public interface IDescriptParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.column"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.column"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitColumn([NotNull] descriptionParser.ColumnContext context);
+	Result VisitColumn([NotNull] DescriptParser.ColumnContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.arg"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.functionArg"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitArg([NotNull] descriptionParser.ArgContext context);
+	Result VisitFunctionArg([NotNull] DescriptParser.FunctionArgContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.function"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.functionDefinition"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitFunction([NotNull] descriptionParser.FunctionContext context);
+	Result VisitFunctionDefinition([NotNull] DescriptParser.FunctionDefinitionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.table"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.tableDefinition"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitTable([NotNull] descriptionParser.TableContext context);
+	Result VisitTableDefinition([NotNull] DescriptParser.TableDefinitionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.literal_inside"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.literalDefinition"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitLiteral_inside([NotNull] descriptionParser.Literal_insideContext context);
+	Result VisitLiteralDefinition([NotNull] DescriptParser.LiteralDefinitionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.literal"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.definition"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitLiteral([NotNull] descriptionParser.LiteralContext context);
+	Result VisitDefinition([NotNull] DescriptParser.DefinitionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.command"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.file"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitCommand([NotNull] descriptionParser.CommandContext context);
+	Result VisitFile([NotNull] DescriptParser.FileContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.header"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.sectionHeader"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitHeader([NotNull] descriptionParser.HeaderContext context);
+	Result VisitSectionHeader([NotNull] DescriptParser.SectionHeaderContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.category"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.section"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitCategory([NotNull] descriptionParser.CategoryContext context);
+	Result VisitSection([NotNull] DescriptParser.SectionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.category_section"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.subsectionHeader"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitCategory_section([NotNull] descriptionParser.Category_sectionContext context);
+	Result VisitSubsectionHeader([NotNull] DescriptParser.SubsectionHeaderContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.top_section"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.subsection"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitTop_section([NotNull] descriptionParser.Top_sectionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.file"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFile([NotNull] descriptionParser.FileContext context);
+	Result VisitSubsection([NotNull] DescriptParser.SubsectionContext context);
 }

@@ -3,49 +3,49 @@
 	using System;
 	using Antlr4.Runtime.Misc;
     using Antlr4.Runtime.Tree;
-    using static descriptionParser;
+    using static DescriptParser;
 
-    class CalculatorVisitor : descriptionBaseVisitor<double>
+    class CalculatorVisitor : DescriptParserBaseVisitor<double>
 	{
-		public override double VisitTop_section([NotNull] descriptionParser.Top_sectionContext context)
+		public override double VisitSection([NotNull] SectionContext context)
 		{
-			HeaderContext header = context.header();
-			string head = header.IDENTIFIER().GetText();
-			Category_sectionContext[] sections = context.category_section();
+			SectionHeaderContext header = context.sectionHeader();
+			string head = header.Identifier().GetText();
+			SubsectionContext[] sections = context.subsection();
 
-			foreach(Category_sectionContext sectionContext in sections)
+			foreach(SubsectionContext sectionContext in sections)
 			{
-				foreach(CommandContext commandContext in sectionContext.command())
+				foreach(DefinitionContext commandContext in sectionContext.definition())
 				{
-					if(commandContext.literal() != null)
+					if(commandContext.literalDefinition() != null)
 					{
-						string literalValue = commandContext.literal().GetText();
+						string literalValue = commandContext.literalDefinition().GetText();
 						Console.WriteLine("Got literal value of {0}", literalValue);
 					}
-					if (commandContext.function() != null)
+					if (commandContext.functionDefinition() != null)
 					{
 						if(head != "FUNCTION")
 						{
 							Console.WriteLine("Please place functions under the FUNCTION header");
 						}
-						FunctionContext functionContext = commandContext.function();
-						ITerminalNode functionName = functionContext.IDENTIFIER();
-						ArgContext[] functionArgs = functionContext.arg();
+						FunctionDefinitionContext functionContext = commandContext.functionDefinition();
+						ITerminalNode functionName = functionContext.Identifier();
+						FunctionArgContext[] functionArgs = functionContext.functionArg();
 					}
-					if (commandContext.table() != null)
+					if (commandContext.tableDefinition() != null)
 					{
 						if(head != "TABLE")
 						{
 							Console.WriteLine("Please place tables under the TABLE header");
 						}
-						TableContext tableContext = commandContext.table();
-						ITerminalNode tableName = tableContext.IDENTIFIER();
+						TableDefinitionContext tableContext = commandContext.tableDefinition();
+						ITerminalNode tableName = tableContext.Identifier();
 						ColumnContext[] tableColumns = tableContext.column();
 					}
 				}
 			}
 
-			return base.VisitTop_section(context);
+			return base.VisitSection(context);
 		}
 	}
 }

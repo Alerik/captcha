@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\description.g4 by ANTLR 4.8
+// Generated from C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\DescriptParser.g4 by ANTLR 4.8
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -25,16 +25,16 @@ using IToken = Antlr4.Runtime.IToken;
 using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 
 /// <summary>
-/// This class provides an empty implementation of <see cref="IdescriptionVisitor{Result}"/>,
+/// This class provides an empty implementation of <see cref="IDescriptParserVisitor{Result}"/>,
 /// which can be extended to create a visitor which only needs to handle a subset
 /// of the available methods.
 /// </summary>
 /// <typeparam name="Result">The return type of the visit operation.</typeparam>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.8")]
 [System.CLSCompliant(false)]
-public partial class descriptionBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, IdescriptionVisitor<Result> {
+public partial class DescriptParserBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, IDescriptParserVisitor<Result> {
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.column"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.column"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -42,9 +42,9 @@ public partial class descriptionBaseVisitor<Result> : AbstractParseTreeVisitor<R
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitColumn([NotNull] descriptionParser.ColumnContext context) { return VisitChildren(context); }
+	public virtual Result VisitColumn([NotNull] DescriptParser.ColumnContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.arg"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.functionArg"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -52,9 +52,9 @@ public partial class descriptionBaseVisitor<Result> : AbstractParseTreeVisitor<R
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitArg([NotNull] descriptionParser.ArgContext context) { return VisitChildren(context); }
+	public virtual Result VisitFunctionArg([NotNull] DescriptParser.FunctionArgContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.function"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.functionDefinition"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -62,9 +62,9 @@ public partial class descriptionBaseVisitor<Result> : AbstractParseTreeVisitor<R
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitFunction([NotNull] descriptionParser.FunctionContext context) { return VisitChildren(context); }
+	public virtual Result VisitFunctionDefinition([NotNull] DescriptParser.FunctionDefinitionContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.table"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.tableDefinition"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -72,9 +72,9 @@ public partial class descriptionBaseVisitor<Result> : AbstractParseTreeVisitor<R
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitTable([NotNull] descriptionParser.TableContext context) { return VisitChildren(context); }
+	public virtual Result VisitTableDefinition([NotNull] DescriptParser.TableDefinitionContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.literal_inside"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.literalDefinition"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -82,9 +82,9 @@ public partial class descriptionBaseVisitor<Result> : AbstractParseTreeVisitor<R
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitLiteral_inside([NotNull] descriptionParser.Literal_insideContext context) { return VisitChildren(context); }
+	public virtual Result VisitLiteralDefinition([NotNull] DescriptParser.LiteralDefinitionContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.literal"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.definition"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -92,9 +92,9 @@ public partial class descriptionBaseVisitor<Result> : AbstractParseTreeVisitor<R
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitLiteral([NotNull] descriptionParser.LiteralContext context) { return VisitChildren(context); }
+	public virtual Result VisitDefinition([NotNull] DescriptParser.DefinitionContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.command"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.file"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -102,9 +102,9 @@ public partial class descriptionBaseVisitor<Result> : AbstractParseTreeVisitor<R
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitCommand([NotNull] descriptionParser.CommandContext context) { return VisitChildren(context); }
+	public virtual Result VisitFile([NotNull] DescriptParser.FileContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.header"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.sectionHeader"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -112,9 +112,9 @@ public partial class descriptionBaseVisitor<Result> : AbstractParseTreeVisitor<R
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitHeader([NotNull] descriptionParser.HeaderContext context) { return VisitChildren(context); }
+	public virtual Result VisitSectionHeader([NotNull] DescriptParser.SectionHeaderContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.category"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.section"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -122,9 +122,9 @@ public partial class descriptionBaseVisitor<Result> : AbstractParseTreeVisitor<R
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitCategory([NotNull] descriptionParser.CategoryContext context) { return VisitChildren(context); }
+	public virtual Result VisitSection([NotNull] DescriptParser.SectionContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.category_section"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.subsectionHeader"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -132,9 +132,9 @@ public partial class descriptionBaseVisitor<Result> : AbstractParseTreeVisitor<R
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitCategory_section([NotNull] descriptionParser.Category_sectionContext context) { return VisitChildren(context); }
+	public virtual Result VisitSubsectionHeader([NotNull] DescriptParser.SubsectionHeaderContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.top_section"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.subsection"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -142,15 +142,5 @@ public partial class descriptionBaseVisitor<Result> : AbstractParseTreeVisitor<R
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitTop_section([NotNull] descriptionParser.Top_sectionContext context) { return VisitChildren(context); }
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="descriptionParser.file"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitFile([NotNull] descriptionParser.FileContext context) { return VisitChildren(context); }
+	public virtual Result VisitSubsection([NotNull] DescriptParser.SubsectionContext context) { return VisitChildren(context); }
 }

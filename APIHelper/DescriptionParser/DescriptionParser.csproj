@@ -4,9 +4,13 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>DescriptionParser</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="DescriptLexer.g4" />
+  </ItemGroup>
   
   <ItemGroup>
-    <Antlr4 Include="description.g4" />
+    <Antlr4 Include="DescriptLexer.g4" />
+    <Antlr4 Include="DescriptParser.g4" />
   </ItemGroup>
 
   <ItemGroup>

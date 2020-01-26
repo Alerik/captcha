@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\description.g4 by ANTLR 4.8
+// Generated from C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\DescriptParser.g4 by ANTLR 4.8
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -27,157 +27,145 @@ using IToken = Antlr4.Runtime.IToken;
 using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 
 /// <summary>
-/// This class provides an empty implementation of <see cref="IdescriptionListener"/>,
+/// This class provides an empty implementation of <see cref="IDescriptParserListener"/>,
 /// which can be extended to create a listener which only needs to handle a subset
 /// of the available methods.
 /// </summary>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.8")]
 [System.CLSCompliant(false)]
-public partial class descriptionBaseListener : IdescriptionListener {
+public partial class DescriptParserBaseListener : IDescriptParserListener {
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="descriptionParser.column"/>.
+	/// Enter a parse tree produced by <see cref="DescriptParser.column"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterColumn([NotNull] descriptionParser.ColumnContext context) { }
+	public virtual void EnterColumn([NotNull] DescriptParser.ColumnContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="descriptionParser.column"/>.
+	/// Exit a parse tree produced by <see cref="DescriptParser.column"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitColumn([NotNull] descriptionParser.ColumnContext context) { }
+	public virtual void ExitColumn([NotNull] DescriptParser.ColumnContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="descriptionParser.arg"/>.
+	/// Enter a parse tree produced by <see cref="DescriptParser.functionArg"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterArg([NotNull] descriptionParser.ArgContext context) { }
+	public virtual void EnterFunctionArg([NotNull] DescriptParser.FunctionArgContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="descriptionParser.arg"/>.
+	/// Exit a parse tree produced by <see cref="DescriptParser.functionArg"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitArg([NotNull] descriptionParser.ArgContext context) { }
+	public virtual void ExitFunctionArg([NotNull] DescriptParser.FunctionArgContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="descriptionParser.function"/>.
+	/// Enter a parse tree produced by <see cref="DescriptParser.functionDefinition"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterFunction([NotNull] descriptionParser.FunctionContext context) { }
+	public virtual void EnterFunctionDefinition([NotNull] DescriptParser.FunctionDefinitionContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="descriptionParser.function"/>.
+	/// Exit a parse tree produced by <see cref="DescriptParser.functionDefinition"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitFunction([NotNull] descriptionParser.FunctionContext context) { }
+	public virtual void ExitFunctionDefinition([NotNull] DescriptParser.FunctionDefinitionContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="descriptionParser.table"/>.
+	/// Enter a parse tree produced by <see cref="DescriptParser.tableDefinition"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterTable([NotNull] descriptionParser.TableContext context) { }
+	public virtual void EnterTableDefinition([NotNull] DescriptParser.TableDefinitionContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="descriptionParser.table"/>.
+	/// Exit a parse tree produced by <see cref="DescriptParser.tableDefinition"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitTable([NotNull] descriptionParser.TableContext context) { }
+	public virtual void ExitTableDefinition([NotNull] DescriptParser.TableDefinitionContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="descriptionParser.literal_inside"/>.
+	/// Enter a parse tree produced by <see cref="DescriptParser.literalDefinition"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterLiteral_inside([NotNull] descriptionParser.Literal_insideContext context) { }
+	public virtual void EnterLiteralDefinition([NotNull] DescriptParser.LiteralDefinitionContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="descriptionParser.literal_inside"/>.
+	/// Exit a parse tree produced by <see cref="DescriptParser.literalDefinition"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitLiteral_inside([NotNull] descriptionParser.Literal_insideContext context) { }
+	public virtual void ExitLiteralDefinition([NotNull] DescriptParser.LiteralDefinitionContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="descriptionParser.literal"/>.
+	/// Enter a parse tree produced by <see cref="DescriptParser.definition"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterLiteral([NotNull] descriptionParser.LiteralContext context) { }
+	public virtual void EnterDefinition([NotNull] DescriptParser.DefinitionContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="descriptionParser.literal"/>.
+	/// Exit a parse tree produced by <see cref="DescriptParser.definition"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitLiteral([NotNull] descriptionParser.LiteralContext context) { }
+	public virtual void ExitDefinition([NotNull] DescriptParser.DefinitionContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="descriptionParser.command"/>.
+	/// Enter a parse tree produced by <see cref="DescriptParser.file"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterCommand([NotNull] descriptionParser.CommandContext context) { }
+	public virtual void EnterFile([NotNull] DescriptParser.FileContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="descriptionParser.command"/>.
+	/// Exit a parse tree produced by <see cref="DescriptParser.file"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitCommand([NotNull] descriptionParser.CommandContext context) { }
+	public virtual void ExitFile([NotNull] DescriptParser.FileContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="descriptionParser.header"/>.
+	/// Enter a parse tree produced by <see cref="DescriptParser.sectionHeader"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterHeader([NotNull] descriptionParser.HeaderContext context) { }
+	public virtual void EnterSectionHeader([NotNull] DescriptParser.SectionHeaderContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="descriptionParser.header"/>.
+	/// Exit a parse tree produced by <see cref="DescriptParser.sectionHeader"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitHeader([NotNull] descriptionParser.HeaderContext context) { }
+	public virtual void ExitSectionHeader([NotNull] DescriptParser.SectionHeaderContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="descriptionParser.category"/>.
+	/// Enter a parse tree produced by <see cref="DescriptParser.section"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterCategory([NotNull] descriptionParser.CategoryContext context) { }
+	public virtual void EnterSection([NotNull] DescriptParser.SectionContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="descriptionParser.category"/>.
+	/// Exit a parse tree produced by <see cref="DescriptParser.section"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitCategory([NotNull] descriptionParser.CategoryContext context) { }
+	public virtual void ExitSection([NotNull] DescriptParser.SectionContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="descriptionParser.category_section"/>.
+	/// Enter a parse tree produced by <see cref="DescriptParser.subsectionHeader"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterCategory_section([NotNull] descriptionParser.Category_sectionContext context) { }
+	public virtual void EnterSubsectionHeader([NotNull] DescriptParser.SubsectionHeaderContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="descriptionParser.category_section"/>.
+	/// Exit a parse tree produced by <see cref="DescriptParser.subsectionHeader"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitCategory_section([NotNull] descriptionParser.Category_sectionContext context) { }
+	public virtual void ExitSubsectionHeader([NotNull] DescriptParser.SubsectionHeaderContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="descriptionParser.top_section"/>.
+	/// Enter a parse tree produced by <see cref="DescriptParser.subsection"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterTop_section([NotNull] descriptionParser.Top_sectionContext context) { }
+	public virtual void EnterSubsection([NotNull] DescriptParser.SubsectionContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="descriptionParser.top_section"/>.
+	/// Exit a parse tree produced by <see cref="DescriptParser.subsection"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitTop_section([NotNull] descriptionParser.Top_sectionContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="descriptionParser.file"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterFile([NotNull] descriptionParser.FileContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="descriptionParser.file"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitFile([NotNull] descriptionParser.FileContext context) { }
+	public virtual void ExitSubsection([NotNull] DescriptParser.SubsectionContext context) { }
 
 	/// <inheritdoc/>
 	/// <remarks>The default implementation does nothing.</remarks>
