@@ -10,6 +10,9 @@ Lparam : '(';
 Rparam : ')';
 Comma : ',';
 
+Function : 'function';
+Table : 'table';
+
 Identifier:                     IdentifierStart IdentifierPart*;
 
 Literal: NullLiteral
@@ -38,7 +41,7 @@ DecimalLiteral:                 DecimalIntegerLiteral '.' [0-9]* ExponentPart?
 /// Numeric Literals
 
 HexIntegerLiteral:              '0' [xX] HexDigit+;
-OctalIntegerLiteral:            '0' [0-7]+ {!this.IsStrictMode()}?;
+OctalIntegerLiteral:            '0' [0-7]+;
 OctalIntegerLiteral2:           '0' [oO] [0-7]+;
 BinaryIntegerLiteral:           '0' [bB] [01]+;
 
@@ -53,6 +56,7 @@ fragment SingleStringCharacter
     : ~['\\\r\n]
     | '\\' EscapeSequence
     | LineContinuation
+	| '\\'
     ;
 fragment EscapeSequence
     : CharacterEscapeSequence

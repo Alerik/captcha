@@ -1,0 +1,36 @@
+#API
+    BASEURL<'http://127.0.0.1/captcha'>;
+    CLIENTDIR<'C:\xampp\htdocs\captcha\APIHelper\APIHelper\bin\Debug\netcoreapp3.0\API\Client'>;
+    SERVERDIR<'C:\xampp\htdocs\captcha\APIHelper\APIHelper\bin\Debug\netcoreapp3.0\API\Server'>;
+
+#FUNCTION
+
+datasets:
+    create
+    {
+        name TEXT (The name of the dataset), 
+        prompt TEXT (The prompt for dataset),
+        description TEXT (Dataset's description),
+        id UUID
+    }
+    uses datasets as DatasetN;
+    
+    delete
+    {
+        id UUID
+    }
+    uses datasets as DatasetN;
+
+    edit
+    {
+        name* TEXT,
+        prompt* TEXT,
+        description* TEXT,
+        id UUID
+    }
+    uses datasets as DatasetN;
+
+
+
+#TABLE
+datasets {completion boolean, created boolean, reviewed boolean, query_count integer};

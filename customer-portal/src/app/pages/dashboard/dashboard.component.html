@@ -4,6 +4,7 @@
     </div>
     <div class="holder">
         <h2>Welcome to your portal!</h2>
-<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        <app-full-text-multi-annotator [text]="'Helen was devestated, betrayed. Never again could she love as she once did.'" prompt="Please choose the sentiment of this sentence" [choices]="['Sad', 'Angry', 'Happy', 'Mellow']"></app-full-text-multi-annotator>
+        <app-full-text-index-annotator [text]="'This is a test sentence'" prompt="'Please answer htis'"></app-full-text-index-annotator>
     </div>
 </div>

@@ -16,6 +16,10 @@ label{
     width:100%;
 }
 
+mat-radio-button{
+    margin-right: 16px;
+}
+
 .title-field{
     width: 60%;
 }

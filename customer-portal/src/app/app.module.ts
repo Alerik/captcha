@@ -42,7 +42,9 @@ import { TextIndexAnnotatorComponent} from './components/text-index-annotator/te
 import { KeepHtmlPipe } from './keep-html.pipe';
 import { FullTextIndexAnnotatorComponent } from './components/full-text-index-annotator/full-text-index-annotator.component';
 import { TextIndexDetailTableComponent } from './components/text-index-detail-table/text-index-detail-table.component';
-import { OverviewCardComponent } from './overview-card/overview-card.component'; 
+import { OverviewCardComponent } from './overview-card/overview-card.component';
+import { TextMultiAnnotatorComponent } from './components/text-multi-annotator/text-multi-annotator.component';
+import { FullTextMultiAnnotatorComponent } from './components/full-text-multi-annotator/full-text-multi-annotator.component'; 
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { OverviewCardComponent } from './overview-card/overview-card.component';
     KeepHtmlPipe,
     FullTextIndexAnnotatorComponent,
     TextIndexDetailTableComponent,
-    OverviewCardComponent
+    OverviewCardComponent,
+    TextMultiAnnotatorComponent,
+    FullTextMultiAnnotatorComponent
   ],
   imports: [
     BrowserModule,

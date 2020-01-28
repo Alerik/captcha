@@ -41,9 +41,17 @@
                     <textarea #dataset_description matInput placeholder="Describe this dataset" formControlName="description" required></textarea>
                   </mat-form-field>
                 </mat-list-item>
-                <mat-list-item role="listitem" style="margin:0px;">
-                  <label matTooltip="Help us understand the content of your dataset">Tags</label>
-                </mat-list-item>
+                
+                  <label style="margin-right:100%; margin-left:16px">Choose your annotation type</label>
+
+                  <mat-radio-group style="margin-left:16px;">
+                    <mat-radio-button value="text-index">Text Index</mat-radio-button>
+                    <mat-radio-button value="text-multi">Text Multi</mat-radio-button>
+                  </mat-radio-group>
+                
+                  <mat-list-item role="listitem" style="margin:0px;">
+                    <label matTooltip="Help us understand the content of your dataset">Tags</label>
+                  </mat-list-item>
                 <mat-list-item role="listitem">
                   <mat-chip-list>
                     <mat-chip [selectable]="selectable" class="chip-mature">Mature</mat-chip>

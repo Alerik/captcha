@@ -19,7 +19,25 @@
 				{
 					if(commandContext.literalDefinition() != null)
 					{
-						string literalValue = commandContext.literalDefinition().GetText();
+						string identifier = commandContext.literalDefinition().Identifier().GetText();
+						string literalValue = commandContext.literalDefinition().Literal().GetText();
+
+						switch (identifier)
+						{
+							case API.BASE_URL:
+								API.Instance.BaseUrl = literalValue;
+								break;
+							case API.CLIENTDIR:
+								API.Instance.ClientDirectory = literalValue;
+								break;
+							case API.SERVERDIR:
+								API.Instance.ServerDirectory = literalValue;
+								break;
+							default:
+								Console.Write("No defined action for literal {0} with value {1}", identifier, literalValue);
+								break;
+						}
+
 						Console.WriteLine("Got literal value of {0}", literalValue);
 					}
 					if (commandContext.functionDefinition() != null)
@@ -29,8 +47,7 @@
 							Console.WriteLine("Please place functions under the FUNCTION header");
 						}
 						FunctionDefinitionContext functionContext = commandContext.functionDefinition();
-						ITerminalNode functionName = functionContext.Identifier();
-						FunctionArgContext[] functionArgs = functionContext.functionArg();
+						ContextConverter.ContextToFunction(functionContext, sectionContext.subsectionHeader().GetText());
 					}
 					if (commandContext.tableDefinition() != null)
 					{
@@ -39,8 +56,7 @@
 							Console.WriteLine("Please place tables under the TABLE header");
 						}
 						TableDefinitionContext tableContext = commandContext.tableDefinition();
-						ITerminalNode tableName = tableContext.Identifier();
-						ColumnContext[] tableColumns = tableContext.column();
+						ContextConverter.ContextToTable(tableContext);
 					}
 				}
 			}

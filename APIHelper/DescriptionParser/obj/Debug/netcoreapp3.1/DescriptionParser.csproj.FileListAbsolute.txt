@@ -16,16 +16,6 @@ C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\Desc
 C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptionParser.csproj.CopyComplete
 C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptionParser.dll
 C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptionParser.pdb
-C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\descriptionParser.cs
-C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\descriptionLexer.cs
-C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\descriptionListener.cs
-C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\descriptionBaseListener.cs
-C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\descriptionVisitor.cs
-C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\descriptionBaseVisitor.cs
-C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptionParserListener.cs
-C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptionParserBaseListener.cs
-C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptionParserVisitor.cs
-C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptionParserBaseVisitor.cs
 C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptLexer.cs
 C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptParser.cs
 C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptParserListener.cs

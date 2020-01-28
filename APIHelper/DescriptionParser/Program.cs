@@ -8,14 +8,13 @@ namespace DescriptionParser
 	{
 		static void Main(string[] args)
 		{
-			var input = @"
-						#API
+			var full = @"#API
 							endpoint:
-								<http://127.0.0.1/captcha>
+								<'http://127.0.0.1/captcha'>
 							server:
-								<C:\xampp\htdocs\captcha\APIHelper\APIHelper\bin\Debug\netcoreapp3.0\API\Server>
+								<'C:\xampp\htdocs\captcha\DescriptionParser\DescriptionParser\bin\Debug\netcoreapp3.0\API\Server'>
 							client:
-								<C:\xampp\htdocs\captcha\APIHelper\APIHelper\bin\Debug\netcoreapp3.0\API\Client>
+								<'C:\xampp\htdocs\captcha\DescriptionParser\DescriptionParser\bin\Debug\netcoreapp3.0\API\Client'>
 						#FUNCTION
 							main: 
 								function insert(arg1* TEXT, arg2 INTEGER);
@@ -25,10 +24,14 @@ namespace DescriptionParser
 									username TEXT,
 									id UUID,
 									last_login TIMESTAMP);";
-			var str = new AntlrInputStream(input);
-			var lexer = new descriptionLexer(str);
+			var input = @"#FUNCTION
+							main: 
+								function insert(arg1* TEXT, arg2 INTEGER);
+								function concat(first TEXT, second TEXT, third* TEXT); ";
+			var str = new AntlrInputStream(full);
+			var lexer = new DescriptLexer(str);
 			var tokens = new CommonTokenStream(lexer);
-			var parser = new descriptionParser(tokens);
+			var parser = new DescriptParser(tokens);
 			var listener = new ErrorListener<IToken>();
 			parser.AddErrorListener(listener);
 
@@ -45,6 +48,20 @@ namespace DescriptionParser
 			}
 			var visitor = new CalculatorVisitor();
 			visitor.Visit(tree);
+
+			if (args.Length > 0)
+			{
+				if (args[0] == "clean")
+				{
+					API api = new API("", "", "");
+					api.Clean();
+					api.SaveIndex();
+					return;
+				}
+			}
+			API.Instance.GenerateAll();
+			API.Instance.SaveIndex();
+			Console.Write("Done!");
 		}
 	}
 }

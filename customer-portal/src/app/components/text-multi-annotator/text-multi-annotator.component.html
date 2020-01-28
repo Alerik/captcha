@@ -1,0 +1,8 @@
+<div>
+    <p>{{this.text}}</p>
+    <button mat-stroked-button 
+    *ngFor="let choice of choices" 
+    [class.selected]="this.selection == choice"
+    [class.unselected]="this.selection != choice"
+    (click)="setSelection(choice)">{{choice}}</button>
+</div>

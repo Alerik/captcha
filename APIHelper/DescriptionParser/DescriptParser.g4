@@ -1,5 +1,9 @@
 ﻿parser grammar DescriptParser;
 
+options {
+    tokenVocab=DescriptLexer;
+}
+
 column
 	: Identifier Identifier
 	;
@@ -11,17 +15,17 @@ functionDefinition
 	: Function Identifier Lparam (functionArg Comma)* functionArg? Rparam Semicolon
 	;
 tableDefinition
-	: Function Identifier Lparam (column Comma)* column? Rparam Semicolon
+	: Table Identifier Lparam (column Comma)* column? Rparam Semicolon
 	;
 	
 literalDefinition
 	:
-	Langle Literal Rangle
+	Identifier Langle Literal Rangle Semicolin
 	;
 
 
 definition
-	: functionDefinition | tableDefinition | literalDefinition
+	: literalDefinition | functionDefinition | tableDefinition
 	;
 
 file
