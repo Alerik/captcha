@@ -7,7 +7,6 @@ import {DatasetdetailsComponent} from './pages/datasetdetails/datasetdetails.com
 import { AppComponent } from './app.component';
 import { CreatedatasetComponent } from './pages/createdataset/createdataset.component';
 import { BillingComponent } from './pages/billing/billing.component';
-import { DatasetEditComponent } from './pages/dataset-edit/dataset-edit.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -16,7 +15,6 @@ const routes: Routes = [
   {path: 'account', component: AccountComponent},
   {path:'billing', component: BillingComponent},
   {path: 'datasets/:name/:id', component: DatasetdetailsComponent},
-  {path: 'datasets/:name/:id/edit', component: DatasetEditComponent},
   {path: 'createdataset', component: CreatedatasetComponent}
 ];
 

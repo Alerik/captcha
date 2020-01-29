@@ -6,7 +6,7 @@ import { TextIndexEntriesDataSource } from './TextIndexEntriesDataSource';
 import { DatasetEntriesService } from '../../services/datasetentries.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
-import {TextEntryRowComponent} from '../../components/text-entry-row/text-entry-row.component';
+import {TextEntryRowComponent} from '../../components/datasetdetails/overview-card/text-entry-row/text-entry-row.component';
 import { Text_Index_Entry } from '../../datatypes/entries/TextIndexEntry';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { CompoundIndexEntry } from '../../datatypes/entries/CompoundTextIndexEntry';

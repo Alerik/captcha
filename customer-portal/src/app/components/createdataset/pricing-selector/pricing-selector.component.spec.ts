@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DatasetEditComponent } from './dataset-edit.component';
+import { PricingSelectorComponent } from './pricing-selector.component';
 
-describe('DatasetEditComponent', () => {
-  let component: DatasetEditComponent;
-  let fixture: ComponentFixture<DatasetEditComponent>;
+describe('PricingSelectorComponent', () => {
+  let component: PricingSelectorComponent;
+  let fixture: ComponentFixture<PricingSelectorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DatasetEditComponent ]
+      declarations: [ PricingSelectorComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DatasetEditComponent);
+    fixture = TestBed.createComponent(PricingSelectorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

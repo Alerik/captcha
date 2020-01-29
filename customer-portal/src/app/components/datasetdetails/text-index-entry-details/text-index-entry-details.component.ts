@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
-import { CompoundIndexEntry } from '../../datatypes/entries/CompoundTextIndexEntry';
+import { CompoundIndexEntry } from '../../../datatypes/entries/CompoundTextIndexEntry';
 import { trigger, transition, style, animate, state } from '@angular/animations';
 
 @Component({

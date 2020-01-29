@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import {KeepHtmlPipe } from '../../keep-html.pipe';
+import {KeepHtmlPipe } from '../../../keep-html.pipe';
 
 @Component({
   selector: 'app-text-index-annotator',

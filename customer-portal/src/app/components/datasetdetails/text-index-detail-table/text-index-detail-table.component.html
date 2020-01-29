@@ -1,4 +1,4 @@
-<div>
+<div style="margin-bottom: 16px;">
     <div class="loading-shade" *ngIf="dataSource.loading$ | async" >
         <mat-progress-spinner color="primary" mode="indeterminate">
         </mat-progress-spinner>
@@ -47,5 +47,4 @@
           </table>
           <mat-paginator class="mat-elevation-z8" [pageSizeOptions]="[10, 20, 50]" [pageSize]="20"
             [length]="entry_count" (page)="pageEvent($event)" showFirstLastButtons></mat-paginator>
-       
 </div>

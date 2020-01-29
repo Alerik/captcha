@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import { Text_Index_Annotation} from '../../datatypes/annotations/TextIndexAnnotation'
+import { Text_Index_Annotation} from '../../../datatypes/annotations/TextIndexAnnotation'
 
 @Component({
   selector: 'app-text-index-annotation',

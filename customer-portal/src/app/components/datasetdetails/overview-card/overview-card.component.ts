@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import { Dataset } from '../datatypes/dataset';
+import { Dataset } from '../../../datatypes/dataset';
 import { FormControl, Validators } from '@angular/forms';
-import { EditdatasetService } from '../services/editdataset.service';
+import { EditdatasetService } from '../../../services/editdataset.service';
 
 @Component({
   selector: 'app-overview-card',

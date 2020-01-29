@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { DatasetEntriesService } from '../../services/datasetentries.service';
-import { TextIndexEntriesDataSource } from '../../pages/datasetdetails/TextIndexEntriesDataSource';
+import { DatasetEntriesService } from '../../../services/datasetentries.service';
+import { TextIndexEntriesDataSource } from '../../../pages/datasetdetails/TextIndexEntriesDataSource';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({

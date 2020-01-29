@@ -24,10 +24,10 @@ import { CreatedatasetComponent } from './pages/createdataset/createdataset.comp
 import {MatChipsModule} from '@angular/material/chips';
 import {MatPaginatorModule} from '@angular/material/paginator'; 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { TextEntryRowComponent } from './components/text-entry-row/text-entry-row.component';
+import { TextEntryRowComponent } from './components/datasetdetails/overview-card/text-entry-row/text-entry-row.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import { TextIndexAnnotationComponent } from './components/text-index-annotation/text-index-annotation.component';
-import { TextIndexEntryDetailsComponent } from './components/text-index-entry-details/text-index-entry-details.component'; 
+import { TextIndexAnnotationComponent } from './components/annotators/text-index-annotation/text-index-annotation.component';
+import { TextIndexEntryDetailsComponent } from './components/datasetdetails/text-index-entry-details/text-index-entry-details.component'; 
 import {MatCheckboxModule} from '@angular/material/checkbox'; 
 import {MatStepperModule} from '@angular/material/stepper'; 
 import {MatProgressBarModule} from '@angular/material/progress-bar'; 
@@ -37,14 +37,18 @@ import {MatIconRegistry} from '@angular/material/icon';
 import {DomSanitizer} from '@angular/platform-browser';
 import {MatTabsModule} from '@angular/material/tabs';
 import { BillingComponent } from './pages/billing/billing.component';
-import { DatasetEditComponent } from './pages/dataset-edit/dataset-edit.component';
-import { TextIndexAnnotatorComponent} from './components/text-index-annotator/text-index-annotator.component';
+import { TextIndexAnnotatorComponent} from './components/annotators/text-index-annotator/text-index-annotator.component';
 import { KeepHtmlPipe } from './keep-html.pipe';
-import { FullTextIndexAnnotatorComponent } from './components/full-text-index-annotator/full-text-index-annotator.component';
-import { TextIndexDetailTableComponent } from './components/text-index-detail-table/text-index-detail-table.component';
-import { OverviewCardComponent } from './overview-card/overview-card.component';
-import { TextMultiAnnotatorComponent } from './components/text-multi-annotator/text-multi-annotator.component';
-import { FullTextMultiAnnotatorComponent } from './components/full-text-multi-annotator/full-text-multi-annotator.component'; 
+import { FullTextIndexAnnotatorComponent } from './components/annotators/full-text-index-annotator/full-text-index-annotator.component';
+import { TextIndexDetailTableComponent } from './components/datasetdetails/text-index-detail-table/text-index-detail-table.component';
+import { OverviewCardComponent } from './components/datasetdetails/overview-card/overview-card.component';
+import { TextMultiAnnotatorComponent } from './components/annotators/text-multi-annotator/text-multi-annotator.component';
+import { FullTextMultiAnnotatorComponent } from './components/annotators/full-text-multi-annotator/full-text-multi-annotator.component';
+import { CreationOverviewComponent } from './creation-overview/creation-overview.component';
+import { EntryUploadComponent } from './components/createdataset/entry-upload/entry-upload.component';
+import { EntrySeederComponent } from './components/createdataset/entry-seeder/entry-seeder.component';
+import { PricingSelectorComponent } from './components/createdataset/pricing-selector/pricing-selector.component';
+import { ReviewerComponent } from './components/createdataset/reviewer/reviewer.component'; 
 
 @NgModule({
   declarations: [
@@ -58,14 +62,18 @@ import { FullTextMultiAnnotatorComponent } from './components/full-text-multi-an
     TextIndexAnnotationComponent,
     TextIndexEntryDetailsComponent,
     BillingComponent,
-    DatasetEditComponent,
     TextIndexAnnotatorComponent,
     KeepHtmlPipe,
     FullTextIndexAnnotatorComponent,
     TextIndexDetailTableComponent,
     OverviewCardComponent,
     TextMultiAnnotatorComponent,
-    FullTextMultiAnnotatorComponent
+    FullTextMultiAnnotatorComponent,
+    CreationOverviewComponent,
+    EntryUploadComponent,
+    EntrySeederComponent,
+    PricingSelectorComponent,
+    ReviewerComponent
   ],
   imports: [
     BrowserModule,

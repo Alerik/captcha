@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import { Text_Index_Entry } from '../../datatypes/entries/TextIndexEntry';
+import { Text_Index_Entry } from '../../../../datatypes/entries/TextIndexEntry';
 
 @Component({
   selector: 'app-text-entry-row',
