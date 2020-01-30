@@ -59,6 +59,30 @@ public partial class DescriptParserBaseListener : IDescriptParserListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitFunctionArg([NotNull] DescriptParser.FunctionArgContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="DescriptParser.usesClause"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUsesClause([NotNull] DescriptParser.UsesClauseContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DescriptParser.usesClause"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUsesClause([NotNull] DescriptParser.UsesClauseContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DescriptParser.usesFrag"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterUsesFrag([NotNull] DescriptParser.UsesFragContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DescriptParser.usesFrag"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitUsesFrag([NotNull] DescriptParser.UsesFragContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="DescriptParser.functionDefinition"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

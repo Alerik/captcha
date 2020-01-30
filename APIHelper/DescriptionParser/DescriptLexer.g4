@@ -10,6 +10,13 @@ Lparam : '(';
 Rparam : ')';
 Comma : ',';
 
+Uses : 'uses';
+As : 'as';
+
+HttpMethod:	  'POST'
+			| 'GET'
+			| 'PUT';
+
 Function : 'function';
 Table : 'table';
 

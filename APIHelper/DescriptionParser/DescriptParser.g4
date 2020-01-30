@@ -11,8 +11,14 @@ functionArg
 	: Identifier Star? Identifier
 	;
 
+usesClause
+	: Uses (usesFrag Comma)* usesFrag
+	;
+usesFrag
+	: Identifier As Identifier
+	;
 functionDefinition
-	: Function Identifier Lparam (functionArg Comma)* functionArg? Rparam Semicolon
+	: HttpMethod Function Identifier Lparam (functionArg Comma)* functionArg? Rparam usesClause? Semicolon
 	;
 tableDefinition
 	: Table Identifier Lparam (column Comma)* column? Rparam Semicolon
@@ -20,7 +26,7 @@ tableDefinition
 	
 literalDefinition
 	:
-	Identifier Langle Literal Rangle Semicolin
+	Identifier Langle Literal Rangle Semicolon
 	;
 
 
@@ -36,12 +42,13 @@ sectionHeader
 	: Hash Identifier
 	;
 section
-	: sectionHeader subsection*
+	: sectionHeader definition* subsection*
 	;
 
 subsectionHeader
 	: Identifier Colin
 	;
+	//this is matching the definition as single each and every single time instead of trying to be greedy
 subsection
-	: subsectionHeader? definition+
+	: subsectionHeader definition+
 	;

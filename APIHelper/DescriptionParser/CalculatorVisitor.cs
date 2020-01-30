@@ -4,6 +4,7 @@
 	using Antlr4.Runtime.Misc;
     using Antlr4.Runtime.Tree;
     using static DescriptParser;
+	using Console = ConsoleHelper;
 
     class CalculatorVisitor : DescriptParserBaseVisitor<double>
 	{
@@ -11,10 +12,14 @@
 		{
 			SectionHeaderContext header = context.sectionHeader();
 			string head = header.Identifier().GetText();
+			Console.Head("Visiting section {0}", head);
+   
 			SubsectionContext[] sections = context.subsection();
 
 			foreach(SubsectionContext sectionContext in sections)
 			{
+				//Console.Write(sectionContext.GetText());
+				Console.Head("Visiting sub-section {0}", sectionContext.subsectionHeader()?.Identifier().GetText() ?? "[NullSection]");
 				foreach(DefinitionContext commandContext in sectionContext.definition())
 				{
 					if(commandContext.literalDefinition() != null)
@@ -38,29 +43,30 @@
 								break;
 						}
 
-						Console.WriteLine("Got literal value of {0}", literalValue);
+						Console.Write("Got literal {0} with value of {1}", identifier, literalValue);
 					}
 					if (commandContext.functionDefinition() != null)
 					{
 						if(head != "FUNCTION")
 						{
-							Console.WriteLine("Please place functions under the FUNCTION header");
+							Console.Write("Please place functions under the FUNCTION header");
 						}
 						FunctionDefinitionContext functionContext = commandContext.functionDefinition();
-						ContextConverter.ContextToFunction(functionContext, sectionContext.subsectionHeader().GetText());
+						ContextConverter.ContextToFunction(functionContext, sectionContext.subsectionHeader()?.Identifier().GetText() ?? "[NullSection]");
 					}
 					if (commandContext.tableDefinition() != null)
 					{
 						if(head != "TABLE")
 						{
-							Console.WriteLine("Please place tables under the TABLE header");
+							Console.Write("Please place tables under the TABLE header");
 						}
 						TableDefinitionContext tableContext = commandContext.tableDefinition();
 						ContextConverter.ContextToTable(tableContext);
 					}
 				}
+				Console.End();
 			}
-
+			Console.End();
 			return base.VisitSection(context);
 		}
 	}

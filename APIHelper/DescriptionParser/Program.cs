@@ -9,25 +9,18 @@ namespace DescriptionParser
 		static void Main(string[] args)
 		{
 			var full = @"#API
-							endpoint:
-								<'http://127.0.0.1/captcha'>
-							server:
-								<'C:\xampp\htdocs\captcha\DescriptionParser\DescriptionParser\bin\Debug\netcoreapp3.0\API\Server'>
-							client:
-								<'C:\xampp\htdocs\captcha\DescriptionParser\DescriptionParser\bin\Debug\netcoreapp3.0\API\Client'>
+							ENDPOINT<'http://127.0.0.1/captcha'>;
+							SERVERDIR<'C:\xampp\htdocs\captcha\DescriptionParser\DescriptionParser\bin\Debug\netcoreapp3.0\API\Server'>;
+							CLIENTDIR<'C:\xampp\htdocs\captcha\DescriptionParser\DescriptionParser\bin\Debug\netcoreapp3.0\API\Client'>;
 						#FUNCTION
 							main: 
-								function insert(arg1* TEXT, arg2 INTEGER);
-								function concat(first TEXT, second TEXT, third* TEXT); 
+								POST function insert(arg1* TEXT, arg2 INTEGER) uses users as Row1;
+								GET function concat(first TEXT, second TEXT, third* TEXT) uses users as Row2; 
 						#TABLES
 								table users(
 									username TEXT,
 									id UUID,
 									last_login TIMESTAMP);";
-			var input = @"#FUNCTION
-							main: 
-								function insert(arg1* TEXT, arg2 INTEGER);
-								function concat(first TEXT, second TEXT, third* TEXT); ";
 			var str = new AntlrInputStream(full);
 			var lexer = new DescriptLexer(str);
 			var tokens = new CommonTokenStream(lexer);
@@ -46,6 +39,7 @@ namespace DescriptionParser
 				System.Console.WriteLine(tokens.OutputTokens());
 				System.Console.WriteLine(tree.OutputTree(tokens));
 			}
+			API.Instance = new API();
 			var visitor = new CalculatorVisitor();
 			visitor.Visit(tree);
 

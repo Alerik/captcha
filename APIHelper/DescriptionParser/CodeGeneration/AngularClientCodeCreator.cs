@@ -17,6 +17,10 @@ namespace DescriptionParser.CodeGeneration
 			{ "uuid", "string"}
 		};
 
+		private Dictionary<string, ClientCodeFile> codeFiles = new Dictionary<string, ClientCodeFile>();
+
+		private const string DEF_TYPE = "any";
+
 		private const string DATATYPE = "DATATYPE";
 		private const string SERVICE_NAME = "SERVICE_NAME";
 		private const string ARG_IDENTIFIERS = "ARG_IDENTIFIERS";
@@ -25,13 +29,46 @@ namespace DescriptionParser.CodeGeneration
 		private const string URL = "URL";
 		private const string FUNCTION_NAME = "FUNCTION_NAME";
 
-		public override void GenerateCode(Table dependency, string functionName, string parentPath, string path, List<Column> args, List<Column> exposed)
+		public override void GenerateFunction(APIFunction function)
+		{
+			ClientCodeFile file = null;
+			string fullPath = Path.Combine("services", $"{function.Path.Replace('/','.').Replace('\\','.')}.services.ts");		
+			if (codeFiles.ContainsKey(fullPath))
+			{
+				file = codeFiles[fullPath];
+			}
+			else
+			{
+				file = CodeFile.CreateClientFile(fullPath) as ClientCodeFile;
+			}
+		}
+
+		public override void GenerateDependency(Table table)
+		{
+			//ClientCodeFile file = null;
+			//string fullPath = Path.Combine("datatypes", $"{table.Path.Replace('/', '.').Replace('\\', '.')}.services.ts");
+			//if (codeFiles.ContainsKey(fullPath))
+			//{
+			//	file = codeFiles[fullPath];
+			//}
+			//else
+			//{
+			//	file = CodeFile.CreateClientFile(fullPath) as ClientCodeFile;
+			//}
+			//throw new NotImplementedException();
+		}
+
+		public override void GenerateCode(List<Table> dependencies, string functionName, string parentPath, string path, List<Column> args, List<Column> exposed)
 		{
 			string name = path.Split('/').Last().Split('.').First();
 			ClientCodeFile serviceFile = ClientCodeFile.CreateFile($"services/{parentPath}.service.ts");
-			serviceFile.AddFunction(GenerateCall(dependency.RowName, functionName, path, args, exposed));
-			ClientCodeFile dataTypeFile = ClientCodeFile.CreateFile($"datatypes/{dependency.RowName}.ts");
-			dataTypeFile.Write(GenerateDataType(dependency.RowName, exposed));
+			serviceFile.AddFunction(GenerateCall(dependencies.Count > 0 ? dependencies[0].RowName : DEF_TYPE, functionName, path, args, exposed));
+		
+			if(dependencies.Count > 0)
+			{
+				ClientCodeFile dataTypeFile = ClientCodeFile.CreateFile($"datatypes/{dependencies[0].RowName}.ts");
+				dataTypeFile.Write(GenerateDataType(dependencies[0].RowName, exposed));
+			}
 		}
 
 		public override string GenerateCall(string typeName, string functionName, string path, List<Column> args, List<Column> exposedColumns)

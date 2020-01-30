@@ -51,6 +51,26 @@ public interface IDescriptParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitFunctionArg([NotNull] DescriptParser.FunctionArgContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="DescriptParser.usesClause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterUsesClause([NotNull] DescriptParser.UsesClauseContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DescriptParser.usesClause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitUsesClause([NotNull] DescriptParser.UsesClauseContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DescriptParser.usesFrag"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterUsesFrag([NotNull] DescriptParser.UsesFragContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DescriptParser.usesFrag"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitUsesFrag([NotNull] DescriptParser.UsesFragContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="DescriptParser.functionDefinition"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

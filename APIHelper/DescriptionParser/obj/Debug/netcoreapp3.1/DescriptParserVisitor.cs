@@ -44,6 +44,18 @@ public interface IDescriptParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitFunctionArg([NotNull] DescriptParser.FunctionArgContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="DescriptParser.usesClause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUsesClause([NotNull] DescriptParser.UsesClauseContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DescriptParser.usesFrag"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitUsesFrag([NotNull] DescriptParser.UsesFragContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="DescriptParser.functionDefinition"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

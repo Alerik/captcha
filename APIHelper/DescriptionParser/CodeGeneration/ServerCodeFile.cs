@@ -7,23 +7,15 @@ using Console = DescriptionParser.ConsoleHelper;
 
 namespace DescriptionParser.CodeGeneration
 {
-	public class ServerCodeFile
+	public class ServerCodeFile : CodeFile
 	{
-		public string Path { get; private set; }
-		private StreamWriter writer;
-
-		public ServerCodeFile(string _Path, string contents)
+		internal ServerCodeFile(string _Path) : base(_Path)
 		{
 			this.Path = System.IO.Path.Combine(API.Instance.ServerDirectory, _Path);
+			string dir = System.IO.Path.GetDirectoryName(this.Path);
+			Directory.CreateDirectory(dir);
 			API.Instance.AddFile(this.Path);
-			Console.Write("Writing to {0}", this.Path);
 			writer = new StreamWriter(Path);
-			writer.Write(contents);
-		}
-
-		public void Close()
-		{
-			writer.Close();
 		}
 	}
 }

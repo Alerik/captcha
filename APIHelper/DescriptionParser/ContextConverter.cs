@@ -10,7 +10,12 @@ namespace DescriptionParser
 		public static APIFunction ContextToFunction(DescriptParser.FunctionDefinitionContext context, string parentPath)
 		{
 			return new APIFunction(API.Instance, parentPath, context.Identifier().GetText(), ContextToArgs(context.functionArg()),
-			null);
+			ContextToDependencies(context.usesClause()));
+		}
+
+		private static List<Table> ContextToDependencies(DescriptParser.UsesClauseContext context)
+		{
+			return new List<Table>();
 		}
 
 		private static List<APIArgument> ContextToArgs(DescriptParser.FunctionArgContext[] context)

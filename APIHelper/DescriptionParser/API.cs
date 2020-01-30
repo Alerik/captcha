@@ -9,7 +9,7 @@ namespace DescriptionParser
 {
 	public class API
 	{
-		public const string BASE_URL = "BASE_URL";
+		public const string BASE_URL = "ENDPOINT";
 		public const string CLIENTDIR = "CLIENTDIR";
 		public const string SERVERDIR = "SERVERDIR";
 
@@ -47,12 +47,17 @@ namespace DescriptionParser
 		public void GenerateAll()
 		{
 			Console.Head("Generating code");
+			AngularClientCodeCreator clientCreator = new AngularClientCodeCreator();
+			PHPServerCodeCreator serverCreator = new PHPServerCodeCreator();
+
 			foreach (APIFunction function in Functions)
 			{
-				function.GenerateCode();
+   
 			}
+			
 			Console.End();
 			ClientCodeFile.CloseAll();
+			ServerCodeFile.CloseAll();
 		}
 
 		public void SaveIndex()
