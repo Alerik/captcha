@@ -48,7 +48,8 @@ import { CreationOverviewComponent } from './creation-overview/creation-overview
 import { EntryUploadComponent } from './components/createdataset/entry-upload/entry-upload.component';
 import { EntrySeederComponent } from './components/createdataset/entry-seeder/entry-seeder.component';
 import { PricingSelectorComponent } from './components/createdataset/pricing-selector/pricing-selector.component';
-import { ReviewerComponent } from './components/createdataset/reviewer/reviewer.component'; 
+import { ReviewerComponent } from './components/createdataset/reviewer/reviewer.component';
+import { DescriptionComponent } from './components/createdataset/description/description.component'; 
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { ReviewerComponent } from './components/createdataset/reviewer/reviewer.
     EntryUploadComponent,
     EntrySeederComponent,
     PricingSelectorComponent,
-    ReviewerComponent
+    ReviewerComponent,
+    DescriptionComponent
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,7 @@ namespace DescriptionParser
 	{
 		public static APIFunction ContextToFunction(DescriptParser.FunctionDefinitionContext context, string parentPath)
 		{
-			return new APIFunction(API.Instance, parentPath, context.Identifier().GetText(), ContextToArgs(context.functionArg()),
+			return new APIFunction(context.Identifier().GetText(), HttpMethods.GET, parentPath, ContextToArgs(context.functionArg()),
 			ContextToDependencies(context.usesClause()));
 		}
 

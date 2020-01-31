@@ -2,10 +2,10 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "Antlr3.Runtime/3.5.2-rc1": {
+      "Antlr3.Runtime/3.5.1": {
         "type": "package",
         "dependencies": {
-          "NETStandard.Library": "1.6.1"
+          "NETStandard.Library": "1.6.0"
         },
         "compile": {
           "lib/netstandard1.1/Antlr3.Runtime.dll": {}
@@ -347,11 +347,11 @@
           }
         }
       },
-      "StringTemplate4/4.0.9-rc1": {
+      "StringTemplate4/4.0.8": {
         "type": "package",
         "dependencies": {
-          "Antlr3.Runtime": "3.5.2-rc1",
-          "NETStandard.Library": "1.6.1"
+          "Antlr3.Runtime": "3.5.1",
+          "NETStandard.Library": "1.6.0"
         },
         "compile": {
           "lib/netstandard1.3/Antlr4.StringTemplate.dll": {}
@@ -1375,14 +1375,14 @@
     }
   },
   "libraries": {
-    "Antlr3.Runtime/3.5.2-rc1": {
-      "sha512": "l3dMcsWinD/h8GCsqbx1dsacs8012HAOCa4wSOUx0Fof2Pdlcuz63BsKsGaBrSzhJFI3K4gxc/NUrtGsaxqUcw==",
+    "Antlr3.Runtime/3.5.1": {
+      "sha512": "ZwCEpLCLZXkjzf1lYEixp9hgVlYYk33ACHn6xjFyVhGRi2BpoYQez0qtatbetdylASWYTG+cGz0CGR4z66JM4w==",
       "type": "package",
-      "path": "antlr3.runtime/3.5.2-rc1",
+      "path": "antlr3.runtime/3.5.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "antlr3.runtime.3.5.2-rc1.nupkg.sha512",
+        "antlr3.runtime.3.5.1.nupkg.sha512",
         "antlr3.runtime.nuspec",
         "lib/net20/Antlr3.Runtime.dll",
         "lib/net20/Antlr3.Runtime.xml",
@@ -1390,8 +1390,8 @@
         "lib/net40-client/Antlr3.Runtime.xml",
         "lib/netstandard1.1/Antlr3.Runtime.dll",
         "lib/netstandard1.1/Antlr3.Runtime.xml",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/Antlr3.Runtime.dll",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/Antlr3.Runtime.xml"
+        "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/Antlr3.Runtime.dll",
+        "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/Antlr3.Runtime.xml"
       ]
     },
     "Antlr4.Runtime.Standard/4.7.2": {
@@ -1798,20 +1798,18 @@
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
     },
-    "StringTemplate4/4.0.9-rc1": {
-      "sha512": "UFD0jtItfCG/JnA4iRMJqiBOoAaaV6Gwe62P+/ke8WE1zz2oFVBbYx7/BZYWLA2VIxLtIunfuN0Sshf01eqrcw==",
+    "StringTemplate4/4.0.8": {
+      "sha512": "Rx3C673O+nvM1ZvOXDslzmIbpgCR8QHd0FD1iKP/srNZPi5Zhr5Ln4gHzRGLvofMkpVf/aJPBRkcD6VzqgV4rQ==",
       "type": "package",
-      "path": "stringtemplate4/4.0.9-rc1",
+      "path": "stringtemplate4/4.0.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net35-client/Antlr4.StringTemplate.dll",
         "lib/net35-client/Antlr4.StringTemplate.xml",
-        "lib/net40-client/Antlr4.StringTemplate.dll",
-        "lib/net40-client/Antlr4.StringTemplate.xml",
         "lib/netstandard1.3/Antlr4.StringTemplate.dll",
         "lib/netstandard1.3/Antlr4.StringTemplate.xml",
-        "stringtemplate4.4.0.9-rc1.nupkg.sha512",
+        "stringtemplate4.4.0.8.nupkg.sha512",
         "stringtemplate4.nuspec"
       ]
     },
@@ -4980,13 +4978,12 @@
     ".NETCoreApp,Version=v3.1": [
       "Antlr4.Runtime.Standard >= 4.7.2",
       "Antlr4BuildTasks >= 1.0.9",
-      "StringTemplate4 >= 4.0.9-rc1",
+      "StringTemplate4 >= 4.0.8",
       "System.CodeDom >= 4.5.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jackson Codispoti\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\jacks\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -4994,19 +4991,18 @@
       "projectUniqueName": "C:\\xampp\\htdocs\\captcha\\APIHelper\\DescriptionParser\\DescriptionParser.csproj",
       "projectName": "DescriptionParser",
       "projectPath": "C:\\xampp\\htdocs\\captcha\\APIHelper\\DescriptionParser\\DescriptionParser.csproj",
-      "packagesPath": "C:\\Users\\Jackson Codispoti\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\jacks\\.nuget\\packages\\",
       "outputPath": "C:\\xampp\\htdocs\\captcha\\APIHelper\\DescriptionParser\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Jackson Codispoti\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\jacks\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -5033,7 +5029,7 @@
           },
           "StringTemplate4": {
             "target": "Package",
-            "version": "[4.0.9-rc1, )"
+            "version": "[4.0.8, )"
           },
           "System.CodeDom": {
             "target": "Package",

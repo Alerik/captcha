@@ -17,6 +17,10 @@ namespace DescriptionParser
 	{
 		public string Name { get; private set; }
 		public string Path { get; private set; }
+		public string FullPath => API.Instance.BaseUrl + Path + '/' +  Name;
+
+		public string Return = "Row1";//{ get; private set; }
+
 		public HttpMethods Method { get; private set; }
 
 		public List<APIArgument> Arguments = new List<APIArgument>();
@@ -33,15 +37,6 @@ namespace DescriptionParser
 			this.Dependencies = _Dependencies ?? new List<Table>();
 			Console.Write("Creating function {0}", Name);
 			API.Instance.Functions.Add(this);
-		}
-
-		public void GenerateCode()
-		{
-			Console.Head("Generating {0}", Name);
-			ResolveDependencies();
-			GenerateClientCode();
-			GenerateServerCode();
-			Console.End();
 		}
 
 		//Checks for declarations in API
@@ -72,27 +67,5 @@ namespace DescriptionParser
 			Console.Write("Resolved {0} out of {1} dependencies", successes, Dependencies.Count);
 			Console.End();
 		}
-
-		void GenerateClientCode()
-		{
-			Console.Head("Generating client code");
-			AngularClientCodeCreator creator = new AngularClientCodeCreator();
-
-			if (Dependencies.Count > 0 && !Dependencies[0].Defined)
-				ConsoleHelper.Warn("The dependency {0} is undefined", Dependencies[0].Name);
-
-			creator.GenerateCode(Dependencies, Name, ParentPath, Path + ".php", Arguments.Select(a => new Column(a.Identifier, a.DBType)).ToList(), Dependencies[0].ExposedColumns);
-			Console.End();	
-  }
-
-		void GenerateServerCode()
-		{
-			Console.Head("Generating server code");
-			PHPServerCodeCreator creator = new PHPServerCodeCreator();
-			if (!Dependencies[0].Defined)
-				ConsoleHelper.Warn("The dependency {0} is undefined", Dependencies[0].Name);
-			creator.CreateCode(Dependencies[0], ParentPath, Name, Arguments.Select(a => new Column(a.Identifier, a.DBType)).ToList(), Dependencies[0].InternalColumns, Dependencies[0].ExposedColumns);
-			Console.End();	
-  }
 	}
 }

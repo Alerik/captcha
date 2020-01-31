@@ -14,8 +14,7 @@ namespace DescriptionParser.CodeGeneration
 
 		public override void CreateCode(Table dependency, string parentPath, string functionName, List<Column> args, List<Column> internalColumns, List<Column> exposedColumns)
 		{
-			ServerCodeFile file = new ServerCodeFile($"{functionName}.php", CreateCode(dependency.Name, args, internalColumns, exposedColumns));
-			file.Close();
+			ServerCodeFile file = CodeFile.CreateServerFile($"{functionName}.php");
 		}
 
 		private string CreateCode(string tableName, List<Column> args, List<Column> internalColumns, List<Column> exposedColumns)

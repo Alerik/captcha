@@ -58,20 +58,13 @@ namespace DescriptionParser.CodeGeneration
 			//throw new NotImplementedException();
 		}
 
-		public override void GenerateCode(List<Table> dependencies, string functionName, string parentPath, string path, List<Column> args, List<Column> exposed)
+		public void GenerateCode(List<Table> dependencies, string functionName, string parentPath, string path, List<Column> args, List<Column> exposed)
 		{
 			string name = path.Split('/').Last().Split('.').First();
-			ClientCodeFile serviceFile = ClientCodeFile.CreateFile($"services/{parentPath}.service.ts");
-			serviceFile.AddFunction(GenerateCall(dependencies.Count > 0 ? dependencies[0].RowName : DEF_TYPE, functionName, path, args, exposed));
-		
-			if(dependencies.Count > 0)
-			{
-				ClientCodeFile dataTypeFile = ClientCodeFile.CreateFile($"datatypes/{dependencies[0].RowName}.ts");
-				dataTypeFile.Write(GenerateDataType(dependencies[0].RowName, exposed));
-			}
+			
 		}
 
-		public override string GenerateCall(string typeName, string functionName, string path, List<Column> args, List<Column> exposedColumns)
+		public string GenerateCall(string typeName, string functionName, string path, List<Column> args, List<Column> exposedColumns)
 		{
 			Template template = new Template(Template.ANGULAR_FUNCTION);
 			template.Replace(DATATYPE, typeName);
@@ -84,7 +77,7 @@ namespace DescriptionParser.CodeGeneration
 			return template.Text;
 		}
 
-		public override string GenerateDataType(string typeName, List<Column> exposedColumns)
+		public string GenerateDataType(string typeName, List<Column> exposedColumns)
 		{
 			Template template = new Template(Template.ANGULAR_DT);
 			template.Replace(DATATYPE, typeName);

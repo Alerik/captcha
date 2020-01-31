@@ -10,10 +10,22 @@
         "dependencies": {
           "Antlr4.Runtime.Standard": "4.7.2",
           "Antlr4BuildTasks": "1.0.9",
+          "StringTemplate4": "4.0.8",
           "System.CodeDom": "4.5.0"
         },
         "runtime": {
           "DescriptionParser.dll": {}
+        }
+      },
+      "Antlr3.Runtime/3.5.1": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "runtime": {
+          "lib/netstandard1.1/Antlr3.Runtime.dll": {
+            "assemblyVersion": "3.5.0.2",
+            "fileVersion": "3.5.1.0"
+          }
         }
       },
       "Antlr4.Runtime.Standard/4.7.2": {
@@ -183,6 +195,18 @@
       "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
+      "StringTemplate4/4.0.8": {
+        "dependencies": {
+          "Antlr3.Runtime": "3.5.1",
+          "NETStandard.Library": "1.6.1"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Antlr4.StringTemplate.dll": {
+            "assemblyVersion": "4.0.7.0",
+            "fileVersion": "4.0.8.0"
+          }
+        }
+      },
       "System.AppContext/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -788,6 +812,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Antlr3.Runtime/3.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZwCEpLCLZXkjzf1lYEixp9hgVlYYk33ACHn6xjFyVhGRi2BpoYQez0qtatbetdylASWYTG+cGz0CGR4z66JM4w==",
+      "path": "antlr3.runtime/3.5.1",
+      "hashPath": "antlr3.runtime.3.5.1.nupkg.sha512"
+    },
     "Antlr4.Runtime.Standard/4.7.2": {
       "type": "package",
       "serviceable": true,
@@ -962,6 +993,13 @@
       "sha512": "sha512-VB5cn/7OzUfzdnC8tqAIMQciVLiq2epm2NrAm1E9OjNRyG4lVhfR61SMcLizejzQP8R8Uf/0l5qOIbUEi+RdEg==",
       "path": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "hashPath": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512"
+    },
+    "StringTemplate4/4.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Rx3C673O+nvM1ZvOXDslzmIbpgCR8QHd0FD1iKP/srNZPi5Zhr5Ln4gHzRGLvofMkpVf/aJPBRkcD6VzqgV4rQ==",
+      "path": "stringtemplate4/4.0.8",
+      "hashPath": "stringtemplate4.4.0.8.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",

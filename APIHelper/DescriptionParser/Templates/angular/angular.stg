@@ -1,0 +1,14 @@
+﻿create_function(func) ::= "<create_function_url(func)><\n><create_function_definition(func)>"
+create_function_url(func) ::= "<func.Name>_url : string = '<func.FullPath>';"
+create_function_definition(func) ::= <%
+"function <func.Name> (<create_function_param(func.Arguments)>) : <func.Return>{<\n>
+	<create_get_request(func)>
+}"%>
+
+create_function_param(column) ::= "<column:var_declaration(); separator=\", \">"
+var_declaration(column) ::= "<column.Identifier> : <column.DBType>"
+
+create_get_request(func) ::= "this.http.get\<<func.Return>>()"
+create_http_params(func) ::= "const params = new HttpParams() <create_param(func.Arguments)>;"
+create_param(column) ::= "<column:set(); separator=\>"
+set(colum) ::= ".set('<column.Identifier>', <column.Identifier>)"

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatRadioChange } from '@angular/material/radio';
-import { DatasetTypes } from '../../datatypes/dataset';
+import { DatasetTypes, Dataset } from '../../datatypes/dataset';
 import { NgForm, FormGroup, FormControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -28,16 +28,12 @@ export class CreatedatasetComponent implements OnInit {
   seedCount = 10;
   seedLoaded = false;
   seedLoading = false;
-  
-  infoGroup = new FormGroup({
-    title: new FormControl(),
-    prompt: new FormControl(),
-    description: new FormControl()
-  });
 
   dataGroup = new FormGroup({
     data: new FormControl()
   });
+
+  dataset : Dataset = new Dataset('', '', '', DatasetTypes.image_multi, 0, 0, 0, 0, false, false, false, '');
 
   constructor(private router: Router, private service : CreatedatasetService,
     private rndService : RandomentriesService) { }
@@ -93,12 +89,8 @@ export class CreatedatasetComponent implements OnInit {
       }]
   }
 
-  //Check if we need to resubmit and if the data has changed
-  infoClick(){
-    this.service.sendInfo(
-      this.infoGroup.value['title'], 
-      this.infoGroup.value['prompt'], 
-      this.infoGroup.value['description']).subscribe();
+  dbClick(){
+    console.log(this.dataset.name);
   }
 
   dataClick(){
