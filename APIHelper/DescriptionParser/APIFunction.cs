@@ -16,12 +16,17 @@ namespace DescriptionParser
 	public class APIFunction
 	{
 		public string Name { get; private set; }
+		public string NameCamel => Formatter.LowerFirst(Name);
 		public string Path { get; private set; }
 		public string FullPath => API.Instance.BaseUrl + Path + '/' +  Name;
 
 		public string Return = "Row1";//{ get; private set; }
 
 		public HttpMethods Method { get; private set; }
+
+		public bool IsGet => Method == HttpMethods.GET;
+		public bool IsPut => Method == HttpMethods.PUT;
+		public bool IsPost => Method == HttpMethods.POST;
 
 		public List<APIArgument> Arguments = new List<APIArgument>();
 		public List<Table> Dependencies = new List<Table>();

@@ -14,8 +14,8 @@ namespace DescriptionParser.CodeGeneration
 
 		protected CodeFile(string _Path)
 		{
-			this.Path = _Path;
-			lookup.Add(this.Path, this);
+			//this.Path = _Path;
+			//lookup.Add(this.Path, this);
 		}
 
 		public static ClientCodeFile CreateClientFile(string path)
@@ -26,7 +26,9 @@ namespace DescriptionParser.CodeGeneration
 			}
 			else
 			{
-				return new ClientCodeFile(path);
+				ClientCodeFile file = new ClientCodeFile(path);
+				lookup[path] = file;
+				return file;
 			}
 		}
 		public static ServerCodeFile CreateServerFile(string path)

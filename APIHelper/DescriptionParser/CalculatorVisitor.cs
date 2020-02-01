@@ -25,7 +25,8 @@
 					if(commandContext.literalDefinition() != null)
 					{
 						string identifier = commandContext.literalDefinition().Identifier().GetText();
-						string literalValue = commandContext.literalDefinition().Literal().GetText();
+						//We need to remove quotes from the literal
+						string literalValue = commandContext.literalDefinition().Literal().GetText().Trim('\'');
 
 						switch (identifier)
 						{

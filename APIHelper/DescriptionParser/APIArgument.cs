@@ -10,6 +10,9 @@ namespace DescriptionParser
 		public string DBType { get; private set; }
 		public string Description { get; private set; }
 
+		public string ClientType => API.Instance.ConvertToClient(DBType);
+		public string ServerType => API.Instance.ConvertToServer(DBType);
+
 		public bool Optional { get; private set; }
 
 		public APIArgument(string _Identifier, string _DBType, string _Description = "No description provided", bool _Optional = false)

@@ -1,14 +1,54 @@
-﻿create_function(func) ::= "<create_function_url(func)><\n><create_function_definition(func)>"
-create_function_url(func) ::= "<func.Name>_url : string = '<func.FullPath>';"
+﻿create_service(path, lowerpath, datatype, func) ::= <<
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse, HttpParams, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+
+<if(datatype.Count)>import { <datatype; separator=", "> } from '../datatypes/generated';
+<endif>
+@Injectable({
+	providedIn: 'root'
+})
+export class <path>Service {
+	constructor(private http: HttpClient) {
+	}
+
+	<func:create_function(); separator="\n\n">
+}>>
+
+create_function(func) ::= "<create_function_url(func)><\n><create_function_definition(func)>"
+create_function_url(func) ::= "<create_function_url_name(func)> : string = '<func.FullPath>';"
+create_function_url_name(func) ::= "<func.Name>_url"
 create_function_definition(func) ::= <%
-"function <func.Name> (<create_function_param(func.Arguments)>) : <func.Return>{<\n>
-	<create_get_request(func)>
-}"%>
+<func.Name> (<create_function_param(func.Arguments)>) : Observable\<<func.Return>>{<\n>
+	<\t><create_request(func)><\n>
+}%>
+
+create_request(func) ::= <%
+<if(func.IsGet)><create_get_request(func)>
+<else><create_post_request(func)>
+<endif>
+%>
 
 create_function_param(column) ::= "<column:var_declaration(); separator=\", \">"
-var_declaration(column) ::= "<column.Identifier> : <column.DBType>"
+var_declaration(column) ::= "<column.Identifier> : <column.ClientType>"
 
-create_get_request(func) ::= "this.http.get\<<func.Return>>()"
-create_http_params(func) ::= "const params = new HttpParams() <create_param(func.Arguments)>;"
-create_param(column) ::= "<column:set(); separator=\>"
-set(colum) ::= ".set('<column.Identifier>', <column.Identifier>)"
+create_http_params(func) ::= "const params = new HttpParams()<create_param(func.Arguments)>;"
+create_param(column) ::= "<column:set()>"
+set(column) ::= ".set('<column.Identifier>',<column.Identifier>)"
+
+create_post_request(func) ::= "<create_http_params(func)><\n><\t>return this.http.post\<<func.Return>>(this.<create_function_url_name(func)>, params);"
+
+create_get_request(func) ::= "<create_http_params(func)><\n><\t>return this.http.get\<<func.Return>>(this.<create_function_url_name(func)>, params);"
+
+
+create_datatypes(datatype) ::= "<datatype:create_datatype(); separator=\"\n\n\">"
+create_datatype(table) ::= <<
+export class <table.RowName> {
+	constructor(
+		<table.ExposedColumns:create_constructor_column(); separator=",\t\n">
+	){}
+}
+>>
+
+create_constructor_column(column) ::= "public <column.Identifier> : <column.ClientType>"

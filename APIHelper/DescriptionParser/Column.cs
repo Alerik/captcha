@@ -6,8 +6,12 @@ namespace DescriptionParser
 {
 	public class Column
 	{
+
 		public string Identifier { get; private set; }
 		public string DBType { get; private set; }
+
+		public string ClientType => API.Instance.ConvertToClient(DBType);
+		public string ServerType => API.Instance.ConvertToServer(DBType);
 
 		public Column(string _Identifier, string _DBType)
 		{

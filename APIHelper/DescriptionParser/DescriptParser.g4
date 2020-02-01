@@ -41,6 +41,7 @@ file
 sectionHeader
 	: Hash Identifier
 	;
+
 section
 	: sectionHeader definition* subsection*
 	;

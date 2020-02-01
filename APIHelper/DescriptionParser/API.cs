@@ -24,6 +24,16 @@ namespace DescriptionParser
 		public string ServerDirectory { get; internal set; }
 
 
+		private DBTypeConverter serverTypeConverter = new DBTypeConverter(null, null);
+		private DBTypeConverter clientTypeConverter = new DBTypeConverter(new Dictionary<string, string>
+		{
+			{"integer", "number" },
+			{"real", "number" },
+			{"text", "string"},
+			{"boolean", "boolean"},
+			{ "uuid", "string"}
+		}, "any");
+
 		internal API()
 		{
 			Instance = this;
@@ -38,6 +48,15 @@ namespace DescriptionParser
 			LoadIndex();
 		}
 
+		public string ConvertToClient(string dbType)
+		{
+			return clientTypeConverter.Convert(dbType);
+		}
+		public string ConvertToServer(string dbType)
+		{
+			return serverTypeConverter.Convert(dbType);
+		}
+
 		public void AddFile(string path)
 		{
 			if (!Files.Contains(path))
@@ -50,11 +69,24 @@ namespace DescriptionParser
 			AngularClientCodeCreator clientCreator = new AngularClientCodeCreator();
 			PHPServerCodeCreator serverCreator = new PHPServerCodeCreator();
 
+
+
 			foreach (APIFunction function in Functions)
 			{
-   
+				clientCreator.AddFunction(function);
+				serverCreator.AddFunction(function);
 			}
-			
+
+			foreach (Table table in Dependencies)
+			{
+				clientCreator.AddDependency(table);
+				serverCreator.AddDependency(table);
+
+			}
+
+			clientCreator.GenerateAll();
+			serverCreator.GenerateAll();
+
 			Console.End();
 			ClientCodeFile.CloseAll();
 			ServerCodeFile.CloseAll();

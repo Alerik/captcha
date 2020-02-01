@@ -6,7 +6,8 @@ namespace DescriptionParser.CodeGeneration
 {
 	public abstract class ClientCodeCreator
 	{
-		public abstract void GenerateFunction(APIFunction function);
-		public abstract void GenerateDependency(Table table);
+		public abstract void AddFunction(APIFunction function);
+		public abstract void AddDependency(Table table);
+		public abstract void GenerateAll();
 	}
 }
