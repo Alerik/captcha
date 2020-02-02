@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DescriptionParser
 {
-	public class Column
+	public class APIColumn
 	{
 
 		public string Identifier { get; private set; }
@@ -13,7 +13,7 @@ namespace DescriptionParser
 		public string ClientType => API.Instance.ConvertToClient(DBType);
 		public string ServerType => API.Instance.ConvertToServer(DBType);
 
-		public Column(string _Identifier, string _DBType)
+		public APIColumn(string _Identifier, string _DBType)
 		{
 			this.Identifier = _Identifier;
 			this.DBType = _DBType;
@@ -21,7 +21,7 @@ namespace DescriptionParser
 
 		public override bool Equals(object obj)
 		{
-			if(obj is Column col)
+			if(obj is APIColumn col)
 				return col.Identifier.Equals(this.Identifier) && col.DBType.Equals(this.DBType);
 			return false;
 		}

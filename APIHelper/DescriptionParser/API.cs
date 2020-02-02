@@ -13,12 +13,16 @@ namespace DescriptionParser
 		public const string CLIENTDIR = "CLIENTDIR";
 		public const string SERVERDIR = "SERVERDIR";
 
+		public const string CLIENT_TARGET = "CLIENT_TARGET";
+		public const string SERVER_TARGET = "SERVER_TARGET";
+		public const string DB_TARGET = "DB_TARGET";
+
 		public static API Instance;
 		public string BaseUrl { get; internal set; }
 		public List<APIFunction> Functions = new List<APIFunction>();
 		private List<string> Files = new List<string>();
 
-		public List<Table> Dependencies = new List<Table>();
+		public List<APITable> Dependencies = new List<APITable>();
 
 		public string ClientDirectory { get; internal set; }
 		public string ServerDirectory { get; internal set; }
@@ -48,6 +52,33 @@ namespace DescriptionParser
 			LoadIndex();
 		}
 
+		public void SetClientTarget(string target)
+		{
+
+		}
+
+		public void SetServerTarget(string target)
+		{
+
+		}
+
+		public bool HasError()
+		{
+			bool error = false;
+			if(ClientDirectory == null)
+			{
+				Console.Write("No client directory provided. Please specify it with 'CLIENTDIR<path>'");
+				error = true;
+			}
+			if(ServerDirectory == null)
+			{
+				Console.Write("No server directory provided. Please specify it with 'SERVERDIR<path>'");
+				error = true;
+			}
+			return error;
+		}
+
+		#region Utility
 		public string ConvertToClient(string dbType)
 		{
 			return clientTypeConverter.Convert(dbType);
@@ -56,12 +87,7 @@ namespace DescriptionParser
 		{
 			return serverTypeConverter.Convert(dbType);
 		}
-
-		public void AddFile(string path)
-		{
-			if (!Files.Contains(path))
-				Files.Add(path);
-		}
+		#endregion
 
 		public void GenerateAll()
 		{
@@ -77,7 +103,7 @@ namespace DescriptionParser
 				serverCreator.AddFunction(function);
 			}
 
-			foreach (Table table in Dependencies)
+			foreach (APITable table in Dependencies)
 			{
 				clientCreator.AddDependency(table);
 				serverCreator.AddDependency(table);
@@ -87,11 +113,15 @@ namespace DescriptionParser
 			clientCreator.GenerateAll();
 			serverCreator.GenerateAll();
 
-			Console.End();
+	
 			ClientCodeFile.CloseAll();
 			ServerCodeFile.CloseAll();
+
+			Console.Write("Done generating code");
+			Console.End();
 		}
 
+		#region Files
 		public void SaveIndex()
 		{
 			StreamWriter writer = new StreamWriter("files.index");
@@ -117,6 +147,12 @@ namespace DescriptionParser
 				Console.Write("No index found");
 			}
 		}
+		public void AddFile(string path)
+		{
+			if (!Files.Contains(path))
+				Files.Add(path);
+		}
+		#endregion
 
 		public void Clean()
 		{
@@ -138,10 +174,5 @@ namespace DescriptionParser
 			Console.End();
 			Console.Write("Done cleaning");
 		}
-
-		//public void GenerateFunction(string path, List<APIArgument> arguments, List<Table> tables)
-		//{
-		//	Functions.Add(new APIFunction(this, path, arguments, tables));
-		//}
 	}
 }

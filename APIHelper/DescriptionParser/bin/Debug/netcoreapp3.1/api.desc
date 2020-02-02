@@ -1,13 +1,10 @@
 #API
-	ENDPOINT<'http://127.0.0.1/captcha'>;
-	SERVERDIR<'C:\xampp\htdocs\captcha\DescriptionParser\DescriptionParser\bin\Debug\netcoreapp3.0\API\Server'>;
-	CLIENTDIR<'C:\xampp\htdocs\captcha\DescriptionParser\DescriptionParser\bin\Debug\netcoreapp3.0\API\Client'>;
+	CLIENT_TARGET<'ANGULAR'>;
+	SERVER_TARGET<'PHP'>;
+	ENDPOINT<'http://127.0.0.1/captcha/'>;
+	SERVERDIR<'C:\xampp\htdocs\captcha'>;
+	CLIENTDIR<'C:\xampp\htdocs\captcha\customer-portal\src\app'>;
 #FUNCTION
-	main: 
-		POST function insert(arg1* TEXT, arg2 INTEGER) uses users as Row1;
-		GET function concat(first TEXT, second TEXT, third* TEXT) uses users as Row2; 
-#TABLES
-	table users(
-		username TEXT,
-		id UUID,
-		last_login TIMESTAMP);
+	test: 
+		POST function addPerson(first_name TEXT, last_name TEXT);
+		GET function getStatus(); 

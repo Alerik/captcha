@@ -9,8 +9,8 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Antlr4 Include="DescriptLexer.g4" />
-    <Antlr4 Include="DescriptParser.g4" />
+    <Antlr4 Include="Parsing\DescriptLexer.g4" />
+    <Antlr4 Include="Parsing\DescriptParser.g4" />
   </ItemGroup>
 
   <ItemGroup>

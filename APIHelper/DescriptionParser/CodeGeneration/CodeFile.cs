@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Console = DescriptionParser.ConsoleHelper;
 
 namespace DescriptionParser.CodeGeneration
 {
@@ -39,7 +40,9 @@ namespace DescriptionParser.CodeGeneration
 			}
 			else
 			{
-				return new ServerCodeFile(path);
+				ServerCodeFile file = new ServerCodeFile(path);
+				lookup[path] = file;
+				return file;
 			}
 		}
 
@@ -55,9 +58,14 @@ namespace DescriptionParser.CodeGeneration
 
 		public static void CloseAll()
 		{
+			Console.Head("Saving files");
 			foreach (CodeFile file in lookup.Values)
+			{
+				Console.Write("Saving file {0}", file.Path);
 				file.Close();
+			}
 			lookup.Clear();
+			Console.End();
 		}
 	}
 }

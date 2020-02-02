@@ -1,0 +1,48 @@
+﻿create_function(func) ::= <<
+\<?php
+//Function <func.Name>
+include 'validation.php';
+<check(func)>
+<create_declarations(func)>
+//Your code here
+
+?>
+>>
+
+check(func) ::= <%
+<if(func.IsGet)><checkGet(func)>
+<else><checkPost(func)>
+<endif>
+%>
+
+checkGet(func) ::= <<
+checkGet();
+checkArguments($_GET, <create_args(func.Arguments)>);
+>>
+
+checkPost(func) ::= <<
+checkPost();
+checkArguments($_POST, <create_args(func.Arguments)>);
+>>
+
+create_args(args) ::= "array(<args:create_arg(); separator=\",\">)"
+create_arg(arg) ::= "array('<arg.Identifier>', '<required(arg)>')"
+required(arg) ::= <%
+<if(arg.Optional)>optional
+<else>required
+<endif>
+%>
+
+holder(func) ::= <%
+<if(func.IsGet)>$_GET
+<else>$_POST
+<endif>
+%>
+
+create_declarations(func) ::= <%
+<if(func.IsGet)><func.Arguments:create_declaration_get(); separator="\n">
+<else><func.Arguments:create_declaration_post(); separator="\n">
+<endif>
+%>
+create_declaration_get(arg) ::= "$<arg.Identifier> = $_GET['<arg.Identifier>'];"
+create_declaration_post(arg) ::= "$<arg.Identifier> = $_POST['<arg.Identifier>'];"

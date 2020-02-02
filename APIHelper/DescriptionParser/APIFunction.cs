@@ -20,7 +20,7 @@ namespace DescriptionParser
 		public string Path { get; private set; }
 		public string FullPath => API.Instance.BaseUrl + Path + '/' +  Name;
 
-		public string Return = "Row1";//{ get; private set; }
+		public string Return = "string";//{ get; private set; }
 
 		public HttpMethods Method { get; private set; }
 
@@ -29,18 +29,18 @@ namespace DescriptionParser
 		public bool IsPost => Method == HttpMethods.POST;
 
 		public List<APIArgument> Arguments = new List<APIArgument>();
-		public List<Table> Dependencies = new List<Table>();
+		public List<APITable> Dependencies = new List<APITable>();
 
 
-		internal APIFunction(string _Name, HttpMethods _Method, string _Path, List<APIArgument> _Arguments, List<Table> _Dependencies)
+		internal APIFunction(string _Name, HttpMethods _Method, string _Path, List<APIArgument> _Arguments, List<APITable> _Dependencies)
 		{
 			this.Name = _Name;
 			this.Path = _Path;
 			this.Method = _Method;
 
 			this.Arguments = _Arguments ?? new List<APIArgument>();
-			this.Dependencies = _Dependencies ?? new List<Table>();
-			Console.Write("Creating function {0}", Name);
+			this.Dependencies = _Dependencies ?? new List<APITable>();
+			Console.Write("Got function {0}", Name);
 			API.Instance.Functions.Add(this);
 		}
 
@@ -53,7 +53,7 @@ namespace DescriptionParser
 			{
 				if (!Dependencies[i].Defined)
 				{
-					Table match = API.Instance.Dependencies.Find(d => d.Name == Dependencies[i].Name);
+					APITable match = API.Instance.Dependencies.Find(d => d.Name == Dependencies[i].Name);
 
 					if (match != null)
 					{

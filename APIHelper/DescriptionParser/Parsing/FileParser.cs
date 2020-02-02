@@ -41,13 +41,12 @@ namespace DescriptionParser
 			}
 			else
 			{
-				Console.Write("Done parsing file");
+				API.Instance = new API();
+
+				DescriptVisitor visitor = new DescriptVisitor();
+				visitor.Visit(root);
 			}
-			API.Instance = new API();
-
-			CalculatorVisitor visitor = new CalculatorVisitor();
-			visitor.Visit(root);
-
+			Console.Write("Done parsing file\n");
 			Console.End();
 		}
 	}

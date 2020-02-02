@@ -4,11 +4,11 @@ using System.Text;
 
 namespace DescriptionParser
 {
-	public class Database
+	public class APIDatabase
 	{
 		public string Name { get; set; }
 
-		public Database(string _Name)
+		public APIDatabase(string _Name)
 		{
 			this.Name = _Name;
 		}

@@ -4,6 +4,7 @@ using System.Text;
 using System.Linq;
 using System.IO;
 using Antlr4.StringTemplate;
+using Console = DescriptionParser.ConsoleHelper;
 
 namespace DescriptionParser.CodeGeneration
 {
@@ -11,20 +12,21 @@ namespace DescriptionParser.CodeGeneration
 	{
 		private Dictionary<string, ClientCodeFile> codeFiles = new Dictionary<string, ClientCodeFile>();
 		private List<APIFunction> functions = new List<APIFunction>();
-		private List<Table> dependencies = new List<Table>();
+		private List<APITable> dependencies = new List<APITable>();
 
 		public override void AddFunction(APIFunction function)
 		{
 			functions.Add(function);
 		}
 
-		public override void AddDependency(Table table)
+		public override void AddDependency(APITable table)
 		{
 			dependencies.Add(table);
 		}
 
 		public override void GenerateAll()
 		{
+			Console.Head("Generating client code");
 			//Figure out how to split the service files here
 			var byPath = functions.GroupBy(f => f.Path);
 
@@ -41,28 +43,29 @@ namespace DescriptionParser.CodeGeneration
 				{
 					serviceTemplate.Add("func", func);
 				}
-				foreach(Table table in dependencies)
+				foreach(APITable table in dependencies)
 				{
 					serviceTemplate.Add("datatype", table.RowName);
 				}
-				serviceTemplate.Add("datatype", "Row1");
-				serviceTemplate.Add("datatype", "Row2");
-
+				
 				ClientCodeFile serviceFile = CodeFile.CreateClientFile(Path.Combine("services", Formatter.LowerFirst(funcs.Key) + ".services.ts"));
 				serviceFile.Write(serviceTemplate.Render());
 			}
 
 			Template datatypeTemplate = angularTemplate.GetInstanceOf("create_datatypes");
 
-			dependencies.Add(new Table("People", new List<Column>() { new Column("firstname", "text"), new Column("lastname", "text") }, "Person"));
+			dependencies.Add(new APITable("People", new List<APIColumn>() { new APIColumn("firstname", "text"), new APIColumn("lastname", "text") }, "Person"));
 
-			foreach(Table table in dependencies)
+			foreach(APITable table in dependencies)
 			{
 				datatypeTemplate.Add("datatype", table);
 			}
 
 			ClientCodeFile tableFile = CodeFile.CreateClientFile(Path.Combine("datatypes", "generated.ts"));
 			tableFile.Write(datatypeTemplate.Render());
+
+			Console.Write("Done generating client code");
+			Console.End();
 		}
 	}
 }

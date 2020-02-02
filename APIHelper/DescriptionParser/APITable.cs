@@ -1,32 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Console = DescriptionParser.ConsoleHelper;
 
 namespace DescriptionParser
 {
-	public class Table
+	public class APITable
 	{
 		public string Name { get; private set; }
 		public string RowName { get; set; }
-		public List<Column> ExposedColumns = new List<Column>();
-		public List<Column> InternalColumns = new List<Column>();
+		public List<APIColumn> ExposedColumns = new List<APIColumn>();
+		public List<APIColumn> InternalColumns = new List<APIColumn>();
 
-		private Database database;
+		private APIDatabase database;
 		public bool Defined => ExposedColumns.Count + InternalColumns.Count != 0;
 
-		public Table(string _Name)
+		public APITable(string _Name)
 		{
 			this.Name = _Name;
 			this.RowName = _Name;
 		}
 
-		public Table(string _Name, string _RowName)
+		public APITable(string _Name, string _RowName)
 		{
 			this.Name = _Name;
 			this.RowName = _RowName == "" ? _Name : _RowName;
 		}
 
-		internal Table(string _Name, List<Column> _ExposedColumns, List<Column> _InternalColumns, string _RowName = "")
+		internal APITable(string _Name, List<APIColumn> _ExposedColumns, List<APIColumn> _InternalColumns, string _RowName = "")
 		{
 			this.Name = _Name;
 			this.RowName = _RowName == "" ? _Name : _RowName;
@@ -35,10 +36,13 @@ namespace DescriptionParser
 
 			API.Instance.Dependencies.Add(this);
 		}
-		internal Table(string _Name, List<Column> _ExposedColumns, string _RowName = "")
+		internal APITable(string _Name, List<APIColumn> _ExposedColumns, string _RowName = "")
 		{
 			this.Name = _Name;
 			this.RowName = _RowName == "" ? _Name : _RowName;
+
+			Console.Write("Got table {0} as {1}", Name, RowName);
+
 			this.ExposedColumns = _ExposedColumns;
 			this.InternalColumns = _ExposedColumns;
 
