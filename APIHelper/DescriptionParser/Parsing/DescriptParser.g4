@@ -4,22 +4,46 @@ options {
     tokenVocab=DescriptLexer;
 }
 
+tableReference: TablePrefix Identifier;
+argumentReference: ArgumentPrefix Identifier;
+reference : TableReference ArgumentReference;
+
 column
 	: Identifier Identifier
 	;
-functionArg
-	: Identifier Star? Identifier
+
+typedParameter
+	: Identifier Star* Identifier
+	;
+columnParameter
+	: Identifier LCurly (typedParameter Comma)* typedParameter? RCurly
 	;
 
+functionParameter
+	: typedParameter | columnParameter
+	;
+
+superFunctionArgument
+	: reference | Literal
+	;
+superFunction
+	: Identifier LParam (superFunctionArgument Comma)* superFunctionArgument? RParam
+	;
+
+superFunctionClause
+	: Colon (superFunction Comma)* superFunction?
+	;
 usesClause
 	: Uses (usesFrag Comma)* usesFrag
 	;
 usesFrag
 	: Identifier As Identifier
 	;
+
 functionDefinition
-	: HttpMethod Function Identifier Lparam (functionArg Comma)* functionArg? Rparam usesClause? Semicolon
+	: HttpMethod Function Identifier Lparam (functionParameter Comma)* functionParameter? Rparam superFunctionClause? Semicolon
 	;
+
 tableDefinition
 	: Table Identifier Lparam (column Comma)* column? Rparam Semicolon
 	;
@@ -28,7 +52,6 @@ literalDefinition
 	:
 	Identifier Langle Literal Rangle Semicolon
 	;
-
 
 definition
 	: literalDefinition | functionDefinition | tableDefinition

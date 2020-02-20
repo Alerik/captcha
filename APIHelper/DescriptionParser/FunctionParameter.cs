@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DescriptionParser
 {
-	public class APIArgument
+	public class FunctionParameter
 	{
 		public string Identifier { get; private set; }
 		public string DBType { get; private set; }
@@ -15,12 +15,21 @@ namespace DescriptionParser
 
 		public bool Optional { get; private set; }
 
-		public APIArgument(string _Identifier, string _DBType, string _Description = "No description provided", bool _Optional = false)
+		public FunctionParameter(string _Identifier, string _DBType, string _Description = "No description provided", bool _Optional = false)
 		{
 			this.Identifier = _Identifier;
 			this.DBType = _DBType;
 			this.Description = _Description;
 			this.Optional = _Optional;
+		}
+	}
+
+	public class ColumnFunctionParameter : FunctionParameter
+	{
+		public List<FunctionParameter> Parameters { get; private set; }
+		public ColumnFunctionParameter(string _Identifier, List<FunctionParameter> _Parameters) : base(_Identifier, "COLUMN")
+		{
+			this.Parameters = _Parameters;
 		}
 	}
 }

@@ -4,6 +4,8 @@
 include 'validation.php';
 <check(func)>
 <create_declarations(func)>
+//This is where the SUPERFUNCTIONS go
+<create_superfunctions(func)>
 //Your code here
 
 ?>
@@ -43,6 +45,9 @@ create_declarations(func) ::= <%
 <if(func.IsGet)><func.Arguments:create_declaration_get(); separator="\n">
 <else><func.Arguments:create_declaration_post(); separator="\n">
 <endif>
+%>
+create_superfunctions(func) ::= <%
+
 %>
 create_declaration_get(arg) ::= "$<arg.Identifier> = $_GET['<arg.Identifier>'];"
 create_declaration_post(arg) ::= "$<arg.Identifier> = $_POST['<arg.Identifier>'];"

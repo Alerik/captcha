@@ -5,7 +5,7 @@ using Console = DescriptionParser.ConsoleHelper;
 
 namespace DescriptionParser
 {
-	public class APITable
+	public class Table
 	{
 		public string Name { get; private set; }
 		public string RowName { get; set; }
@@ -15,19 +15,19 @@ namespace DescriptionParser
 		private APIDatabase database;
 		public bool Defined => ExposedColumns.Count + InternalColumns.Count != 0;
 
-		public APITable(string _Name)
+		public Table(string _Name)
 		{
 			this.Name = _Name;
 			this.RowName = _Name;
 		}
 
-		public APITable(string _Name, string _RowName)
+		public Table(string _Name, string _RowName)
 		{
 			this.Name = _Name;
 			this.RowName = _RowName == "" ? _Name : _RowName;
 		}
 
-		internal APITable(string _Name, List<APIColumn> _ExposedColumns, List<APIColumn> _InternalColumns, string _RowName = "")
+		internal Table(string _Name, List<APIColumn> _ExposedColumns, List<APIColumn> _InternalColumns, string _RowName = "")
 		{
 			this.Name = _Name;
 			this.RowName = _RowName == "" ? _Name : _RowName;
@@ -36,7 +36,7 @@ namespace DescriptionParser
 
 			API.Instance.Dependencies.Add(this);
 		}
-		internal APITable(string _Name, List<APIColumn> _ExposedColumns, string _RowName = "")
+		internal Table(string _Name, List<APIColumn> _ExposedColumns, string _RowName = "")
 		{
 			this.Name = _Name;
 			this.RowName = _RowName == "" ? _Name : _RowName;

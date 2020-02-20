@@ -13,7 +13,7 @@ namespace DescriptionParser
 		POST,
 		GET
 	}
-	public class APIFunction
+	public class FunctionDefinition
 	{
 		public string Name { get; private set; }
 		public string NameCamel => Formatter.LowerFirst(Name);
@@ -28,18 +28,19 @@ namespace DescriptionParser
 		public bool IsPut => Method == HttpMethods.PUT;
 		public bool IsPost => Method == HttpMethods.POST;
 
-		public List<APIArgument> Arguments = new List<APIArgument>();
-		public List<APITable> Dependencies = new List<APITable>();
+		public List<FunctionParameter> Arguments = new List<FunctionParameter>();
+		public List<SuperFunctionCall> SuperFunctions = new List<SuperFunctionCall>();
+		public List<Table> Dependencies = new List<Table>();
 
-
-		internal APIFunction(string _Name, HttpMethods _Method, string _Path, List<APIArgument> _Arguments, List<APITable> _Dependencies)
+		internal FunctionDefinition(string _Name, HttpMethods _Method, string _Path, List<FunctionParameter> _Arguments, List<SuperFunctionCall> superFunctions, List<Table> _Dependencies)
 		{
 			this.Name = _Name;
 			this.Path = _Path;
 			this.Method = _Method;
 
-			this.Arguments = _Arguments ?? new List<APIArgument>();
-			this.Dependencies = _Dependencies ?? new List<APITable>();
+			this.Arguments = _Arguments ?? new List<FunctionParameter>();
+			this.SuperFunctions = superFunctions;
+			this.Dependencies = _Dependencies ?? new List<Table>();
 			Console.Write("Got function {0}", Name);
 			API.Instance.Functions.Add(this);
 		}
@@ -53,7 +54,7 @@ namespace DescriptionParser
 			{
 				if (!Dependencies[i].Defined)
 				{
-					APITable match = API.Instance.Dependencies.Find(d => d.Name == Dependencies[i].Name);
+					Table match = API.Instance.Dependencies.Find(d => d.Name == Dependencies[i].Name);
 
 					if (match != null)
 					{

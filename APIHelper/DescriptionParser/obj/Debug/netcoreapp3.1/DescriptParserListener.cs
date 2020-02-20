@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\DescriptParser.g4 by ANTLR 4.8
+// Generated from C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\Parsing\DescriptParser.g4 by ANTLR 4.8
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -31,6 +31,36 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CLSCompliant(false)]
 public interface IDescriptParserListener : IParseTreeListener {
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="DescriptParser.tableReference"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterTableReference([NotNull] DescriptParser.TableReferenceContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DescriptParser.tableReference"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitTableReference([NotNull] DescriptParser.TableReferenceContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DescriptParser.argumentReference"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterArgumentReference([NotNull] DescriptParser.ArgumentReferenceContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DescriptParser.argumentReference"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitArgumentReference([NotNull] DescriptParser.ArgumentReferenceContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DescriptParser.reference"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterReference([NotNull] DescriptParser.ReferenceContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DescriptParser.reference"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitReference([NotNull] DescriptParser.ReferenceContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="DescriptParser.column"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -41,15 +71,65 @@ public interface IDescriptParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitColumn([NotNull] DescriptParser.ColumnContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DescriptParser.functionArg"/>.
+	/// Enter a parse tree produced by <see cref="DescriptParser.typedParameter"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterFunctionArg([NotNull] DescriptParser.FunctionArgContext context);
+	void EnterTypedParameter([NotNull] DescriptParser.TypedParameterContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="DescriptParser.functionArg"/>.
+	/// Exit a parse tree produced by <see cref="DescriptParser.typedParameter"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitFunctionArg([NotNull] DescriptParser.FunctionArgContext context);
+	void ExitTypedParameter([NotNull] DescriptParser.TypedParameterContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DescriptParser.columnParameter"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterColumnParameter([NotNull] DescriptParser.ColumnParameterContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DescriptParser.columnParameter"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitColumnParameter([NotNull] DescriptParser.ColumnParameterContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DescriptParser.functionParameter"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFunctionParameter([NotNull] DescriptParser.FunctionParameterContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DescriptParser.functionParameter"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFunctionParameter([NotNull] DescriptParser.FunctionParameterContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DescriptParser.superFunctionArgument"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterSuperFunctionArgument([NotNull] DescriptParser.SuperFunctionArgumentContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DescriptParser.superFunctionArgument"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitSuperFunctionArgument([NotNull] DescriptParser.SuperFunctionArgumentContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DescriptParser.superFunction"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterSuperFunction([NotNull] DescriptParser.SuperFunctionContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DescriptParser.superFunction"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitSuperFunction([NotNull] DescriptParser.SuperFunctionContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DescriptParser.superFunctionClause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterSuperFunctionClause([NotNull] DescriptParser.SuperFunctionClauseContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DescriptParser.superFunctionClause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitSuperFunctionClause([NotNull] DescriptParser.SuperFunctionClauseContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="DescriptParser.usesClause"/>.
 	/// </summary>

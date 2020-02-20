@@ -21,6 +21,5 @@ C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\Desc
 C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptParserBaseListener.cs
 C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptParserVisitor.cs
 C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptParserBaseVisitor.cs
-C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\obj\Debug\netcoreapp3.1\DescriptionParser.csprojAssemblyReference.cache
 C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\bin\Debug\netcoreapp3.1\Antlr3.Runtime.dll
 C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\bin\Debug\netcoreapp3.1\Antlr4.StringTemplate.dll

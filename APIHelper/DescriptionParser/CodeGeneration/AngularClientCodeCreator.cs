@@ -11,15 +11,15 @@ namespace DescriptionParser.CodeGeneration
 	public class AngularClientCodeCreator : ClientCodeCreator
 	{
 		private Dictionary<string, ClientCodeFile> codeFiles = new Dictionary<string, ClientCodeFile>();
-		private List<APIFunction> functions = new List<APIFunction>();
-		private List<APITable> dependencies = new List<APITable>();
+		private List<FunctionDefinition> functions = new List<FunctionDefinition>();
+		private List<Table> dependencies = new List<Table>();
 
-		public override void AddFunction(APIFunction function)
+		public override void AddFunction(FunctionDefinition function)
 		{
 			functions.Add(function);
 		}
 
-		public override void AddDependency(APITable table)
+		public override void AddDependency(Table table)
 		{
 			dependencies.Add(table);
 		}
@@ -39,11 +39,14 @@ namespace DescriptionParser.CodeGeneration
 				serviceTemplate.Add("path", Formatter.CapFirst(funcs.Key));
 				serviceTemplate.Add("lowerpath", Formatter.LowerFirst(funcs.Key));
 
-				foreach(APIFunction func in funcs)
+				//Generate functions
+				foreach(FunctionDefinition func in funcs)
 				{
 					serviceTemplate.Add("func", func);
 				}
-				foreach(APITable table in dependencies)
+
+				//Generate datatypes for tables
+				foreach(Table table in dependencies)
 				{
 					serviceTemplate.Add("datatype", table.RowName);
 				}
@@ -54,9 +57,9 @@ namespace DescriptionParser.CodeGeneration
 
 			Template datatypeTemplate = angularTemplate.GetInstanceOf("create_datatypes");
 
-			dependencies.Add(new APITable("People", new List<APIColumn>() { new APIColumn("firstname", "text"), new APIColumn("lastname", "text") }, "Person"));
+			dependencies.Add(new Table("People", new List<APIColumn>() { new APIColumn("firstname", "text"), new APIColumn("lastname", "text") }, "Person"));
 
-			foreach(APITable table in dependencies)
+			foreach(Table table in dependencies)
 			{
 				datatypeTemplate.Add("datatype", table);
 			}

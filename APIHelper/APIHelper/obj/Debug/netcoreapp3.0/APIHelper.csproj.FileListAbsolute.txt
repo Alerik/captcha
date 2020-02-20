@@ -4,7 +4,6 @@ C:\xampp\htdocs\captcha\APIHelper\APIHelper\bin\Debug\netcoreapp3.0\APIHelper.ru
 C:\xampp\htdocs\captcha\APIHelper\APIHelper\bin\Debug\netcoreapp3.0\APIHelper.runtimeconfig.dev.json
 C:\xampp\htdocs\captcha\APIHelper\APIHelper\bin\Debug\netcoreapp3.0\APIHelper.dll
 C:\xampp\htdocs\captcha\APIHelper\APIHelper\bin\Debug\netcoreapp3.0\APIHelper.pdb
-C:\xampp\htdocs\captcha\APIHelper\APIHelper\obj\Debug\netcoreapp3.0\APIHelper.csprojAssemblyReference.cache
 C:\xampp\htdocs\captcha\APIHelper\APIHelper\obj\Debug\netcoreapp3.0\APIHelper.AssemblyInfoInputs.cache
 C:\xampp\htdocs\captcha\APIHelper\APIHelper\obj\Debug\netcoreapp3.0\APIHelper.AssemblyInfo.cs
 C:\xampp\htdocs\captcha\APIHelper\APIHelper\obj\Debug\netcoreapp3.0\APIHelper.dll

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\DescriptParser.g4 by ANTLR 4.8
+// Generated from C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\Parsing\DescriptParser.g4 by ANTLR 4.8
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -32,17 +32,65 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CLSCompliant(false)]
 public interface IDescriptParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="DescriptParser.tableReference"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTableReference([NotNull] DescriptParser.TableReferenceContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DescriptParser.argumentReference"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitArgumentReference([NotNull] DescriptParser.ArgumentReferenceContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DescriptParser.reference"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitReference([NotNull] DescriptParser.ReferenceContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="DescriptParser.column"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitColumn([NotNull] DescriptParser.ColumnContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DescriptParser.functionArg"/>.
+	/// Visit a parse tree produced by <see cref="DescriptParser.typedParameter"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitFunctionArg([NotNull] DescriptParser.FunctionArgContext context);
+	Result VisitTypedParameter([NotNull] DescriptParser.TypedParameterContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DescriptParser.columnParameter"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitColumnParameter([NotNull] DescriptParser.ColumnParameterContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DescriptParser.functionParameter"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFunctionParameter([NotNull] DescriptParser.FunctionParameterContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DescriptParser.superFunctionArgument"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSuperFunctionArgument([NotNull] DescriptParser.SuperFunctionArgumentContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DescriptParser.superFunction"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSuperFunction([NotNull] DescriptParser.SuperFunctionContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DescriptParser.superFunctionClause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSuperFunctionClause([NotNull] DescriptParser.SuperFunctionClauseContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="DescriptParser.usesClause"/>.
 	/// </summary>

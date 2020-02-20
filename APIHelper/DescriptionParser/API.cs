@@ -19,10 +19,17 @@ namespace DescriptionParser
 
 		public static API Instance;
 		public string BaseUrl { get; internal set; }
-		public List<APIFunction> Functions = new List<APIFunction>();
 		private List<string> Files = new List<string>();
 
-		public List<APITable> Dependencies = new List<APITable>();
+		//List of user defined functions
+		public List<FunctionDefinition> Functions = new List<FunctionDefinition>();
+		//List of user defined tables
+		public List<Table> Dependencies = new List<Table>();
+
+		//List of loaded super functions
+		public List<SuperFunctionCall> SuperFunctions = new List<SuperFunctionCall>();
+		//List of loaded super tables
+		public List<SuperTable> SuperTables = new List<SuperTable>();
 
 		public string ClientDirectory { get; internal set; }
 		public string ServerDirectory { get; internal set; }
@@ -97,13 +104,13 @@ namespace DescriptionParser
 
 
 
-			foreach (APIFunction function in Functions)
+			foreach (FunctionDefinition function in Functions)
 			{
 				clientCreator.AddFunction(function);
 				serverCreator.AddFunction(function);
 			}
 
-			foreach (APITable table in Dependencies)
+			foreach (Table table in Dependencies)
 			{
 				clientCreator.AddDependency(table);
 				serverCreator.AddDependency(table);

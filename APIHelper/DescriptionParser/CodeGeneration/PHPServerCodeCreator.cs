@@ -10,13 +10,13 @@ namespace DescriptionParser.CodeGeneration
 {
 	public class PHPServerCodeCreator : ServerCodeCreator
 	{
-		private List<APIFunction> funcs = new List<APIFunction>();
-		public override void AddFunction(APIFunction function)
+		private List<FunctionDefinition> funcs = new List<FunctionDefinition>();
+		public override void AddFunction(FunctionDefinition function)
 		{
 			funcs.Add(function);
 		}
 
-		public override void AddDependency(APITable dependency)
+		public override void AddDependency(Table dependency)
 		{
 			//throw new NotImplementedException();
 		}
@@ -26,7 +26,7 @@ namespace DescriptionParser.CodeGeneration
 			Console.Head("Generating server code");
 			TemplateGroupFile phpTemplate = new TemplateGroupFile(@"C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\Templates\php\php.stg");
 
-			foreach(APIFunction func in funcs)
+			foreach(FunctionDefinition func in funcs)
 			{
 				Template functionTemplate = phpTemplate.GetInstanceOf("create_function");
 				functionTemplate.Add("func", func);

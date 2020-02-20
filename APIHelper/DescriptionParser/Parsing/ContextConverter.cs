@@ -7,10 +7,14 @@ namespace DescriptionParser
 {
 	public static class ContextConverter
 	{
-		public static APIFunction ContextToFunction(DescriptParser.FunctionDefinitionContext context, string parentPath)
+		public static FunctionDefinition ContextToFunction(DescriptParser.FunctionDefinitionContext context, string parentPath)
 		{
-			return new APIFunction(context.Identifier().GetText(), GetMethod(context.HttpMethod().GetText()), parentPath, ContextToArgs(context.functionArg()),
-			ContextToDependencies(context.usesClause()));
+			string identifier = context.Identifier().GetText();
+			HttpMethods httpMethod = GetMethod(context.HttpMethod().GetText());
+			List<FunctionParameter> functionParameters = ContextToArgs(context.functionParameter());
+			List<SuperFunctionCall> superFunctions = ContextToSuperFunctions(context.superFunctionClause());
+			List<Table> dependencies = new List<Table>();//ContextToDependencies(context.uses());
+			return new FunctionDefinition(identifier, httpMethod, parentPath,functionParameters, superFunctions, dependencies);
 		}
 
 		private static HttpMethods GetMethod(string str)
@@ -22,19 +26,78 @@ namespace DescriptionParser
 			return HttpMethods.GET;
 		}
 
-		private static List<APITable> ContextToDependencies(DescriptParser.UsesClauseContext context)
+		private static List<SuperFunctionCall> ContextToSuperFunctions(DescriptParser.SuperFunctionClauseContext context)
 		{
-			return new List<APITable>();
+			List<SuperFunctionCall> superFunctions = new List<SuperFunctionCall>();
+			foreach (DescriptParser.SuperFunctionContext sfContext in context.superFunction())
+				superFunctions.Add(ContextToSuperFunction(sfContext));
+			return superFunctions;
+		}
+		private static SuperFunctionCall ContextToSuperFunction(DescriptParser.SuperFunctionContext context)
+		{
+			string identifier = context.Identifier().GetText();
+			List<SuperFunctionArgument> arguments = ContextToSuperFunctionArguments(context.superFunctionArgument());
+
+			return new SuperFunctionCall(identifier, arguments);
+		}
+		private static SuperFunctionArgument ContextToSuperFunctionArgument(DescriptParser.SuperFunctionArgumentContext context)
+		{
+			if (context.reference() != null)
+			{
+				if (context.reference().TableReference() != null)
+					return new SuperFunctionArgument(SuperFunctionArgumentTypes.TableReference);
+				if (context.reference().ArgumentReference() != null)
+					return new SuperFunctionArgument(SuperFunctionArgumentTypes.ArgumentReference);
+			}
+			if (context.Literal() != null)
+				return new SuperFunctionArgument(SuperFunctionArgumentTypes.StringLiteral);
+			return new SuperFunctionArgument(SuperFunctionArgumentTypes.StringLiteral);
+		}
+		private static List<SuperFunctionArgument> ContextToSuperFunctionArguments(DescriptParser.SuperFunctionArgumentContext[] context)
+		{
+			return context.Select(c => ContextToSuperFunctionArgument(c)).ToList();
 		}
 
-		private static List<APIArgument> ContextToArgs(DescriptParser.FunctionArgContext[] context)
+
+		private static List<Table> ContextToDependencies(DescriptParser.UsesClauseContext context)
 		{
-			return context.Select(c => new APIArgument(c.Identifier(0).GetText(), c.Identifier(1).GetText(), "", c.Star() is null ? false : true)).ToList();
+			return new List<Table>();
 		}
 
-		public static APITable ContextToTable(DescriptParser.TableDefinitionContext context)
+		private static FunctionParameter ContextToFunctionParameter(DescriptParser.FunctionParameterContext context)
 		{
-			return new APITable(context.Identifier().GetText(), ContextToColumns(context.column()));
+			if(context.typedParameter() != null)
+			{
+				DescriptParser.TypedParameterContext c = context.typedParameter();
+				return ContextToFunctionParameter(c);
+			}
+			else
+			{
+				DescriptParser.ColumnParameterContext c = context.columnParameter();
+
+				return new ColumnFunctionParameter(c.Identifier().GetText(), ContextToFunctionParameters(c.typedParameter()));
+			}
+		}
+
+		private static FunctionParameter ContextToFunctionParameter(DescriptParser.TypedParameterContext context)
+		{
+			return new FunctionParameter(context.Identifier(0).GetText(), context.Identifier(1).GetText(), "", context.Star() is null ? false : true);
+		}
+
+		private static List<FunctionParameter> ContextToFunctionParameters(DescriptParser.TypedParameterContext[] context)
+		{
+			return context.Select(c => ContextToFunctionParameter(c)).ToList();
+  }
+
+
+		private static List<FunctionParameter> ContextToArgs(DescriptParser.FunctionParameterContext[] context)
+		{
+			return context.Select(c => ContextToFunctionParameter(c)).ToList();
+		}
+
+		public static Table ContextToTable(DescriptParser.TableDefinitionContext context)
+		{
+			return new Table(context.Identifier().GetText(), ContextToColumns(context.column()));
 		}
 
 		private static List<APIColumn> ContextToColumns(DescriptParser.ColumnContext[] context) 

@@ -8,6 +8,12 @@ Langle : '<';
 Rangle : '>';
 Lparam : '(';
 Rparam : ')';
+LCurly : '{';
+RCurly : '}';
+
+TablePrefix : 't_';
+ArgumentPrefix : '&';
+
 Comma : ',';
 
 Uses : 'uses';
