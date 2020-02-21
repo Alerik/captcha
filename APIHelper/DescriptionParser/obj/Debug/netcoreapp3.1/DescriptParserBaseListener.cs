@@ -35,6 +35,18 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 [System.CLSCompliant(false)]
 public partial class DescriptParserBaseListener : IDescriptParserListener {
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="DescriptParser.literal"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterLiteral([NotNull] DescriptParser.LiteralContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DescriptParser.literal"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitLiteral([NotNull] DescriptParser.LiteralContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="DescriptParser.tableReference"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

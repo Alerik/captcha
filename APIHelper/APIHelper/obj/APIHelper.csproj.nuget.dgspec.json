@@ -10,19 +10,18 @@
         "projectUniqueName": "C:\\xampp\\htdocs\\captcha\\APIHelper\\APIHelper\\APIHelper.csproj",
         "projectName": "APIHelper",
         "projectPath": "C:\\xampp\\htdocs\\captcha\\APIHelper\\APIHelper\\APIHelper.csproj",
-        "packagesPath": "C:\\Users\\Jackson Codispoti\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\jacks\\.nuget\\packages\\",
         "outputPath": "C:\\xampp\\htdocs\\captcha\\APIHelper\\APIHelper\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Jackson Codispoti\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\jacks\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

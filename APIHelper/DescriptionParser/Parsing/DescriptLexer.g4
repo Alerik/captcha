@@ -26,16 +26,15 @@ HttpMethod:	  'POST'
 Function : 'function';
 Table : 'table';
 
-Identifier:                     IdentifierStart IdentifierPart*;
+Identifier : IdentifierStart IdentifierPart*;
 
-Literal: NullLiteral
-		| BooleanLiteral
-		| DecimalLiteral
-		| HexIntegerLiteral
+IntegerLiteral
+		: HexIntegerLiteral
 		| OctalIntegerLiteral
 		| BinaryIntegerLiteral
-		| StringLiteral
+		| RawIntegerLiteral
 		;
+
 
 NullLiteral:                    'null';
 
@@ -46,17 +45,18 @@ BooleanLiteral:                 'true'
 
 /// Numeric Literals
 
-DecimalLiteral:                 DecimalIntegerLiteral '.' [0-9]* ExponentPart?
-              |                 '.' [0-9]+ ExponentPart?
-              |                 DecimalIntegerLiteral ExponentPart?
+DecimalLiteral:                 '-'? DecimalIntegerLiteral '.' [0-9]* ExponentPart?
+              |                 '-'? '.' [0-9]+ ExponentPart?
+              |                 '-'? DecimalIntegerLiteral ExponentPart
               ;
 
 /// Numeric Literals
 
-HexIntegerLiteral:              '0' [xX] HexDigit+;
-OctalIntegerLiteral:            '0' [0-7]+;
-OctalIntegerLiteral2:           '0' [oO] [0-7]+;
-BinaryIntegerLiteral:           '0' [bB] [01]+;
+fragment RawIntegerLiteral:	'-'? DecimalIntegerLiteral;
+fragment HexIntegerLiteral:              '0' [xX] HexDigit+;
+fragment OctalIntegerLiteral:            '0' [0-7]+;
+fragment OctalIntegerLiteral2:           '0' [oO] [0-7]+;
+fragment BinaryIntegerLiteral:           '0' [bB] [01]+;
 
 /// String Literals
 StringLiteral: '\'' SingleStringCharacter* '\'';

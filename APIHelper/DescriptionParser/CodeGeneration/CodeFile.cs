@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Antlr4.StringTemplate;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -6,44 +7,17 @@ using Console = DescriptionParser.ConsoleHelper;
 
 namespace DescriptionParser.CodeGeneration
 {
-	public abstract class CodeFile
-	{
-		private static Dictionary<string, CodeFile> lookup = new Dictionary<string, CodeFile>();
 
-		public string Path { get; protected set; }
+	/// <summary>
+	/// A class used by CodeCreators to easily create files
+	/// </summary>
+	public class CodeFile
+	{
 		protected StreamWriter writer;
 
-		protected CodeFile(string _Path)
+		internal CodeFile(StreamWriter _writer)
 		{
-			//this.Path = _Path;
-			//lookup.Add(this.Path, this);
-		}
-
-		public static ClientCodeFile CreateClientFile(string path)
-		{
-			if (lookup.ContainsKey(path))
-			{
-				return lookup[path] as ClientCodeFile;
-			}
-			else
-			{
-				ClientCodeFile file = new ClientCodeFile(path);
-				lookup[path] = file;
-				return file;
-			}
-		}
-		public static ServerCodeFile CreateServerFile(string path)
-		{
-			if (lookup.ContainsKey(path))
-			{
-				return lookup[path] as ServerCodeFile;
-			}
-			else
-			{
-				ServerCodeFile file = new ServerCodeFile(path);
-				lookup[path] = file;
-				return file;
-			}
+			this.writer = _writer;
 		}
 
 		public void Write(string content)
@@ -51,21 +25,30 @@ namespace DescriptionParser.CodeGeneration
 			writer.Write(content);
 		}
 
-		private void Close()
+		public virtual void Close()
 		{
 			writer.Close();
 		}
+	}
 
-		public static void CloseAll()
+	public class TemplateCodeFile : CodeFile
+	{
+		protected Template template;
+
+		internal TemplateCodeFile(StreamWriter _writer, Template _template) : base(_writer)
 		{
-			Console.Head("Saving files");
-			foreach (CodeFile file in lookup.Values)
-			{
-				Console.Write("Saving file {0}", file.Path);
-				file.Close();
-			}
-			lookup.Clear();
-			Console.End();
+			this.template = _template;
+		}
+
+		public void Add(string name, object value)
+		{
+			this.template.Add(name, value);
+		}
+
+		public override void Close()
+		{
+			Write(template.Render());
+			base.Close();
 		}
 	}
 }

@@ -1,0 +1,11 @@
+{
+    targetType: 'server',
+    fileStructure: 'clustered',
+    extension: '.php',
+    template: 'php.stg',
+    includes: 
+        [
+            'database.php',
+            'json.php'
+        ]
+}

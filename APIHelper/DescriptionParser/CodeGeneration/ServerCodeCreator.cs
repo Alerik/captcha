@@ -8,7 +8,7 @@ namespace DescriptionParser.CodeGeneration
 	{
 		public abstract void AddFunction(FunctionDefinition function);
 
-		public abstract void AddDependency(Table dependency);
+		public abstract void AddDependency(TableDefinition dependency);
 
 		public abstract void GenerateAll();
 	}

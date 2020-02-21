@@ -1,0 +1,8 @@
+{
+    defaultName: 'main',
+    targetType: 'server',
+    fileStructure: 'aggregate',
+    extension: '.py',
+    template: 'flask.stg',
+    includes: []
+}

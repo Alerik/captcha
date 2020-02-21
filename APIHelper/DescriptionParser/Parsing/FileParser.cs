@@ -43,7 +43,7 @@ namespace DescriptionParser
 			{
 				API.Instance = new API();
 
-				DescriptVisitor visitor = new DescriptVisitor();
+				DescriptVisitor visitor = new DescriptVisitor(API.Instance.Environment);
 				visitor.Visit(root);
 			}
 			Console.Write("Done parsing file\n");

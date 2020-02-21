@@ -1,0 +1,12 @@
+aggregate_file(func) ::= <<
+import stuff
+
+<func:create_function(): separator="\n">
+>>
+
+create_function(func) ::= <<
+@app.route('/<func.PathWithName>', methods=['<func.Method>'])
+def <func.Name>:
+
+    return ""
+>>

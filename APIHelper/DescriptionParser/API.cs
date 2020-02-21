@@ -9,28 +9,13 @@ namespace DescriptionParser
 {
 	public class API
 	{
-		public const string BASE_URL = "ENDPOINT";
-		public const string CLIENTDIR = "CLIENTDIR";
-		public const string SERVERDIR = "SERVERDIR";
+		public static API Instance { get; internal set; }
 
-		public const string CLIENT_TARGET = "CLIENT_TARGET";
-		public const string SERVER_TARGET = "SERVER_TARGET";
-		public const string DB_TARGET = "DB_TARGET";
-
-		public static API Instance;
 		public string BaseUrl { get; internal set; }
 		private List<string> Files = new List<string>();
 
-		//List of user defined functions
-		public List<FunctionDefinition> Functions = new List<FunctionDefinition>();
-		//List of user defined tables
-		public List<Table> Dependencies = new List<Table>();
-
-		//List of loaded super functions
-		public List<SuperFunctionCall> SuperFunctions = new List<SuperFunctionCall>();
-		//List of loaded super tables
-		public List<SuperTable> SuperTables = new List<SuperTable>();
-
+		public Environment Environment { get; private set; }
+		
 		public string ClientDirectory { get; internal set; }
 		public string ServerDirectory { get; internal set; }
 
@@ -48,11 +33,13 @@ namespace DescriptionParser
 		internal API()
 		{
 			Instance = this;
+			this.Environment = new Environment();
 			LoadIndex();
 		}
 		public API(string _BaseUrl, string _ClientDirectory, string _ServerDirectory)
 		{
 			Instance = this;
+			this.Environment = new Environment();
 			this.BaseUrl = _BaseUrl;
 			this.ClientDirectory = _ClientDirectory;
 			this.ServerDirectory = _ServerDirectory;
@@ -98,34 +85,7 @@ namespace DescriptionParser
 
 		public void GenerateAll()
 		{
-			Console.Head("Generating code");
-			AngularClientCodeCreator clientCreator = new AngularClientCodeCreator();
-			PHPServerCodeCreator serverCreator = new PHPServerCodeCreator();
-
-
-
-			foreach (FunctionDefinition function in Functions)
-			{
-				clientCreator.AddFunction(function);
-				serverCreator.AddFunction(function);
-			}
-
-			foreach (Table table in Dependencies)
-			{
-				clientCreator.AddDependency(table);
-				serverCreator.AddDependency(table);
-
-			}
-
-			clientCreator.GenerateAll();
-			serverCreator.GenerateAll();
-
-	
-			ClientCodeFile.CloseAll();
-			ServerCodeFile.CloseAll();
-
-			Console.Write("Done generating code");
-			Console.End();
+			
 		}
 
 		#region Files

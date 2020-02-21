@@ -4,6 +4,14 @@ options {
     tokenVocab=DescriptLexer;
 }
 
+literal
+	: IntegerLiteral
+	| BooleanLiteral
+	| NullLiteral
+	| DecimalLiteral
+	| StringLiteral
+	;
+
 tableReference: TablePrefix Identifier;
 argumentReference: ArgumentPrefix Identifier;
 reference : TableReference ArgumentReference;
@@ -50,7 +58,7 @@ tableDefinition
 	
 literalDefinition
 	:
-	Identifier Langle Literal Rangle Semicolon
+	Identifier Langle literal Rangle Semicolon
 	;
 
 definition

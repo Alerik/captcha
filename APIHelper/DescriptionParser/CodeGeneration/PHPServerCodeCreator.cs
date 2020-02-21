@@ -16,7 +16,7 @@ namespace DescriptionParser.CodeGeneration
 			funcs.Add(function);
 		}
 
-		public override void AddDependency(Table dependency)
+		public override void AddDependency(TableDefinition dependency)
 		{
 			//throw new NotImplementedException();
 		}
@@ -30,8 +30,8 @@ namespace DescriptionParser.CodeGeneration
 			{
 				Template functionTemplate = phpTemplate.GetInstanceOf("create_function");
 				functionTemplate.Add("func", func);
-				ServerCodeFile file = CodeFile.CreateServerFile(Path.Combine(func.Path, func.Name + ".php"));
-				file.Write(functionTemplate.Render());
+				//ServerCodeFile file = CodeFile.CreateServerFile(Path.Combine(func.Path, func.Name + ".php"));
+				//file.Write(functionTemplate.Render());
 				System.Console.ForegroundColor = ConsoleColor.Green;
 				System.Console.Write(functionTemplate.Render());
 				System.Console.ForegroundColor = ConsoleColor.White;

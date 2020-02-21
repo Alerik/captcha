@@ -13,7 +13,7 @@ namespace DescriptionParser
 			HttpMethods httpMethod = GetMethod(context.HttpMethod().GetText());
 			List<FunctionParameter> functionParameters = ContextToArgs(context.functionParameter());
 			List<SuperFunctionCall> superFunctions = ContextToSuperFunctions(context.superFunctionClause());
-			List<Table> dependencies = new List<Table>();//ContextToDependencies(context.uses());
+			List<TableDefinition> dependencies = new List<TableDefinition>();//ContextToDependencies(context.uses());
 			return new FunctionDefinition(identifier, httpMethod, parentPath,functionParameters, superFunctions, dependencies);
 		}
 
@@ -28,10 +28,7 @@ namespace DescriptionParser
 
 		private static List<SuperFunctionCall> ContextToSuperFunctions(DescriptParser.SuperFunctionClauseContext context)
 		{
-			List<SuperFunctionCall> superFunctions = new List<SuperFunctionCall>();
-			foreach (DescriptParser.SuperFunctionContext sfContext in context.superFunction())
-				superFunctions.Add(ContextToSuperFunction(sfContext));
-			return superFunctions;
+			return context?.superFunction().Select(c => ContextToSuperFunction(c)).ToList();
 		}
 		private static SuperFunctionCall ContextToSuperFunction(DescriptParser.SuperFunctionContext context)
 		{
@@ -55,13 +52,13 @@ namespace DescriptionParser
 		}
 		private static List<SuperFunctionArgument> ContextToSuperFunctionArguments(DescriptParser.SuperFunctionArgumentContext[] context)
 		{
-			return context.Select(c => ContextToSuperFunctionArgument(c)).ToList();
+			return context?.Select(c => ContextToSuperFunctionArgument(c)).ToList();
 		}
 
 
-		private static List<Table> ContextToDependencies(DescriptParser.UsesClauseContext context)
+		private static List<TableDefinition> ContextToDependencies(DescriptParser.UsesClauseContext context)
 		{
-			return new List<Table>();
+			return new List<TableDefinition>();
 		}
 
 		private static FunctionParameter ContextToFunctionParameter(DescriptParser.FunctionParameterContext context)
@@ -86,23 +83,23 @@ namespace DescriptionParser
 
 		private static List<FunctionParameter> ContextToFunctionParameters(DescriptParser.TypedParameterContext[] context)
 		{
-			return context.Select(c => ContextToFunctionParameter(c)).ToList();
+			return context?.Select(c => ContextToFunctionParameter(c)).ToList();
   }
 
 
 		private static List<FunctionParameter> ContextToArgs(DescriptParser.FunctionParameterContext[] context)
 		{
-			return context.Select(c => ContextToFunctionParameter(c)).ToList();
+			return context?.Select(c => ContextToFunctionParameter(c)).ToList();
 		}
 
-		public static Table ContextToTable(DescriptParser.TableDefinitionContext context)
+		public static TableDefinition ContextToTable(DescriptParser.TableDefinitionContext context)
 		{
-			return new Table(context.Identifier().GetText(), ContextToColumns(context.column()));
+			return new TableDefinition(context.Identifier().GetText(), ContextToColumns(context.column()));
 		}
 
-		private static List<APIColumn> ContextToColumns(DescriptParser.ColumnContext[] context) 
+		private static List<Column> ContextToColumns(DescriptParser.ColumnContext[] context) 
 		{
-			return context.Select(c => new APIColumn(c.Identifier(0).GetText(), c.Identifier(1).GetText())).ToList();
+			return context?.Select(c => new Column(c.Identifier(0).GetText(), c.Identifier(1).GetText())).ToList();
 		}
 	}
 }

@@ -32,6 +32,12 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CLSCompliant(false)]
 public interface IDescriptParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="DescriptParser.literal"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitLiteral([NotNull] DescriptParser.LiteralContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="DescriptParser.tableReference"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
