@@ -11,8 +11,6 @@ namespace DescriptionParser
 	{
 		static void Main(string[] args)
 		{
-			CodeGeneration.CodeGenerator genie = new CodeGeneration.CodeGenerator(null);
-			genie.LoadTargets();
 			//genie.CreateCodeCreator(@"C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\bin\Debug\netcoreapp3.1\targets\flask\flask.desc");
 
 			string path = @"C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\bin\Debug\netcoreapp3.1\api.desc";
@@ -34,7 +32,7 @@ namespace DescriptionParser
 			{
 				API.Instance.GenerateAll();
 				API.Instance.SaveIndex();
-				Process.Start("explorer.exe", API.Instance.ClientDirectory);
+				//Process.Start("explorer.exe", API.Instance.ClientDirectory);
 				Console.Write("Done!");
 			}
 			else

@@ -1,0 +1,6 @@
+boolean => boolean
+int2, int4, int8, float4, float8, numeric(p,s) => number
+text => string
+char (n), varchar (n) => string[]
+bit (n), varbit(n) => boolean[n]
+date, time, timestamp => string

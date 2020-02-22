@@ -1,4 +1,4 @@
-﻿clustered_file(func) ::= <<
+﻿cluster_file(func) ::= <<
 \<?php
 //Function <func.Name>
 include 'validation.php';
@@ -19,12 +19,12 @@ check(func) ::= <%
 
 checkGet(func) ::= <<
 checkGet();
-checkArguments($_GET, <create_args(func.Arguments)>);
+checkArguments($_GET, <create_args(func.Parameters)>);
 >>
 
 checkPost(func) ::= <<
 checkPost();
-checkArguments($_POST, <create_args(func.Arguments)>);
+checkArguments($_POST, <create_args(func.Parameters)>);
 >>
 
 create_args(args) ::= "array(<args:create_arg(); separator=\",\">)"
@@ -42,8 +42,8 @@ holder(func) ::= <%
 %>
 
 create_declarations(func) ::= <%
-<if(func.IsGet)><func.Arguments:create_declaration_get(); separator="\n">
-<else><func.Arguments:create_declaration_post(); separator="\n">
+<if(func.IsGet)><func.Parameters:create_declaration_get(); separator="\n">
+<else><func.Parameters:create_declaration_post(); separator="\n">
 <endif>
 %>
 create_superfunctions(func) ::= <%

@@ -1,6 +1,7 @@
 {
     targetType: 'server',
     fileStructure: 'clustered',
+    typing: 'none',
     extension: '.php',
     template: 'php.stg',
     includes: 

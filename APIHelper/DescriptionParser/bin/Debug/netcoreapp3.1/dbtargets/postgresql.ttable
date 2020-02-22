@@ -1,0 +1,13 @@
+bigint
+bigserial
+boolean
+date
+integer
+real
+smallint
+smallserial
+serial
+text
+time
+timestamp
+uuid

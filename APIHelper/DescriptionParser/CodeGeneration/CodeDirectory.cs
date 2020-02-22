@@ -60,7 +60,7 @@ namespace DescriptionParser.CodeGeneration
 			}
 			else
 			{
-				string path = System.IO.Path.Combine(Path, $"{name}.{extension}");
+				string path = System.IO.Path.ChangeExtension(System.IO.Path.Combine(Path, name), extension);
 				if (files.ContainsKey(path))
 					return files[path];
 				StreamWriter writer = new StreamWriter(path);
@@ -68,7 +68,7 @@ namespace DescriptionParser.CodeGeneration
 			}
 		}
 
-		public TemplateCodeFile CreateTemplateFile(string name, string extension, Template template)
+		public TemplateCodeFile CreateTemplateFile(string name, string extension, Template template, Dictionary<string, object> initializer = null)
 		{
 			if (System.IO.Path.GetDirectoryName(name) != "")
 			{
@@ -77,11 +77,19 @@ namespace DescriptionParser.CodeGeneration
 			}
 			else
 			{
-				string path = System.IO.Path.Combine(Path, $"{name}.{extension}");
+				string path = System.IO.Path.ChangeExtension(System.IO.Path.Combine(Path, name), extension);
 				if (files.ContainsKey(path))
 					return files[path] as TemplateCodeFile;
+
 				StreamWriter writer = new StreamWriter(path);
-				return (files[path] = new TemplateCodeFile(writer, template)) as TemplateCodeFile;
+				TemplateCodeFile file = new TemplateCodeFile(writer, template);
+				files[path] = file;
+				
+				if(initializer != null)
+					foreach ((string key, object value) in initializer)
+						file.Add(key, value);
+
+				return file;
 			}
 		}
 

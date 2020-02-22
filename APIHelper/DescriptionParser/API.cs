@@ -11,7 +11,7 @@ namespace DescriptionParser
 	{
 		public static API Instance { get; internal set; }
 
-		public string BaseUrl { get; internal set; }
+		public string BaseUrl => Environment.Require(CodeGenerator.BASE_URL);
 		private List<string> Files = new List<string>();
 
 		public Environment Environment { get; private set; }
@@ -40,7 +40,6 @@ namespace DescriptionParser
 		{
 			Instance = this;
 			this.Environment = new Environment();
-			this.BaseUrl = _BaseUrl;
 			this.ClientDirectory = _ClientDirectory;
 			this.ServerDirectory = _ServerDirectory;
 			LoadIndex();
@@ -59,16 +58,16 @@ namespace DescriptionParser
 		public bool HasError()
 		{
 			bool error = false;
-			if(ClientDirectory == null)
-			{
-				Console.Write("No client directory provided. Please specify it with 'CLIENTDIR<path>'");
-				error = true;
-			}
-			if(ServerDirectory == null)
-			{
-				Console.Write("No server directory provided. Please specify it with 'SERVERDIR<path>'");
-				error = true;
-			}
+			//if(ClientDirectory == null)
+			//{
+			//	Console.Write("No client directory provided. Please specify it with 'CLIENTDIR<path>'");
+			//	error = true;
+			//}
+			//if(ServerDirectory == null)
+			//{
+			//	Console.Write("No server directory provided. Please specify it with 'SERVERDIR<path>'");
+			//	error = true;
+			//}
 			return error;
 		}
 
@@ -85,7 +84,9 @@ namespace DescriptionParser
 
 		public void GenerateAll()
 		{
-			
+			CodeGenerator generator = new CodeGenerator(this.Environment);
+			generator.LoadTargets();
+			generator.Generate();
 		}
 
 		#region Files

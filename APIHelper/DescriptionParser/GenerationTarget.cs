@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Antlr4.StringTemplate;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,6 +13,13 @@ namespace DescriptionParser
 		public GenerationTarget(TargetDescription _Description)
 		{
 			this.Description = _Description;
+		}
+
+		public TemplateGroupFile GetTemplateFile()
+		{
+			string templatePath = System.IO.Path.Combine(Description.Directory, Description.Template);
+			TemplateGroupFile templateFile = new TemplateGroupFile(templatePath);
+			return templateFile;
 		}
 	}
 }

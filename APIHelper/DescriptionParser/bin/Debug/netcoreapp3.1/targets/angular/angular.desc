@@ -1,6 +1,7 @@
 {
     targetType: 'client',
     fileStructure: 'solitary',
+    typing : 'explicit',
     extension: '.service.ts',
     template: 'angular.stg',
     includes: []

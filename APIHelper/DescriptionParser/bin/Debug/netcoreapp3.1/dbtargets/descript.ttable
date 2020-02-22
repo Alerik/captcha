@@ -1,0 +1,20 @@
+boolean
+
+int2
+int4
+int8
+
+float4
+float8
+numeric(p,s)
+
+char (n)
+varchar (n)
+text
+
+bit (n)
+varbit (n)
+
+date
+time
+timestamp

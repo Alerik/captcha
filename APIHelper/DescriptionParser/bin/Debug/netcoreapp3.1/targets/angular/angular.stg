@@ -20,7 +20,7 @@ create_function(func) ::= "<create_function_url(func)><\n><create_function_defin
 create_function_url(func) ::= "<create_function_url_name(func)> : string = '<func.FullPath>.php';"
 create_function_url_name(func) ::= "<func.Name>_url"
 create_function_definition(func) ::= <%
-<func.Name> (<create_function_param(func.Arguments)>) : Observable\<<func.Return>>{<\n>
+<func.Name> (<create_function_param(func.Parameters)>) : Observable\<<func.Return>>{<\n>
 	<\t><create_request(func)><\n>
 }%>
 
@@ -33,7 +33,7 @@ create_request(func) ::= <%
 create_function_param(column) ::= "<column:var_declaration(); separator=\", \">"
 var_declaration(column) ::= "<column.Identifier> : <column.ClientType>"
 
-create_http_params(func) ::= "const params = new HttpParams()<create_param(func.Arguments)>;"
+create_http_params(func) ::= "const params = new HttpParams()<create_param(func.Parameters)>;"
 create_param(column) ::= "<column:set()>"
 set(column) ::= ".set('<column.Identifier>',<column.Identifier>)"
 

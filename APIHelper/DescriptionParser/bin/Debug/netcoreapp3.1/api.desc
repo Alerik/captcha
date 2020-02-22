@@ -2,8 +2,8 @@
 	CLIENT_TARGET<'ANGULAR'>;
 	SERVER_TARGET<'PHP'>;
 	ENDPOINT<'http://127.0.0.1/captcha/'>;
-	SERVERDIR<'C:\xampp\htdocs\captcha'>;
-	CLIENTDIR<'C:\xampp\htdocs\captcha\customer-portal\src\app'>;
+	SERVERDIR<'C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\bin\Debug\netcoreapp3.1\server'>;
+	CLIENTDIR<'C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\bin\Debug\netcoreapp3.1\client'>;
 #FUNCTION
 	test: 
 		POST function addPerson(first_name TEXT, last_name TEXT);

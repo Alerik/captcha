@@ -34,6 +34,11 @@ namespace DescriptionParser.CodeGeneration
 			PostGenerate();
 		}
 
+		private void Save()
+		{
+			directory.CloseAll();
+		}
+
 		//This will do stuff to copy files such as database.php or globals.ts or what have you
 		//Or stuff like settings.py
 		//Pretty much, anything your generated files might want to reference
@@ -52,7 +57,7 @@ namespace DescriptionParser.CodeGeneration
 		/// </summary>
 		protected virtual void PostGenerate()
 		{
-
+			Save();
 		}
 	}
 
@@ -80,6 +85,7 @@ namespace DescriptionParser.CodeGeneration
 			CodeFile aggregateFile = directory.CreateFile(name, extension);
 			aggregateFile.Write(this.template.Render());
 			aggregateFile.Close();
+			base.PostGenerate();
 		}
 	}
 
@@ -113,7 +119,10 @@ namespace DescriptionParser.CodeGeneration
 
 		protected override void GenerateFunction(FunctionDefinition function)
 		{
-			TemplateCodeFile template = directory.CreateTemplateFile(function.PathWithName, extension, templatefile.GetInstanceOf(SOLITARY_FILE));
+			TemplateCodeFile template = directory.CreateTemplateFile(function.Path, extension, templatefile.GetInstanceOf(SOLITARY_FILE), 
+				new Dictionary<string, object>() { 
+				{"path", Formatter.ToPascalCase(function.Path) }
+			});
 			template.Add(FUNCTION, function);		
 		}
 	}

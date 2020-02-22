@@ -40,28 +40,12 @@ namespace DescriptionParser.CodeGeneration
 			string clientTarget = environment.Require(CLIENT_TARGET);
 			string serverTarget = environment.Require(SERVER_TARGET);
 
-			AngularClientCodeCreator clientCreator = new AngularClientCodeCreator();
-			PHPServerCodeCreator serverCreator = new PHPServerCodeCreator();
+			CodeCreator clientCreator = CreateCodeCreator(clientTarget);
+			CodeCreator serverCreator = CreateCodeCreator(serverTarget);
 
-			//foreach (FunctionDefinition function in Functions)
-			//{
-			//  clientCreator.AddFunction(function);
-			//  serverCreator.AddFunction(function);
-			//}
+			clientCreator.GenerateAll(environment.Functions);
+			serverCreator.GenerateAll(environment.Functions);
 
-			//foreach (TableDefinition table in Dependencies)
-			//{
-			//  clientCreator.AddDependency(table);
-			//  serverCreator.AddDependency(table);
-
-			//}
-
-			clientCreator.GenerateAll();
-			serverCreator.GenerateAll();
-
-
-			//ClientCodeFile.CloseAll();
-			//ServerCodeFile.CloseAll();
 
 			Console.Write("Done generating code");
 			Console.End();
@@ -73,15 +57,14 @@ namespace DescriptionParser.CodeGeneration
 			string targetDir = dirs.Where(d => Path.GetFileName(d).ToLower() == "targets").FirstOrDefault();
 			string[] targetDirs = Directory.GetDirectories(targetDir);
 
-			List<TargetDescription> targets = new List<TargetDescription>();
 
 			foreach (string target in targetDirs)
 			{
 				string targetDesc = Directory.GetFiles(target).Where(d => Path.GetExtension(d) == ".desc").FirstOrDefault();
-				targets.Add(LoadTargetFolder(target));
+				environment.RegisterEnvironmentTarget(Path.GetFileName(target),LoadTargetFolder(target));
 			}
 
-			Console.Write("Discovered {0} targets", targets.Count);
+//			Console.Write("Discovered {0} targets", targets.Count);
 		}
 		private TargetDescription LoadTargetFolder(string path)
 		{
@@ -103,22 +86,23 @@ namespace DescriptionParser.CodeGeneration
 
 		public CodeCreator CreateCodeCreator(string targetKey)
 		{
-			GenerationTarget target = environment.GetTarget(targetKey);//LoadTargetFolder(path);
-			string targetDirectory = (target.TargetType == TargetDescription.TargetTypes.Client ? environment[CLIENTDIR] : environment[SERVERDIR]) as string;
+			GenerationTarget target = environment.GetGenerationTarget(targetKey);//LoadTargetFolder(path);
+			TargetDescription description = target.Description;
+			string targetDirectory = (description.TargetType == TargetDescription.TargetTypes.Client ? environment[CLIENTDIR] : environment[SERVERDIR]) as string;
 
 			CodeDirectory codeDirectory = new CodeDirectory(targetDirectory);
 
-			string templatePath = System.IO.Path.Combine(path, target.Template);
-			TemplateGroupFile templateFile = new TemplateGroupFile(templatePath);
+			//string templatePath = System.IO.Path.Combine(path, target.Template);
+			TemplateGroupFile templateFile = target.GetTemplateFile();// new TemplateGroupFile(templatePath);
 
-			switch (target.FileStructure)
+			switch (description.FileStructure)
 			{
 				case TargetDescription.FileStructures.Aggregate:
-					return new AggregateCodeCreator(target.DefaultName, codeDirectory, templateFile, target.Extension);
+					return new AggregateCodeCreator(description.DefaultName, codeDirectory, templateFile, description.Extension);
 				case TargetDescription.FileStructures.Solitary:
-					return new SolitaryCodeCreator(codeDirectory, templateFile, target.Extension);
+					return new SolitaryCodeCreator(codeDirectory, templateFile, description.Extension);
 				default:
-					return new ClusteredCodeCreator(codeDirectory, templateFile, target.Extension);
+					return new ClusteredCodeCreator(codeDirectory, templateFile, description.Extension);
 			}
 		}
 	}

@@ -1,6 +1,7 @@
 {
     defaultName: 'main',
     targetType: 'server',
+    typing: 'explicit',
     fileStructure: 'aggregate',
     extension: '.py',
     template: 'flask.stg',

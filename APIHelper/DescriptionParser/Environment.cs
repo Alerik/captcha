@@ -18,6 +18,8 @@ namespace DescriptionParser
 		private Dictionary<string, object> environmentVariables = new Dictionary<string, object>();
 		private Dictionary<string, GenerationTarget> environmentTargets = new Dictionary<string, GenerationTarget>();
 
+
+		public List<FunctionDefinition> Functions => functionDefinitions;
 		private List<FunctionDefinition> functionDefinitions = new List<FunctionDefinition>();
 		private List<TableDefinition> tableDefinitions = new List<TableDefinition>();
 
@@ -37,7 +39,7 @@ namespace DescriptionParser
 
 		public void RegisterEnvironmentTarget(string key, TargetDescription target)
 		{
-			this.environmentTargets[key] = new GenerationTarget(target);
+			this.environmentTargets[key.ToLower()] = new GenerationTarget(target);
 		}
 
 		public void RegisterFunctionDefinition(FunctionDefinition definition)
@@ -48,6 +50,13 @@ namespace DescriptionParser
 		public void RegisterTableDefinition(TableDefinition definition)
 		{
 			this.tableDefinitions.Add(definition);
+		}
+
+		public GenerationTarget GetGenerationTarget(string key)
+		{
+			if (this.environmentTargets.ContainsKey(key.ToLower()))
+				return this.environmentTargets[key.ToLower()];
+			throw new InvalidGenerationTargetException(key);
 		}
 
 		public string Require(string key)
@@ -62,5 +71,9 @@ namespace DescriptionParser
 	public class EnvironmentVaraibleRequiredException : Exception
 	{
 		public EnvironmentVaraibleRequiredException(string _key) : base($"The environment variable '{_key}' is required.") { }
+	}
+	public class InvalidGenerationTargetException : Exception
+	{
+		public InvalidGenerationTargetException(string _key) : base($"The generation target '{_key}' does not exist.") { }
 	}
 }

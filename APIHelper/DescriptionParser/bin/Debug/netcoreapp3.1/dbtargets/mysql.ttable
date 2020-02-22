@@ -1,0 +1,14 @@
+int
+tinyint
+smallint
+mediumint
+bigint
+real
+date
+datetime
+timestamp
+time
+text
+tinytext
+mediumtext
+longtext
