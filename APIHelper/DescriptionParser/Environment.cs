@@ -14,12 +14,13 @@ namespace DescriptionParser
 				return environmentVariables[key];
 			}
 		}
-  
+
 		private Dictionary<string, object> environmentVariables = new Dictionary<string, object>();
+		private Dictionary<string, GenerationTarget> environmentTargets = new Dictionary<string, GenerationTarget>();
 
 		private List<FunctionDefinition> functionDefinitions = new List<FunctionDefinition>();
 		private List<TableDefinition> tableDefinitions = new List<TableDefinition>();
-		
+
 		private List<SuperFunctionCall> SuperFunctions = new List<SuperFunctionCall>();
 		private List<SuperTable> SuperTables = new List<SuperTable>();
 
@@ -32,6 +33,11 @@ namespace DescriptionParser
 		public void RegisterEnvironmentVariable(string key, object obj)
 		{
 			environmentVariables[key] = obj;
+		}
+
+		public void RegisterEnvironmentTarget(string key, TargetDescription target)
+		{
+			this.environmentTargets[key] = new GenerationTarget(target);
 		}
 
 		public void RegisterFunctionDefinition(FunctionDefinition definition)

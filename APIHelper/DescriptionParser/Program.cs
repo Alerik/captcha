@@ -13,7 +13,7 @@ namespace DescriptionParser
 		{
 			CodeGeneration.CodeGenerator genie = new CodeGeneration.CodeGenerator(null);
 			genie.LoadTargets();
-			genie.CreateCodeCreator(@"C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\bin\Debug\netcoreapp3.1\targets\flask\flask.desc");
+			//genie.CreateCodeCreator(@"C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\bin\Debug\netcoreapp3.1\targets\flask\flask.desc");
 
 			string path = @"C:\xampp\htdocs\captcha\APIHelper\DescriptionParser\bin\Debug\netcoreapp3.1\api.desc";
 

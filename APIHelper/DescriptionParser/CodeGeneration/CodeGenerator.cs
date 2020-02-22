@@ -9,6 +9,13 @@ using Console = DescriptionParser.ConsoleHelper;
 
 namespace DescriptionParser.CodeGeneration
 {
+	public class NoDescriptionFileException : Exception
+	{
+		public NoDescriptionFileException(string path) : base($"No description files were found in {path}")
+		{
+
+		}
+	}
 	public class CodeGenerator
 	{
 		public const string BASE_URL = "ENDPOINT";
@@ -38,14 +45,14 @@ namespace DescriptionParser.CodeGeneration
 
 			//foreach (FunctionDefinition function in Functions)
 			//{
-			//	clientCreator.AddFunction(function);
-			//	serverCreator.AddFunction(function);
+			//  clientCreator.AddFunction(function);
+			//  serverCreator.AddFunction(function);
 			//}
 
 			//foreach (TableDefinition table in Dependencies)
 			//{
-			//	clientCreator.AddDependency(table);
-			//	serverCreator.AddDependency(table);
+			//  clientCreator.AddDependency(table);
+			//  serverCreator.AddDependency(table);
 
 			//}
 
@@ -62,7 +69,8 @@ namespace DescriptionParser.CodeGeneration
 
 		public void LoadTargets()
 		{
-			string targetDir = Directory.GetDirectories(Directory.GetCurrentDirectory()).Where(d => Path.GetDirectoryName(d).ToLower() == "target").FirstOrDefault();
+			string[] dirs = Directory.GetDirectories(Directory.GetCurrentDirectory());
+			string targetDir = dirs.Where(d => Path.GetFileName(d).ToLower() == "targets").FirstOrDefault();
 			string[] targetDirs = Directory.GetDirectories(targetDir);
 
 			List<TargetDescription> targets = new List<TargetDescription>();
@@ -70,30 +78,32 @@ namespace DescriptionParser.CodeGeneration
 			foreach (string target in targetDirs)
 			{
 				string targetDesc = Directory.GetFiles(target).Where(d => Path.GetExtension(d) == ".desc").FirstOrDefault();
-				targets.Add(LoadTarget(target));
+				targets.Add(LoadTargetFolder(target));
 			}
 
 			Console.Write("Discovered {0} targets", targets.Count);
 		}
-
-		public TargetDescription LoadTarget(string path)
+		private TargetDescription LoadTargetFolder(string path)
 		{
-			StreamReader reader = new StreamReader(path);
+			string[] descriptionFiles = Directory.GetFiles(path, "*.desc");
+
+			if (descriptionFiles.Length == 0)
+				throw new NoDescriptionFileException(path);
+			//if (descriptionFiles.Length > 1)
+			//  Console.Write("Found several description files. Using the first one.");
+			string targetDescriptionPath = descriptionFiles[0];
+			StreamReader reader = new StreamReader(targetDescriptionPath);
 			string json = reader.ReadToEnd();
 			reader.Close();
 
-			return JsonConvert.DeserializeObject<TargetDescription>(json);
+			TargetDescription description = JsonConvert.DeserializeObject<TargetDescription>(json);
+			description.Directory = path;
+			return description;
 		}
 
-		public CodeCreator CreateCodeCreator()
+		public CodeCreator CreateCodeCreator(string targetKey)
 		{
-			return null;
-		}
-
-
-		public CodeCreator CreateCodeCreator(string path)
-		{
-			TargetDescription target = LoadTarget(path);
+			GenerationTarget target = environment.GetTarget(targetKey);//LoadTargetFolder(path);
 			string targetDirectory = (target.TargetType == TargetDescription.TargetTypes.Client ? environment[CLIENTDIR] : environment[SERVERDIR]) as string;
 
 			CodeDirectory codeDirectory = new CodeDirectory(targetDirectory);

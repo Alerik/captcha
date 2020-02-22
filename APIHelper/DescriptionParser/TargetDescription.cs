@@ -24,6 +24,7 @@ namespace DescriptionParser
 		public string Extension;
 		public string Template;
 		public string[] Includes;
+		public string Directory;
 
 		public TargetDescription()
 		{

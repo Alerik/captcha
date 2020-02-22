@@ -5024,7 +5024,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jacks\\.nuget\\packages\\": {}
+    "C:\\Users\\Jackson Codispoti\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -5032,18 +5033,19 @@
       "projectUniqueName": "C:\\xampp\\htdocs\\captcha\\APIHelper\\DescriptionParser\\DescriptionParser.csproj",
       "projectName": "DescriptionParser",
       "projectPath": "C:\\xampp\\htdocs\\captcha\\APIHelper\\DescriptionParser\\DescriptionParser.csproj",
-      "packagesPath": "C:\\Users\\jacks\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\Jackson Codispoti\\.nuget\\packages\\",
       "outputPath": "C:\\xampp\\htdocs\\captcha\\APIHelper\\DescriptionParser\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\jacks\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Jackson Codispoti\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
