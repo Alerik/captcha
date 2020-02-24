@@ -1,0 +1,19 @@
+keylock(tbl_key, tbl_lock, access_token, id_row) ::= <<
+$table_key = "<tbl_key>";
+$table_lock = "<tbl_lock>";
+
+$stm = $pdo->prepare('SELECT * FROM ' . $table_lock . ' WHERE 
+id = :id_row AND
+id_lock = (SELECT id FROM ' . $table_key . ' WHERE access_token = :access_token)');
+$success = $stm->execute(
+    array( 
+        'access_token' => $<access_token>,
+        'id_row' => $<id_row>)
+    );
+
+if(!$success){
+
+}
+
+$row = $stm->fetchAll()[0];
+>>
